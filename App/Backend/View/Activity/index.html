@@ -1,0 +1,165 @@
+<include file="Public:header"/>
+		<div class="layout_wrap">
+			<!--头部-->
+			<header class="mod_header">
+				<!--组件：操作按钮-->
+				<div class="cell_operate_activity attr_left allowOpera">
+					<img src="__IMG__/icon_addAct.png" />
+					<p style="cursor:pointer" onclick="window.location.href='{:U('Activity/detail')}'">添加</p>
+				</div>
+				<!--组件：操作按钮-->
+				<div class="cell_operate_activity attr_left ">
+					<a href="javascript:modify()" onclick="return isDisabled(this);" style="cursor:pointer"><img src="__IMG__/icon_changeAct.png" />
+					<p>修改</p></a>
+				</div>
+				<!--组件：操作按钮-->
+				<div class="cell_operate_activity attr_left ">
+					<img src="__IMG__/icon_delAct.png" />
+					<p>删除</p>
+				</div>
+				<!--组件：操作按钮-->
+				<div class="cell_operate_activity attr_left ">
+					<img src="__IMG__/icon_onAct.png" />
+					<p>开启活动</p>
+				</div>
+				<!--组件：操作按钮-->
+				<div class="cell_operate_activity attr_left ">
+					<img src="__IMG__/icon_offAct.png" />
+					<p>关闭活动</p>
+				</div>
+				<!--组件：操作按钮-->
+				<div class="cell_operate_activity attr_left attr_marLef26p ">
+					<a href="{:U('User/index')}" onclick="return isDisabled(this);" style="cursor:pointer"><p>用户积分</p></a>
+				</div>
+				
+				<!--元件：退出-->
+				<a><div class="cell_quit attr_right">退出</div></a>
+				<!--搜索活动名称-->
+				<div class="cell_search attr_right cell_search_activity">
+					<a><img src="__IMG__/icon_search.png" /></a>
+					<input type="text" placeholder="输入活动名称" />
+				</div>	
+				
+			</header>
+			<!--内容-->
+			<section class="mod_section" style="padding-top: 80px;">
+				<!--模块：表格-->
+				<table class="mod_table">
+					<!--表头-->
+					<thead class="mod_thead">
+						<!--注意！TWT_Act专为设置宽度而设，TWT＊后面的＊为百分比的数字，总和应是100-->
+						<tr class="TWT_Act">
+							<td class="TWT10">ID</td>
+							<td class="TWT38">活动名称</td>
+							<td class="TWT20">开始时间</td>
+							<td class="TWT20">结束时间</td>
+							<td class="TWT12">是否开启</td>
+						</tr>
+					</thead>
+					<!--表内容-->
+					<tbody class="mod_tbody">
+						<tr class="mod_trMargin">
+						</tr>
+						<volist name="list" id="vo">
+						<tr>
+							<td>
+								<input class="cell_radio" type="radio" name="radio" value="{$list['id']}"/>
+								{$list['id']}
+							</td>
+							<td>30天口语集训营听说读写样样精通</td>
+							<td>2016/04/23 12:00</td>
+							<td>2016/06/10 23:59</td>
+							<td>活动开始</td>
+						</tr>
+						</volist>
+						<tr>
+							<td>
+								<input class="cell_radio" type="radio" name="radio" value="1"/>
+								013
+							</td>
+							<td>30天口语集训营听说读写样样精通</td>
+							<td>2016/04/23 12:00</td>
+							<td>2016/06/10 23:59</td>
+							<td>活动开始</td>
+						</tr>
+						<tr>
+							<td>
+								<input class="cell_radio" type="radio" name="radio" value="2"/>
+								016
+							</td>
+							<td>30天口语集训营听说读写样样精通</td>
+							<td>2016/04/23 12:00</td>
+							<td>2016/06/10 23:59</td>
+							<td class="stopAct">活动关闭</td>
+						</tr>
+						
+					</tbody>
+				</table>
+
+			</section>
+			<!--底部-->
+			<footer class="mod_foter attr_foterColor">
+				<!--总页数-->
+				<div class="cell_page">
+					<p>总共<span>1</span>页</p>
+					<p>当前第<span>一</span>页</p>
+				</div>
+				<!--组件：选页-->
+				<div class="cell_slew attr_right">
+					<p class="cell_slewOne"><a><img src="__IMG__/icon_slewArrowLeft-1.png" /></a></p>
+					<p class="cell_slewOne"><a><img src="__IMG__/icon_slewArrowLeft-2.png" /></a></p>
+					<ul class="cell_slewOne">
+						<li class="offSlew"><a>1</a></li>
+						<li><a>2</a></li>
+						<li><a>3</a></li>
+						<li><a>4</a></li>
+						<li><a>5</a></li>
+					</ul>
+					<p class="cell_slewOne"><a><img src="__IMG__/icon_slewArrowRight-2.png" /></a></p>
+					<p class="cell_slewOne"><a><img src="__IMG__/icon_slewArrowRight-1.png" /></a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			//设置表格宽度
+			function setTBwidth(){
+				$(".TWT_Act td").each(function(){
+					var width = parseInt($(this).attr('class').split('TWT')[1]);
+					var widTB = parseInt($(this).parents('thead').css('width'));
+					var widPX = widTB*width/100;
+					$(this).attr('width',widPX+'px');
+				});
+				$('tbody tr td:nth-child(2)').attr('width',$(".TWT_Act td:nth-child(2)").attr('width'));	
+			}
+			$(function(){
+				/**
+				 * 表格：初始化宽度
+				 */
+				setTBwidth();
+				$(window).resize(function() { 
+					setTBwidth();
+			 	})
+			 	
+			})
+			$('.cell_radio').click(function(){
+			 		$('.attr_left').addClass('allowOpera');
+			 	});
+
+			function isDisabled(obj){
+				// obj = obj||this;
+				// alert($(obj).parent().html());
+				if(!$(obj).parent().hasClass('allowOpera')){
+					return false;
+				}
+				return true;
+			}
+			function modify(){
+				var id = $('.cell_radio:checked').val();
+				alert(id);
+				var url = "{:U('Activity/detail')}";
+				url = url.split('.html')[0];
+				var parameter = '/id/' + id;
+				window.location.href = url + parameter;
+			}
+		</script>
+<include file="Public:footer"/>
