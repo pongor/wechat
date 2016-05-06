@@ -10,3 +10,23 @@ function open($txt){
     fwrite($myfile, $txt."\r\n");
     fclose($myfile);
 }
+/*
+ * 验证消息是否来自微信
+ */
+function checkSignature()
+{
+    $signature = I("get.signature");
+    $timestamp = I("get.timestamp");
+    $nonce = I("get.nonce");
+
+    $token = C('TOKEN');
+    $tmpArr = array($token, $timestamp, $nonce);
+    sort($tmpArr, SORT_STRING);
+    $tmpStr = implode( $tmpArr );
+    $tmpStr = sha1( $tmpStr );
+    if( $tmpStr == $signature ){
+        return true;
+    }else{
+        return false;
+    }
+}
