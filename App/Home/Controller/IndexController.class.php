@@ -7,6 +7,6 @@ class IndexController extends Controller {
         $data = json_encode($_REQUEST);
         echo 'success';
         open($data);
-        echo 'success';
+       // echo 'success';
    }
 }
