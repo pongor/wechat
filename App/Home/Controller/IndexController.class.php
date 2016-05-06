@@ -5,7 +5,7 @@ class IndexController extends Controller {
 
     public function index(){
         $data = json_encode($_REQUEST);
-        echo 'success';
+        echo  $_GET["echostr"];
         open($data);
        // echo 'success';
    }
