@@ -1,0 +1,1136 @@
+
+/*-----------------------reset----------------------*/
+
+
+*{
+	box-sizing: border-box;
+}
+
+html, body{
+	height: 100%;
+}
+
+
+
+
+
+
+/*布局  前缀  layout_*/
+
+
+.layout_wrap{
+	position: relative;
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+	min-width: 810px;
+}
+
+
+.layout_nav{
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	bottom: 0; 
+	float: left;
+	width: 100%;
+	height: 100%;
+	min-width: 214px;
+	background-color: #3652a6;
+}
+
+
+
+
+/*模块  前缀  mod_*/
+
+
+.mod_Title{
+	position: relative;
+	width: 100%;
+	height: auto;
+	min-height: 80px;
+	background-color: #79a7ff;
+	text-align: center;
+	overflow: auto;
+}
+
+.mod_Title img{
+	display: block;
+}
+
+.mod_nav{
+	width: 100%;
+	height: auto;
+}
+
+.mod_nav ul, .mod_nav li, .mod_nav a{
+	width: 100%;
+}
+
+.mod_header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+	width: 100%;
+	height: auto;
+	min-height: 80px;
+	padding: 10px 1%;
+	overflow: auto;
+}
+
+.mod_block{
+	width: 100%;
+	height: auto;
+	min-height: 60px;
+	margin: 26px 0px;
+	padding: 0 3.2% 36px 3.2%;
+}
+
+.mod_table-2{
+	width: 100%;
+}
+
+.mod_table-2 tr td{
+	height: auto;
+	line-height: 35px;
+	min-height: 55px;
+	border-width: 1px;
+	border-style: solid;
+	text-align: center;
+	padding: 10px 5px;
+}
+
+
+.mod_table-3{
+	width: 100%;
+    height: auto;
+}
+
+.mod_table-3 tr td{
+	text-align: center;
+	padding: 5px 2px;
+	box-sizing: border-box;
+}
+
+.mod_thead-3 tr td{
+	height: auto;
+	min-height: 38px;
+	line-height: 26px;
+	font-size: 16px;
+	border-width: 1px;
+	border-style: solid;
+	color: #707071;
+}
+
+.mod_trMargin-3{
+	width: 100%;
+	height: 6px;
+	background: none;
+	border: none;
+}
+
+.mod_tbody-3 tr{
+	border-width: 1px;
+	border-style: solid;
+	box-sizing: border-box;
+	background: #FFFFFF;
+}
+
+.mod_tbody-3 tr td{
+	height: auto;
+	min-height: 38px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #888888;
+}
+
+.mod_tbody-3 tr td>input{
+	width: 88%;
+	height: 26px;
+	line-height: 26px;
+}
+
+.mod_tbody-3 tr td>img{
+	display: block;
+	float: right;
+	height: 23px;
+	margin: 3px 5px 0 5px;
+}
+
+.mod_tbody-3 .mod_addTr{
+	height: 38px;
+	border-style: dashed;
+}
+
+.mod_addTr p{
+	float: left;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 10px;
+}
+
+.mod_addTr .mod_addImg{
+	display: block;
+	float: right;
+	height: 14px;
+	margin: 6px 11px;
+}
+
+
+
+.mod_blockConBox-1{
+	width: 100%;
+	background-color: #e3eaf7;
+}
+
+.mod_blockConBox-2{
+	width: 100%;
+	background-color: #f2f2f7;
+}
+
+.mod_footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 200;
+	width: 100%;
+	height: auto;
+	min-height: 60px;
+	padding: 10px 1%;
+	overflow: auto;
+	border-width: 1px;
+	border-style: solid;
+}
+
+
+
+
+
+
+/*元件  前缀  cell_*/
+
+
+.cell_navMain{
+	height: 61px;
+	border-bottom: 1px solid #31468c;
+}
+
+.cell_navMain:hover{
+	background-color: #b3cfff;
+}
+
+.cell_navMain a{
+	display: block;
+	line-height: 61px;
+	padding-left: 10px;
+    box-sizing: border-box;
+	height: 61px;
+}
+
+.cell_navMain span{
+	position: relative;
+	left: 5%;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+.cell_navIcon{
+	position: relative;
+	left: 4%;
+	bottom: -1px;
+	width: 14px;
+}
+
+.selected_nav{
+	background-color: #b3cfff;
+}
+
+/*复用*/
+.cell_headerTitle{
+	height: 26px;
+	line-height: 26px;
+	margin: 15px 15px;
+}/*复用*/
+
+.cell_headerTitle{
+	width: auto;
+	padding-left: 10px;
+	font-size: 16px;
+}
+
+.cell_headerTitle span{
+	width: auto;
+	font-size: 16px;	
+}
+
+/*复用*/
+.cell_blockTitle{
+	width: 100%;
+	height: auto;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}/*复用*/
+
+.cell_blockTitle{
+	min-height: 60px;
+}
+       
+.cell_blockTitle h3, .cell_blockTitle h5, .cell_blockTitle span{
+	height: 60px;
+}
+
+.cell_blockPay, .cell_blockNotPay{
+	float: right;
+	height: 20px;
+	line-height: 20px;
+	margin: 20px 0;
+	padding: 0 14px;
+	border-right-style: solid;
+	border-right-width: 2px;
+}
+
+.cell_blockTitle h3{
+	float: left;
+	line-height: 60px;
+}
+
+.cell_blockTitle h5{
+	float: left;
+	line-height: 64px;
+	margin: 0 8px;
+}
+
+.cell_blockTitle span{
+    float: right;
+    line-height: 60px;
+    margin-right: -20px;
+    padding: 0 20px 0 8px;
+}
+                                                                                        
+.cell_blockContent{
+	width: 100%;
+}
+
+.cell_partBar-1{
+	width: 100%;
+	height: 83px;
+}
+
+.cell_partBar-2{
+	width: 100%;
+	height: 38px;
+}
+
+.cell_partBar-3, .cell_partBar-4{
+	width: 100%;
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+}
+
+.cell_partBar-3{
+	height: 128px;
+	padding-top: 12px;
+}
+
+.cell_partBar-4{
+	height: auto;
+	padding-bottom: 17px;
+}
+
+
+.cell_partBar-1 .cell_partBox-2, .cell_partBar-2 .cell_partContent, 
+.cell_partBar-2 .cell_uploadButton, .cell_partBar-2 .cell_downloadButton,
+.cell_partContent-2 input, .cell_partBar-2 .cell_partContent-2,
+.cell_partBar-3 .cell_partBox-2, .cell_partBar-4 .cell_partBox-2
+{
+	float: left;
+}
+
+.cell_partBox-1, .cell_partBox-2, .cell_partBox-3, .cell_partBox-4, .cell_partBox-5{
+	min-height: 38px;
+	overflow: visible;
+}
+
+.cell_partBox-1{
+	margin-top: 15px;
+}
+
+.cell_partBox-2, .cell_partBox-3 {
+	margin-top: 6px;
+}
+
+.cell_partBox-3{
+	height: 76px;
+	overflow: visible;
+}
+
+.cell_partBox-4{
+	float: left;
+}
+
+.cell_partBox-5{
+	height: 129px;
+}
+
+
+.cell_partTitle, .cell_partMark{
+	float: left;
+	height: 38px;
+	line-height: 38px;
+}
+
+.cell_partTitleBox{
+	height: 38px;
+}
+
+.cell_partMark{
+	display: block;
+	padding: 0 6px;	
+}
+
+.cell_partContent, .cell_partContent-2{
+	position: relative;
+	border-width: 1px;
+	border-style: solid;
+	height: auto;
+	min-height: 38px;
+	overflow: visible;
+}
+
+.cell_partContent input, .cell_partContent textarea, .cell_partContent-2 input{
+	width: 100%;
+	line-height: 20px;
+	border: none;
+	padding: 8px 6px;
+}
+
+.cell_partContent input, .cell_partContent-2 input{
+	height: 36px;
+}
+
+.cell_partContent textarea{
+	height: 72px;
+	resize: none;
+}
+
+.cell_partContent-3{
+	width: 100%;
+	height: 38px;
+}
+
+.cell_partArrowBox, .cell_partArrowBox-2{
+	position: absolute;
+    right: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
+.cell_partArrowBox img{
+	width: 19px;
+    height: 10px;
+    margin: 15px 0 0 8px;
+}
+
+.cell_partArrowBox-2 img{
+	width: 23px;
+    height: 23px;
+    margin: 5px 0 0 5px;	
+}
+
+.cell_selSimiOptBox{
+	display: none;
+    position: absolute;
+    top: 37px;
+    left: 0;
+    z-index: 150;
+    width: 100%;	
+    max-height: 310px;
+    border-width: 1px;
+    border-style: solid;
+    border-top: none;
+   	box-shadow: rgb(239, 239, 239) 0px 1px 1px 1px;
+    background-color: rgb(252, 252, 252);
+    overflow: auto;
+}
+
+.cell_selSimiOptBox p{
+	height: auto;
+    min-height: 30px;
+    line-height: 20px;
+    padding: 5px 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.cell_uploadButton, .cell_downloadButton{
+    height: 38px;
+    border-radius: 3px;
+}
+
+
+.cell_addButton:hover, .cell_buttonBlue:hover, .cell_partArrowBox-2:hover, .cell_uploadButton:hover, .cell_downloadButton:hover{
+	box-shadow: 0px 2px 1px #C7C8C8;
+}
+
+.cell_search:hover, .cell_buttonGrey:hover, .cell_checkbox:hover div, .cell_checkbox-2:hover div, .cell_partContent:hover, 
+.cell_partContent-2:hover
+{
+	box-shadow: 0px 1px 1px #C7C8C8;
+}
+
+.cell_blockPrompt{
+	width: 100%;
+	height: auto;
+	min-height: 55px;
+	line-height: 25px;
+	padding: 15px;
+	text-align: center;
+}
+
+
+.cell_buttonBlue{
+	color: #FFFFFF;
+	background-color: #6798d0;
+}
+
+.cell_buttonGrey{
+	border: 1px solid #cfd0d0;
+	color: #9d9e9e;
+	background-color: #FFFFFF;
+}
+
+.cell_buttonBlue, .cell_buttonGrey, .cell_checkbox{
+	height: 30px;
+	line-height: 30px;
+	margin: 15px;
+	font-size: 16px;
+	border-radius: 3px;
+}
+
+.cell_buttonBlue{
+	width: 75px;
+}
+
+.cell_buttonGrey{
+	width: 50px;
+}
+
+.cell_checkbox{
+	width: auto;
+}
+
+.cell_checkbox div{
+	float: left;
+	width: 28px;
+	height: 28px;
+	margin: 1px;
+	border: 1px solid #439cd6;
+	border-radius: 3px;
+}
+
+.cell_checkbox div img{
+	display: none;
+	width: 17px;
+	height: 13px;
+	margin: 6px 4px 7px 5px;
+}
+
+.cell_checkbox p{
+	float: left;
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 13px;
+}
+
+.cell_checkbox input, .cell_checkbox-2 input{
+	display: none;
+}
+
+.cell_checkbox-2{
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 16px;
+	margin-top: 2px;
+	font-size: 16px;
+}
+
+.cell_checkbox-2 div{
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: 1px;
+	border: 1px solid #439cd6;
+	border-radius: 3px;
+}
+
+.cell_checkbox-2 div img{
+	display: none;
+	width: 14px;
+	height: 11px;
+	margin: 3px 0px 0px 2px;
+}
+
+.cell_checkbox-2 p{
+	float: left;
+	width: auto;
+	height: 20px;
+	line-height: 16px;
+	padding: 3px 0 3px 6px;
+	
+}
+
+.cell_addProBox{
+	width: 98%;
+	height: 62px;
+	margin: 25px 1%;
+	border-width: 1px;
+	border-style: dashed;
+}
+
+.cell_addPro{
+	float: right;
+	height: 60px;
+	line-height: 60px;
+	padding-right: 11px;
+}
+
+.cell_addPro img{
+	float: left;
+	height: 17px;
+	width: 17px;
+	margin: 21px 12px 20px 12px;
+}
+
+.cell_addPro h6{
+	float: left;
+	height: 60px;
+	line-height: 60px;
+}
+
+.cell_line1{
+	height: 63px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+
+
+
+
+
+
+
+
+                                                                                               
+/*属性  前缀  attr_*/
+
+/*背景色*/
+.attr_bgColorWhite,
+.cell_inputBox_log, .mod_header, .mod_footer, .mod_block, .cell_partContent,
+.cell_partArrowBox, .cell_partContent-2
+{
+	background-color: #FFFFFF;
+}
+
+.attr_bgColorBlue-1,
+.cell_buttonBg1_log
+{
+	background-color: #8ac4f5;
+}
+
+    
+.attr_bgColorBlue-2,
+.cell_buttonBg2_log
+{
+	background-color: #8fcfff;
+}
+
+.attr_bgColorBlue-3,
+.cell_uploadButton
+{
+	background-color: #6dc5d3;	
+}
+
+.attr_bgColorBlue-4,
+.cell_downloadButton
+{
+	background-color: #4aaee4;	
+}
+
+.attr_bgColorGrey-1,
+.layout_wrap
+{
+	background-color: #eeeeef;
+}
+
+.attr_bgColorGrey-2,
+.mod_box-1, .mod_thead-3 tr td
+{
+	background-color: #f7f7f7;
+}
+
+.attr_bgColorGrey-3,
+.mod_box-2
+{
+	background-color: #dbdcdc;
+}
+
+
+
+
+/*边框色*/
+.attr_borderColorGrey-1,
+.cell_inputBox_log, .mod_thead tr td, .mod_tbody tr, .mod_footer, .mod_blockRight, .cell_blockTitle, 
+.cell_blockTitleLittle, .cell_partContent, .cell_partArrowBox, .cell_selSimiOptBox, .cell_selSimiOptBox p,
+.mod_box-1, .mod_box-2, .cell_blockTitleLittle-2, .cell_partArrowBox-2, .cell_partContent-2, .mod_table-2 tr td,
+.cell_partBar-3, .cell_partBar-4, .cell_addProBox, .mod_thead-3 tr td, .mod_tbody-3 tr, .cell_line1
+{
+	border-color: #cccdcd;
+}
+
+.attr_borderColorGrey-2,
+.cell_blockPay, .cell_blockNotPay
+{
+	border-color: #c6c6c7;
+}
+
+.attr_borderColorGrey-3,
+.cell_search, .cell_addBox-1, .cell_addBox-2
+{
+	border-color: #b4b4b5;
+}
+
+.attr_borderColorBlue-1,
+.cell_buttonBox_log
+{
+	border-color: #182987;
+}
+
+.attr_borderNo
+{
+	border: none;
+}
+
+/*字体色*/
+.attr_colorGrey-1, 
+.layout_wrap_log h1, .cell_headerTitle, .cell_headerText, .cell_partContent input, .cell_selSimiOptBox p, 
+.cell_partContent textarea, .cell_partContent-2 input, .mod_table-2 tr td, .mod_tbody-3 tr td>input
+{
+	color: #888888;
+}
+
+.attr_colorGrey-2, 
+.cell_inputBox_log input, .cell_checkbox p, .cell_partTitle, .cell_blockPrompt, .cell_checkbox-2 p
+{
+	color: #707071;
+}
+
+.attr_colorGrey-3,
+.cell_headerTitle span, .cell_blockTitle h3, .cell_blockTitleLittle h4, .cell_selSimiOptBox p:hover,
+.cell_blockTitleLittle-2, .mod_Title h3 a:hover
+{
+	color: #595757;
+}
+
+.attr_colorGrey-4,
+.cell_blockTitle h5
+{
+	color: #9e9e9f;
+}
+
+.attr_colorGrey-5,
+.mod_Title h3 a
+{
+	color: #697487;
+}
+
+.attr_colorRed-1,
+.cell_tip_log, .cell_partMark
+{
+	color: #c30d23;
+}
+
+.attr_colorRed-2,
+.cell_tipText
+{
+	color: #cf789c;
+}
+
+.attr_colorRed-2,
+.cell_blockPay
+{
+	color: #C96E96;
+}
+
+.attr_colorWhite,
+.cell_button_log, .mod_Title h3, .cell_addButton p, .cell_uploadButton, .cell_downloadButton
+{
+	color: #FFFFFF;
+}
+
+.attr_colorBlue-1,
+.mod_Title h2
+{
+	color: #d4e6ff;
+}
+
+.attr_colorBlue-2,
+.mod_tbody tr td a, .cell_blockTitle span, .cell_addBox-1 p, .cell_addBox-2 p, .cell_addPro h6,
+.mod_addTr p
+{
+	color: #3695d3;
+}
+
+.attr_colorBlue-3,
+.mod_tbody tr td a:hover, .selected_nav a span, .cell_blockTitle span:hover
+{
+	color: #4570b6;
+}
+
+.attr_colorBlue-4,
+.mod_tbody tr td a:hover
+{
+	color: #345487;
+}
+
+.attr_colorBlack-1,
+.cell_blockNotPay
+{
+	color: #000;
+}
+
+/*字体大小*/
+
+
+.attr_font20,
+.cell_blockTitleLittle-2, .cell_uploadButton, .cell_downloadButton
+{
+	font-size: 20px;
+}
+
+.attr_font18,
+.cell_inputBox_log input, .cell_button_log, .cell_blockTitle h3, .cell_blockTitleLittle h4, .cell_partTitle,
+.cell_tipText, .cell_blockPay, .cell_blockNotPay, .cell_blockTitle span:hover, .cell_blockPrompt,
+.cell_addPro:hover h6
+{
+	font-size: 18px;
+}
+
+.attr_font17,
+.cell_blockTitle span, .cell_addBox-1:hover p, .cell_addBox-2:hover p, .cell_addPro h6
+{
+	font-size: 17px;
+}
+
+.attr_font16,
+.cell_checkbox p, .cell_checkbox-2 p, .cell_partContent input, .cell_partContent textarea,
+.cell_addBox-1 p, .cell_addBox-2 p, .cell_partContent-2 input, .mod_Title h3 a,
+.cell_blockTitle h5, .mod_table-2 tr td
+{
+	font-size: 16px;
+}
+
+.attr_font15,
+.cell_selSimiOptBox p:hover, .mod_addTr:hover p
+{
+	font-size: 15px;
+}
+
+.attr_font14,
+.cell_tip_log, .cell_selSimiOptBox p, .mod_tbody-3 tr td>input, .mod_addTr p
+{
+	font-size: 14px;
+}
+
+.attr_fontweight,
+.mod_tbody tr td a:hover
+{
+	letter-spacing: 1px;
+}
+
+
+/*margin*/
+.attr_marLef40{
+	margin-left: 40%;
+}
+
+.attr_marLef2{
+	margin-left: 2%;
+}
+
+.attr_marLef18p{
+	margin-left: 18px;
+}
+
+.attr_marRig2{
+	margin-right: 2%;
+}
+
+.attr_marRig5{
+	margin-right: 5%;
+}
+
+.attr_marRig8{
+	margin-right: 8%;
+}
+
+.attr_marRig14{
+	margin-right: 14%;
+}
+
+.attr_marTop5p{
+	margin-top: 5px;
+}
+
+.attr_marTop11p{
+	margin-top: 11px;
+}
+
+.attr_marTop15p{
+	margin-top: 15px;
+}
+
+.attr_marTop28p{
+	margin-top: 28px;
+}
+
+.attr_marTop42p{
+	margin-top: 42px;
+}
+
+.attr_marTop52p{
+	margin-top: 52px;
+}
+
+.attr_marTop-15p{
+	margin-top: -15px;
+}
+
+.attr_mar0{
+	margin: 0;
+}
+
+
+/*padding*/
+.attr_padTop15p{
+	padding-top: 15px;
+}
+
+.attr_padTop20p{
+	padding-top: 20px;
+}
+
+.attr_padBot40p{
+	padding-bottom: 40px;
+}
+
+.attr_padLR032{
+	padding-left: 3.2%;
+	padding-right: 3.2%;
+}
+
+.attr_pad0{
+	padding: 0;
+}
+
+
+/*width*/
+.attr_width100{
+	width: 100%;
+}
+
+.attr_width76{
+	width: 76%;
+}
+
+.attr_width72{
+	width: 72%;
+}
+
+.attr_width70{
+	width: 70%;
+}
+
+.attr_width66{
+	width: 66%;
+}
+
+.attr_width65{
+	width: 65%;
+}
+
+.attr_width60{
+	width: 60%;
+}
+
+.attr_width55{
+	width: 55%;
+}
+
+.attr_width52{
+	width: 52%;
+}
+
+.attr_width49{
+	width: 49%;
+}
+
+.attr_width46{
+	width: 46%;
+}
+
+.attr_width43{
+	width: 43%;
+}
+
+.attr_width39{
+	width: 39%;
+}
+
+.attr_width32{
+	width: 32%;
+}
+
+.attr_width30{
+	width: 30%;
+}
+
+.attr_width26{
+	width: 26%;
+}
+
+.attr_width25{
+	width: 25%;
+}
+
+.attr_width22{
+	width: 22%;
+}
+
+.attr_width20{
+	width: 20%;
+}
+
+.attr_width184{
+	width: 18.4%;
+}
+.attr_width18{
+	width: 18%;
+}
+
+.attr_width17{
+	width: 17%;
+}
+
+.attr_width15{
+	width: 15%;
+}
+
+.attr_width4{
+	width: 4%;
+}
+
+
+/*height*/
+.attr_height85p
+{
+	height: 85px;
+}
+.attr_height85p textarea
+{
+	height:83px;
+}
+
+.attr_height91p
+{
+	height: 92px;
+}
+.attr_height91p textarea
+{
+	height: 90px;
+}
+
+.attr_height120p
+{
+	height: 120px;
+}
+.attr_height120p textarea
+{
+	height: 118px;
+}
+
+.attr_height167p
+{
+	height: 167px;
+}
+.attr_height167p textarea
+{
+	height: 165px;
+}
+
+.attr_height202p
+{
+	height: 202px;
+}
+.attr_height202p textarea
+{
+	height: 200px;
+}
+
+.model, .modelResearch, .modelPractice,.modelActive{
+	display: none;
+}
+
+
+/*左右中*/
+.attr_center{
+	text-align: center;
+}
+
+.attr_left{
+	float: left;
+}
+
+.attr_right{
+	float: right;
+}
+
+.attr_webkitbox{
+	/*display: -webkit-box;*/
+}
+
+/*清除浮动*/
+.attr_clearfix, .cell_partBar-4{*zoom:1;}  
+.attr_clearfix:after, .cell_partBar-4:after{ 
+  content:"."; 
+  display:block; 
+  height:0; 
+  visibility:hidden; 
+  clear:both; 
+}
+
+
+/*input : placeholder*/
+::-webkit-input-placeholder { /* WebKit browsers */ 
+color: #C7C8C8; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color: #C7C8C8; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color: #C7C8C8; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color: #C7C8C8; 
+} 
+
+
+
+
+
