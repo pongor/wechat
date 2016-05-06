@@ -40,7 +40,20 @@ $(function(){
 	 */
 	$('.mod_section').css('padding-top',$('.mod_header').css('height'));
 	$('.mod_section').css('padding-bottom',$('.mod_foter').css('height'));
+	$('.mod_section').css('padding-bottom',$('.mod_footer').css('height'));
 
+
+	
+	/**
+	 * body selectSimilarity: 点击其他位置，所有optionBox隐藏
+	 */
+	$("body").click(function(){
+		$('.selectSimiOptBox').each(function(){
+			if($(this).css('display') != 'none'){
+				$(this).slideToggle(200);
+			}
+		});
+	});
 
 	/**
 	 * selectSimilarity: 点击输入框，optionBox的展开和隐藏and赋值
@@ -106,6 +119,21 @@ $(function(){
 		}
 	});
 	
+	
+	/**
+	 * 信息：添加信息
+	 */
+	$(".addInfo").click(function(){
+		var mod = $('.modelInfo').clone(true);
+		mod.removeClass('modelInfo');
+		$('.addInfo').before(mod);
+		$('.Info:odd').each(function(){
+			$(this).removeClass('attr_marRig8');
+		});
+		$('.Info:even').each(function(){
+			$(this).addClass('attr_marRig8');
+		});
+	});
 	
 	
 })
