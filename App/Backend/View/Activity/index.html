@@ -63,10 +63,10 @@
 						<volist name="list" id="vo">
 						<tr>
 							<td>
-								<input class="cell_radio" type="radio" name="radio" value="{$list['id']}"/>
-								{$list['id']}
+								<input class="cell_radio" type="radio" name="radio" value="{$vo['id']}"/>
+								{$vo['id']}
 							</td>
-							<td>30天口语集训营听说读写样样精通</td>
+							<td>{$vo['title']}</td>
 							<td>2016/04/23 12:00</td>
 							<td>2016/06/10 23:59</td>
 							<td>活动开始</td>
@@ -155,7 +155,6 @@
 			}
 			function modify(){
 				var id = $('.cell_radio:checked').val();
-				alert(id);
 				var url = "{:U('Activity/detail')}";
 				url = url.split('.html')[0];
 				var parameter = '/id/' + id;

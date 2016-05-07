@@ -420,7 +420,7 @@ html, body{
 	height: 38px;
 }
 
-.cell_partArrowBox, .cell_partArrowBox-2{
+.cell_partArrowBox, .cell_partArrowBox-2, .cell_partArrowBox-3{
 	position: absolute;
     right: 0;
     top: 0;
@@ -434,6 +434,12 @@ html, body{
 	width: 19px;
     height: 10px;
     margin: 15px 0 0 8px;
+}
+
+.cell_partArrowBox-3 img{
+	width: 23px;
+    height: 23px;
+    margin: 7px 0 0 7px;
 }
 
 .cell_partArrowBox-2 img{
@@ -478,7 +484,7 @@ html, body{
 }
 
 .cell_search:hover, .cell_buttonGrey:hover, .cell_checkbox:hover div, .cell_checkbox-2:hover div, .cell_partContent:hover, 
-.cell_partContent-2:hover
+.cell_partContent-2:hover, .cell_addImgBox .cell_addImg:hover, .cell_addImgBox .cell_delImg:hover, .cell_buttonSend:hover
 {
 	box-shadow: 0px 1px 1px #C7C8C8;
 }
@@ -614,26 +620,109 @@ html, body{
 }
 
 .cell_line1{
+	float: left;
 	height: 63px;
+	width: 4%;
+	margin: 0 2%;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
+}
+
+.cell_addImgBox{
+	height: 120px;
+	position: relative;
+}
+
+.cell_addImgBox div{
+	height: 120px;
+	float: left;
+}
+
+.cell_addImgBox .cell_addImg{
+	float: left;
+	height: 120px;
+	width: auto;
+}
+.cell_addImgBox .cell_delImg{
+	height: 23px;
+	width: auto;
+	margin: 5px 8px;
+}
+.cell_addImgBox .cell_text{
+	position: relative;
+    top: 26px;
+    line-height: 20px;
+    padding-left: 8px;
+}
+
+.cell_cuttingline{
+	float: left;
+	width: 100%;
+	height: 50px;
+}
+.cell_cuttingline p{
+	float: left;
+	width: 16%;
+	line-height: 18px;
+	padding-top: 30px;
+}
+.cell_cuttingline div{
+	float: left;
+	width: 84%;
+	height: 40px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+.cell_buttonSend{
+	width: 64px;
+    height: 24px;
+    margin-bottom: 12px;
+	font-size: 12px;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 3px;
+	background-color: #9ea1e3;
+}
+
+.cell_sendInfo p{
+	height: 28px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+
+.addInfo{
+	height: 72px;
+}
+.addInfo p{
+	float: left;
+	width: auto;
+	height: 70px;
+	line-height: 70px;
+	padding: 0 10px;
+}
+.addInfo img{
+	float: right;
+	width: auto;
+	height: 22px;
+	margin: 25px 10px;
 }
 
 
 
 
 
-
-
-
-
+     
+     
+     
+     
                                                                                                
 /*属性  前缀  attr_*/
 
 /*背景色*/
 .attr_bgColorWhite,
 .cell_inputBox_log, .mod_header, .mod_footer, .mod_block, .cell_partContent,
-.cell_partArrowBox, .cell_partContent-2
+.cell_partArrowBox, .cell_partArrowBox-3, .cell_partContent-2
 {
 	background-color: #FFFFFF;
 }
@@ -689,7 +778,8 @@ html, body{
 .cell_inputBox_log, .mod_thead tr td, .mod_tbody tr, .mod_footer, .mod_blockRight, .cell_blockTitle, 
 .cell_blockTitleLittle, .cell_partContent, .cell_partArrowBox, .cell_selSimiOptBox, .cell_selSimiOptBox p,
 .mod_box-1, .mod_box-2, .cell_blockTitleLittle-2, .cell_partArrowBox-2, .cell_partContent-2, .mod_table-2 tr td,
-.cell_partBar-3, .cell_partBar-4, .cell_addProBox, .mod_thead-3 tr td, .mod_tbody-3 tr, .cell_line1
+.cell_partBar-3, .cell_partBar-4, .cell_addProBox, .mod_thead-3 tr td, .mod_tbody-3 tr, .cell_line1,
+.cell_cuttingline div, .cell_partArrowBox-3
 {
 	border-color: #cccdcd;
 }
@@ -726,7 +816,8 @@ html, body{
 }
 
 .attr_colorGrey-2, 
-.cell_inputBox_log input, .cell_checkbox p, .cell_partTitle, .cell_blockPrompt, .cell_checkbox-2 p
+.cell_inputBox_log input, .cell_checkbox p, .cell_partTitle, .cell_blockPrompt, .cell_checkbox-2 p, 
+.cell_cuttingline p
 {
 	color: #707071;
 }
@@ -739,7 +830,7 @@ html, body{
 }
 
 .attr_colorGrey-4,
-.cell_blockTitle h5
+.cell_blockTitle h5, .cell_addImgBox .cell_text, .cell_sendInfo p
 {
 	color: #9e9e9f;
 }
@@ -782,7 +873,7 @@ html, body{
 
 .attr_colorBlue-2,
 .mod_tbody tr td a, .cell_blockTitle span, .cell_addBox-1 p, .cell_addBox-2 p, .cell_addPro h6,
-.mod_addTr p
+.mod_addTr p, .addInfo p
 {
 	color: #3695d3;
 }
@@ -817,7 +908,7 @@ html, body{
 .attr_font18,
 .cell_inputBox_log input, .cell_button_log, .cell_blockTitle h3, .cell_blockTitleLittle h4, .cell_partTitle,
 .cell_tipText, .cell_blockPay, .cell_blockNotPay, .cell_blockTitle span:hover, .cell_blockPrompt,
-.cell_addPro:hover h6
+.cell_addPro:hover h6, .cell_cuttingline p
 {
 	font-size: 18px;
 }
@@ -843,7 +934,7 @@ html, body{
 }
 
 .attr_font14,
-.cell_tip_log, .cell_selSimiOptBox p, .mod_tbody-3 tr td>input, .mod_addTr p
+.cell_tip_log, .cell_selSimiOptBox p, .mod_tbody-3 tr td>input, .mod_addTr p, .addInfo p, .cell_sendInfo p
 {
 	font-size: 14px;
 }
@@ -1056,6 +1147,10 @@ html, body{
 	height: 90px;
 }
 
+.attr_height118p{
+	height: 118px;
+}
+
 .attr_height120p
 {
 	height: 120px;
@@ -1063,6 +1158,11 @@ html, body{
 .attr_height120p textarea
 {
 	height: 118px;
+}
+
+.attr_height165p
+{
+	height: 165px;
 }
 
 .attr_height167p
@@ -1083,8 +1183,14 @@ html, body{
 	height: 200px;
 }
 
-.model, .modelResearch, .modelPractice,.modelActive{
+.model, .modelResearch, .modelPractice,.modelActive, .modelInfo{
 	display: none;
+}
+
+.Info{
+	float: left;
+	width: 46%;
+	margin-bottom: 15px;
 }
 
 
@@ -1103,6 +1209,10 @@ html, body{
 
 .attr_webkitbox{
 	/*display: -webkit-box;*/
+}
+
+.attr_borderDashed{
+	border-style: dashed;
 }
 
 /*清除浮动*/

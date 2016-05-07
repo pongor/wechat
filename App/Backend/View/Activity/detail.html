@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="__CSS__/style1.css" />
 		<script type="text/javascript" src="__JS__/jquery2.1.4.min.js"></script>
 		<script type="text/javascript" src="__JS__/function.js"></script>
+		<script type="text/javascript" charset="utf-8" src="__JS__/ajaxfileupload.js"></script>
 	</head>
 	<body>
 		<div class="layout_wrap">
@@ -15,6 +16,7 @@
 				<!--组件：标题-->
 				<h2 class="cell_headerTitle attr_left">修改活动 / <span>30天口语集中营听说读写样样精通特别精通超级精通</span></h2>
 			</header>
+			<form method="post" action="{:U('Activity/saveDetail',array('id'=>I('get.id')))}">
 			<!--内容-->
 			<section class="mod_section">
 				<!--基本内容-->
@@ -37,7 +39,7 @@
 								<!--组件：input输入框-->
 								<div class="cell_partContent">
 									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入标题" />
+									<input type="text" placeholder="请输入标题" name="title" value="{$result['title']}" />
 								</div>
 							</div>
 							<!--组件：输入组件-->
@@ -51,7 +53,7 @@
 								<!--组件：input输入框-->
 								<div class="cell_partContent">
 									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入后台关键词" />
+									<input type="text" placeholder="请输入后台关键词" name="back_keyword" value="{$result['back_keyword']}" />
 								</div>
 							</div>
 						</div>
@@ -64,28 +66,13 @@
 									<p class="cell_partTitle">开始时间</p>
 								</div>
 								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入年" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="月" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="日" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input class="attr_center" type="text" placeholder="时间" />
-								</div>
+								<div class="cell_partContent">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请输入数字" name="rank_list" value="{$result['rank_list']}" />
+							</div>
 							</div>
 							<!--横线-->
-							<div class="cell_line1 attr_width4 attr_marLef2 attr_marRig2 attr_left"></div>	
+							<div class="cell_line1"></div>	
 							<!--组件：输入组件-->
 							<div class="cell_partBox-2 attr_width46">
 								<!--组件：小标题盒子-->
@@ -94,50 +81,429 @@
 									<p class="cell_partTitle">结束时间</p>
 								</div>
 								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入年" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="月" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="日" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input class="attr_center" type="text" placeholder="时间" />
-								</div>
+								<div class="cell_partContent">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请输入数字" name="rank_list" value="{$result['rank_list']}" />
+							</div>
 							</div>
 						</div>
 						
 					</div>
 				</div>
-				<!--基本内容-->
+				<!--邀请卡-->
 				<!--模块：block-->
-				<div class="mod_block">
+				<div class="mod_block attr_clearfix">
 					<!--组件：模块标题-->
 					<div class="cell_blockTitle">
-						<h3>基本内容</h3>
+						<h3>邀请卡</h3>
 					</div>
 					<div class="cell_blockContent">
-						
-						
+						<!--邀请卡背景图上传-->
+						<div class="cell_partBox-2 attr_width46 attr_marTop15p">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">邀请卡背景图上传</p>	
+								<span class="cell_partMark">＊</span>
+							</div>
+							<div class="cell_addImgBox">
+								<a href="javascript:$('#background_pic').click();">
+								<img id="img_background_pic" class="cell_addImg" src="<?php echo $result['back_pic'] ? $result['back_pic'] : '__IMG__/icon_addImg.png'; ?>" />
+								</a>
+
+								<input id="background_pic" name="background_pic" type="file" style="display: none;" onchange="upLoad('./upload/wechat/backPic/',this.id)">
+
+								<input id="input_background_pic" type="hidden" name="back_pic" value="{$result['back_pic']}">
+								<div>
+									<a><img class="cell_delImg" src="__IMG__/icon_delete.png" /></a>
+									<p class="cell_text">建议图片小于200k<br/>尺寸750*1334<br/>图片过大会上传失败</p>
+								</div>
+							</div>
+						</div>
+						<!--分割线-->
+						<div class="cell_cuttingline">
+							<p>自动回复内容</p>
+							<div></div>
+						</div>
+						<div class="cell_partBar-1">
+							<!--添加微信文章链接-->
+							<div class="cell_partBox-2 attr_width46 attr_marRig8">
+								<!--组件：小标题盒子-->
+								<div class="cell_partTitleBox">
+									<!--元件：小标题-->
+									<p class="cell_partTitle">添加微信文章链接</p>
+								</div>
+								<!--组件：input输入框-->
+								<div class="cell_partContent">
+									<!--如果只读请给input添加：readonly="readonly"-->
+									<input type="text" placeholder="请输入链接" name="wechat_url" value="{$result['wechat_url']}"/>
+								</div>
+							</div>
+							<!--添加语音-->
+							<div class="cell_partBox-2 attr_width46">
+								<!--组件：小标题盒子-->
+								<div class="cell_partTitleBox">
+									<!--元件：小标题-->
+									<p class="cell_partTitle">添加语音</p>
+								</div>
+								<!--组件：selectSimilarity输入框-->
+								<div class="cell_partContent selectSimilarity">
+									<!--如果只读请给input添加：readonly="readonly"-->
+									<input type="text" placeholder="请上传60s以内的MP3.WAV.3gp" />
+									<div class="cell_partArrowBox-3"><img src="__IMG__/icon_delete.png"></div>
+								</div>
+							</div>
+						</div>
+						<!--添加信息-->
+						<div class="cell_partBox-2 attr_width100 attr_left">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">添加文字内容</p>	
+								<span class="cell_partMark">＊</span>
+							</div>
+							<?php 
+								$text_content_array = explode("||",$result['text_content']);
+								foreach ($text_content_array as $key => $value) {
+							?>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent attr_marRig8 Info">
+								<textarea placeholder="请输入文字内容" name="text_content[]">{$value}</textarea>
+							</div>
+							<?php } ?>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent attr_borderDashed Info addInfo">
+								<p>添加一个新的文字内容</p>
+								<img src="__IMG__/icon_addPro.png" />
+							</div>
+						</div>
 					</div>
 				</div>
-	
+				<!--条件通知-->
+				<!--模块：block-->
+				<div class="mod_block attr_clearfix">
+					<!--组件：模块标题-->
+					<div class="cell_blockTitle">
+						<h3>条件通知</h3>
+					</div>
+					<div class="cell_blockContent">
+						<!--成功条件-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">成功条件</p>
+								<span class="cell_partMark">＊</span>
+							</div>
+							<!--组件：selectSimilarity输入框-->
+							<div class="cell_partContent selectSimilarity">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请选择" name="success_condition" value="{$result['success_condition']}" />
+								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
+								<div class="cell_selSimiOptBox selectSimiOptBox">
+									<p class="selectSimiOption">邀请人数</p>
+									<p class="selectSimiOption">排行榜</p>
+								</div>
+							</div>
+						</div>
+						<!--邀请的通知链接-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">邀请的通知链接</p>
+							</div>
+							<!--组件：input输入框-->
+							<div class="cell_partContent">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请输入链接" name="invite_url" value="{$result['invite_url']}"/>
+							</div>
+						</div>
+						<!--邀请的通知内容-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">邀请的通知内容</p>
+								<span class="cell_partMark">＊</span>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent attr_height120p">
+								<textarea placeholder="请输入文字内容" name="invite_content">{$result['invite_content']}</textarea>
+							</div>
+						</div>
+						<!--重复邀请的通知内容-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">重复邀请的通知内容</p>
+								<span class="cell_partMark">＊</span>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent attr_height120p">
+								<textarea placeholder="请输入文字内容" name="re_invite_content">{$result['re_invite_content']}</textarea>
+							</div>
+						</div>
+						<!--分割线-->
+						<div class="cell_cuttingline">
+							<p>A. 邀请人数</p>
+							<div></div>
+						</div>
+						<!--邀请人数-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">邀请人数</p>
+							</div>
+							<!--组件：selectSimilarity输入框-->
+							<div class="cell_partContent selectSimilarity">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请选择" />
+								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
+								<div class="cell_selSimiOptBox selectSimiOptBox">
+									<p class="selectSimiOption">条件1</p>
+									<p class="selectSimiOption">条件2</p>
+								</div>
+							</div>
+						</div>
+						<!--彩蛋邀请人数-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">彩蛋邀请人数</p>
+							</div>
+							<!--组件：selectSimilarity输入框-->
+							<div class="cell_partContent selectSimilarity">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请选择" />
+								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
+								<div class="cell_selSimiOptBox selectSimiOptBox">
+									<p class="selectSimiOption">条件1</p>
+									<p class="selectSimiOption">条件2</p>
+								</div>
+							</div>
+						</div>
+						<!--成功通知内容-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">成功通知内容</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="succ_content">{$result['succ_content']}</textarea>
+							</div>
+						</div>
+						<!--触发彩蛋通知内容-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">触发彩蛋通知内容</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="egg_content">{$result['egg_content']}</textarea>
+							</div>
+						</div>
+						<!--继续邀请人数-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">继续邀请人数</p>
+							</div>
+							<!--组件：selectSimilarity输入框-->
+							<div class="cell_partContent selectSimilarity">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请选择" />
+								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
+								<div class="cell_selSimiOptBox selectSimiOptBox">
+									<p class="selectSimiOption">条件1</p>
+									<p class="selectSimiOption">条件2</p>
+								</div>
+							</div>
+						</div>
+						<!--完成彩蛋通知内容-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">完成彩蛋通知内容</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="finish_egg_content">{$result['finish_egg_content']}</textarea>
+							</div>
+						</div>
+						<!--继续邀请通知内容-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">继续邀请通知内容</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="continue_content">{$result['continue_content']}</textarea>
+							</div>
+						</div>
+						<!--分割线-->
+						<div class="cell_cuttingline">
+							<p>B. 排行榜</p>
+							<div></div>
+						</div>
+						<!--排行榜-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">排行榜</p>
+							</div>
+							<!--组件：input输入框-->
+							<div class="cell_partContent">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请输入数字" name="rank_list" value="<?php if($result['rank_list'] != -1){ ?>{$result['rank_list']}<?php } ?>" />
+							</div>
+						</div>
+						<!--通知时间-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">通知时间</p>
+							</div>
+							<!--组件：input输入框-->
+							<div class="cell_partContent">
+								<!--如果只读请给input添加：readonly="readonly"-->
+								<input type="text" placeholder="请输入数字" name="rank_list" value="{$result['rank_list']}" />
+							</div>
+						</div>
+						<!--进入排行榜通知-->
+						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">进入排行榜通知</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="rank_notice">{$result['rank_notice']}</textarea>
+							</div>
+						</div>
+						<!--未进入排行榜通知-->
+						<div class="cell_partBox-2 attr_left attr_width46">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">未进入排行榜通知</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="un_rank_notice">{$result['un_rank_notice']}</textarea>
+							</div>
+						</div>
+		
+					</div>
+				</div>
+				<!--活动开始提醒-->
+				<!--模块：block-->
+				<div class="mod_block attr_clearfix">
+					<!--组件：模块标题-->
+					<div class="cell_blockTitle">
+						<h3>活动开始提醒</h3>
+					</div>
+					<div class="cell_blockContent">
+						<!--进入排行榜通知-->
+						<div class="cell_partBox-2 attr_width46 attr_marRig8 attr_marTop15p">
+							<!--组件：小标题盒子-->
+							<div class="cell_partTitleBox">
+								<!--元件：小标题-->
+								<p class="cell_partTitle">进入排行榜通知</p>
+							</div>
+							<!--组件：textarea输入框-->
+							<div class="cell_partContent">
+								<textarea placeholder="请输入文字内容" name="activity_rank_notice">{$result['activity_rank_notice']}</textarea>
+							</div>
+						</div>
+						<div class="cell_sendInfo">
+							<p>只发送给达到成功条件的用户</p>
+							<button class="cell_buttonSend" type="button">发&nbsp;&nbsp;&nbsp;送</button>
+						</div>
+					</div>
+				</div>
+			
 			</section>
 			<!--底部-->
 			<footer class="mod_footer">
 				<!--元件：按钮－蓝-->
-				<button class="cell_buttonBlue attr_marLef40" type="button">保存</button>
+				<button class="cell_buttonBlue attr_marLef40" type="submit">保存</button>
 				<!--元件：按钮－灰-->
-				<button class="cell_buttonGrey" type="button">取消</button>				
+				<button class="cell_buttonGrey" type="button" onclick="window.location.href='{:U('Activity/Index')}'">取消</button>				
 			</footer>
+			</form>
 		</div>
+		
+		<!--Model区-->
+		<!--添加信息-->
+		<div class="cell_partContent Info modelInfo">
+			<textarea placeholder="请输入文字内容" name="text_content[]"></textarea>
+		</div>
+		<script>
+		$(function(){
+				$('.Info:odd').each(function(){
+					$(this).removeClass('attr_marRig8');
+				});
+				$('.Info:even').each(function(){
+					$(this).addClass('attr_marRig8');
+				});
+			$(".addInfo").click(function(){
+				var mod = $('.modelInfo').clone(true);
+				mod.removeClass('modelInfo');
+				$('.addInfo').before(mod);
+				$('.Info:odd').each(function(){
+					$(this).removeClass('attr_marRig8');
+				});
+				$('.Info:even').each(function(){
+					$(this).addClass('attr_marRig8');
+				});
+			});
+		});
+    function upLoad(path,field)
+    {
+    	var old = $("#input_"+field).val();
+        var root = '__ROOT__';
+        $.ajaxFileUpload
+        ({
+            url: '{:U("Activity/upload")}', //用于文件上传的服务器端请求地址
+            type: 'post',
+            data: {'path':path,'field':field,'old':old}, //此参数非常严谨，写错一个引号都不行
+            secureuri: false, //一般设置为false
+            fileElementId: field, //文件上传空间的id属性  <input type="file" id="file" name="file" />
+            dataType: 'content', //返回值类型 一般设置为json
+            success: function (data, status)  //服务器成功响应处理函数
+            {
+                var obj = $.parseJSON(data);
+                if(obj.error == 0)
+                {
+                    $("#img_"+field).attr('src',obj.url);
+                    $("#input_"+field).val(obj.url);
+                }
+                else
+                {
+                    alert(obj.msg);
+                }
+            }
+            // error: function (data, status, e)//服务器响应失败处理函数
+            // {
+            //    // alert(e);
+            // }
+        });//这是ajax1结束Tags
+        return false;
+    }
+</script>
 <include file="Public:footer"/>

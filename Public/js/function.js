@@ -2,7 +2,37 @@
 
 $(function(){
 	
+	/**
+	 * nav 导航栏：选中切换效果
+	 */
+	$('.optionCal_nav, .optionInl_nav, .optionPrl_nav').click(function(){
+		$(this).siblings().each(function(){
+			$(this).removeClass('selected_nav');
+			$(this).find('span').css('color','#FFFFFF');
+		});
+		$('.optionCal_nav').find('img').attr('src','img/icon_option-3_nav.png');
+		$('.optionInl_nav').find('img').attr('src','img/icon_option-2_nav.png');
+		$('.optionPrl_nav').find('img').attr('src','img/icon_option-1_nav.png');
+		
+		$(this).addClass('selected_nav');
+		$(this).find('span').css('color','#4570b6');
+	});	
 	
+	
+	/**
+	 * nav 导航栏img：选中切换图片效果
+	 */
+	$('.optionCal_nav').click(function(){
+		$(this).find('img').attr('src','img/icon_selected-3_nav.png');
+	});	
+
+	$('.optionInl_nav').click(function(){
+		$(this).find('img').attr('src','img/icon_selected-2_nav.png');
+	});	
+
+	$('.optionPrl_nav').click(function(){
+		$(this).find('img').attr('src','img/icon_selected-1_nav.png');
+	});	
 
 
 	/**
@@ -10,7 +40,20 @@ $(function(){
 	 */
 	$('.mod_section').css('padding-top',$('.mod_header').css('height'));
 	$('.mod_section').css('padding-bottom',$('.mod_foter').css('height'));
+	$('.mod_section').css('padding-bottom',$('.mod_footer').css('height'));
 
+
+	
+	/**
+	 * body selectSimilarity: 点击其他位置，所有optionBox隐藏
+	 */
+	$("body").click(function(){
+		$('.selectSimiOptBox').each(function(){
+			if($(this).css('display') != 'none'){
+				$(this).slideToggle(200);
+			}
+		});
+	});
 
 	/**
 	 * selectSimilarity: 点击输入框，optionBox的展开和隐藏and赋值
@@ -75,6 +118,7 @@ $(function(){
 			}			
 		}
 	});
+	
 	
 	
 	

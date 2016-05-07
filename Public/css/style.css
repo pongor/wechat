@@ -654,7 +654,7 @@ html, body{
 }
 
 .attr_font15,
-.cell_selSimiOptBox p:hover, .allowOpera:hover p, .cell_quit:hover
+.cell_selSimiOptBox p:hover, .cell_operate_activity:hover p, .cell_quit:hover
 {
 	font-size: 15px;
 }
