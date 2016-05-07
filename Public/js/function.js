@@ -120,6 +120,20 @@ $(function(){
 	});
 	
 	
+	/**
+	 * 信息：添加信息
+	 */
+	$(".addInfo").click(function(){
+		var mod = $('.modelInfo').clone(true);
+		mod.removeClass('modelInfo');
+		$('.addInfo').before(mod);
+		$('.Info:odd').each(function(){
+			$(this).removeClass('attr_marRig8');
+		});
+		$('.Info:even').each(function(){
+			$(this).addClass('attr_marRig8');
+		});
+	});
 	
 	
 })

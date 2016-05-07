@@ -20,6 +20,11 @@ class ActivityModel extends Model {
 
     }
 
+    //查询记录条数
+    public function countList1($where = array()){
+        return $this->where($where)->count();
+    }
+
     //获取指定列
     public function getField($where=array(),$field=''){
     	return $this->where($where)->field($field)->find();

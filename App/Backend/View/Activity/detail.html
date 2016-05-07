@@ -5,8 +5,11 @@
 		<title></title>
 		<link rel="stylesheet" href="__CSS__/reset.css" />
 		<link rel="stylesheet" href="__CSS__/style1.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/jquery.datetimepicker.css"/>
 		<script type="text/javascript" src="__JS__/jquery2.1.4.min.js"></script>
 		<script type="text/javascript" src="__JS__/function.js"></script>
+		<script type="text/javascript" src="__JS__/jquery.js"></script>
+		<script type="text/javascript" src="__JS__/jquery.datetimepicker.full.js"></script>	
 		<script type="text/javascript" charset="utf-8" src="__JS__/ajaxfileupload.js"></script>
 	</head>
 	<body>
@@ -14,7 +17,7 @@
 			<!--头部-->
 			<header class="mod_header">
 				<!--组件：标题-->
-				<h2 class="cell_headerTitle attr_left">修改活动 / <span>30天口语集中营听说读写样样精通特别精通超级精通</span></h2>
+				<h2 class="cell_headerTitle attr_left"><?php if($result){ echo "修改活动 / <span>".$result['title']."</span>"; }else{ echo "新建活动 /"; } ?></h2>
 			</header>
 			<form method="post" action="{:U('Activity/saveDetail',array('id'=>I('get.id')))}">
 			<!--内容-->
@@ -67,9 +70,9 @@
 								</div>
 								<!--组件：input输入框-->
 								<div class="cell_partContent">
-								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请输入数字" name="rank_list" value="{$result['rank_list']}" />
-							</div>
+									<!--如果只读请给input添加：readonly="readonly"-->
+									<input type="text" name="start_time" value="<?php if($result){ ?>{$result['start_time']|date='Y-m-d H:i:s',###}<?php } ?>" id="datetimepicker_mask" placeholder="请输入 年/月/日/时间" />
+								</div>
 							</div>
 							<!--横线-->
 							<div class="cell_line1"></div>	
@@ -82,9 +85,9 @@
 								</div>
 								<!--组件：input输入框-->
 								<div class="cell_partContent">
-								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请输入数字" name="rank_list" value="{$result['rank_list']}" />
-							</div>
+									<!--如果只读请给input添加：readonly="readonly"-->
+									<input type="text" name="end_time" value="<?php if($result){ ?>{$result['end_time']|date='Y-m-d H:i:s',###}<?php } ?>" id="datetimepicker_mask2" placeholder="请输入 年/月/日/时间" />
+								</div>
 							</div>
 						</div>
 						
@@ -198,7 +201,7 @@
 							<!--组件：selectSimilarity输入框-->
 							<div class="cell_partContent selectSimilarity">
 								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请选择" name="success_condition" value="{$result['success_condition']}" />
+								<input type="text" placeholder="请选择" name="success_condition" value="<?php echo $result['success_condition'] != 0 ? ($result['success_condition']==1 ? '邀请人数' : '排行榜') : ''; ?>" readonly />
 								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
 								<div class="cell_selSimiOptBox selectSimiOptBox">
 									<p class="selectSimiOption">邀请人数</p>
@@ -257,15 +260,10 @@
 								<!--元件：小标题-->
 								<p class="cell_partTitle">邀请人数</p>
 							</div>
-							<!--组件：selectSimilarity输入框-->
-							<div class="cell_partContent selectSimilarity">
+							<!--组件：input输入框-->
+							<div class="cell_partContent">
 								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请选择" />
-								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
-								<div class="cell_selSimiOptBox selectSimiOptBox">
-									<p class="selectSimiOption">条件1</p>
-									<p class="selectSimiOption">条件2</p>
-								</div>
+								<input type="text" placeholder="请输入人数" name="invite_num" value="<?php if($result['invite_num'] != -1){ ?>{$result['invite_num']}<?php } ?>"/>
 							</div>
 						</div>
 						<!--彩蛋邀请人数-->
@@ -275,15 +273,10 @@
 								<!--元件：小标题-->
 								<p class="cell_partTitle">彩蛋邀请人数</p>
 							</div>
-							<!--组件：selectSimilarity输入框-->
-							<div class="cell_partContent selectSimilarity">
+							<!--组件：input输入框-->
+							<div class="cell_partContent">
 								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请选择" />
-								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
-								<div class="cell_selSimiOptBox selectSimiOptBox">
-									<p class="selectSimiOption">条件1</p>
-									<p class="selectSimiOption">条件2</p>
-								</div>
+								<input type="text" placeholder="请输入人数" name="egg_num" value="<?php if($result['egg_num'] != -1){ ?>{$result['egg_num']}<?php } ?>"/>
 							</div>
 						</div>
 						<!--成功通知内容-->
@@ -317,15 +310,10 @@
 								<!--元件：小标题-->
 								<p class="cell_partTitle">继续邀请人数</p>
 							</div>
-							<!--组件：selectSimilarity输入框-->
-							<div class="cell_partContent selectSimilarity">
+							<!--组件：input输入框-->
+							<div class="cell_partContent">
 								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请选择" />
-								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
-								<div class="cell_selSimiOptBox selectSimiOptBox">
-									<p class="selectSimiOption">条件1</p>
-									<p class="selectSimiOption">条件2</p>
-								</div>
+								<input type="text" placeholder="请输入人数" name="continue_num" value="<?php if($result['continue_num'] != -1){ ?>{$result['continue_num']}<?php } ?>"/>
 							</div>
 						</div>
 						<!--完成彩蛋通知内容-->
@@ -378,10 +366,10 @@
 								<p class="cell_partTitle">通知时间</p>
 							</div>
 							<!--组件：input输入框-->
-							<div class="cell_partContent">
-								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请输入数字" name="rank_list" value="{$result['rank_list']}" />
-							</div>
+								<div class="cell_partContent">
+									<!--如果只读请给input添加：readonly="readonly"-->
+									<input type="text" name="notice_time" value="<?php if($result){ ?>{$result['notice_time']|date='Y-m-d H:i:s',###}<?php } ?>" id="datetimepicker_mask3" placeholder="请输入 年/月/日/时间" />
+								</div>
 						</div>
 						<!--进入排行榜通知-->
 						<div class="cell_partBox-2 attr_left attr_width46 attr_marRig8">
@@ -473,6 +461,20 @@
 				});
 			});
 		});
+		$('#datetimepicker_mask').datetimepicker({
+			mask:'9999/19/39 29:59'
+		});
+
+		$('#datetimepicker_mask2').datetimepicker({
+			mask:'9999/19/39 29:59'
+		});
+
+		$('#datetimepicker_mask3').datetimepicker({
+			mask:'9999/19/39 29:59'
+		});
+		// $('#datetimepicker_mask').val("{$result['start_time']|date='Y-m-d H:i:s'}");
+		// $('#datetimepicker_mask2').val("{$result['end_time']|date='Y-m-d H:i:s'}");
+		// $('#datetimepicker_mask3').val("{$result['notice_time']|date='Y-m-d H:i:s'}");
     function upLoad(path,field)
     {
     	var old = $("#input_"+field).val();

@@ -4,7 +4,21 @@ use Think\Controller;
 
 class ActivityController extends Controller{
 	public function index(){
-		$list = D('Activity')->getList();
+		$title = I('get.title');
+        $p = I('get.p');
+        if($title){
+            $whereArray['title'] = array('like','%'.$title.'%');
+            $this->assign('title',$title);
+        }else{
+            $whereArray = array();
+        }
+        $p = $p ? $p : 1;
+        $whereArray['start'] = ($p - 1) * 20;
+        $count = M('Activity')->where($whereArray)->count();
+		$list = D('Activity')->getList($whereArray);
+
+		$this->assign('p',$p);
+        $this->assign('count',$count);
 		$this->assign('list',$list);
 		$this->display();
 	}
@@ -34,7 +48,8 @@ class ActivityController extends Controller{
 			if(in_array($key,$intArray)){
 				$data[$key] = intval($value);
 			}else if(in_array($key,$timeArray)){
-				//时间戳函数
+				//时间戳函数]
+				$data[$key] = ($value != '') ?  strtotime($value) : '';
 			}else if($key == 'success_condition'){
 				if(trim($value) == '邀请人数'){
 					$data['success_condition'] = 1;
@@ -59,15 +74,44 @@ class ActivityController extends Controller{
 		}
 		$data['text_content'] = $text_content;
 		// echo "<pre>";
-		// var_dump($data);die;
+		// // var_dump($data);
+		// die;
 		if($id){
 			//修改
-			$model->saveData(array('id'=>$id),$data);
+			$r = $model->saveData(array('id'=>$id),$data);
 		}else{
 			//新建
-			$model->addData($data);
+			$r = $model->addData($data);
 		}
-		redirect(U('Activity/Index'),0.2,'<script>alert("保存成功");</script>');
+		if ($r) {
+			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("保存成功");</script>');
+		}else{
+			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("保存失败");</script>');
+		}
+		
+	}
+
+	//删除数据
+	public function deleteData(){
+		$id = intval(I('get.id'));
+		$r = D('Activity')->deleteData(array('id'=>$id));
+		if($r){
+			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("删除成功");</script>');
+		}else{
+			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("删除失败");</script>');
+		}
+	}
+
+	//是否开启活动
+	public function changeStatus(){
+		$id = intval(I('get.id'));
+		$isStart = intval(I('get.status'));
+		$r = D('Activity')->saveData(array('id'=>$id),array('is_start'=>$isStart));
+		if($r){
+			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("操作成功");</script>');
+		}else{
+			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("操作失败");</script>');
+		}
 	}
 
 	//上传文件
