@@ -5,8 +5,11 @@
 		<title></title>
 		<link rel="stylesheet" href="css/reset.css" />
 		<link rel="stylesheet" href="css/style1.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
 		<script type="text/javascript" src="js/jquery2.1.4.min.js"></script>
 		<script type="text/javascript" src="js/function.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.datetimepicker.full.js"></script>		
 	</head>
 	<body>
 		<div class="layout_wrap">
@@ -64,24 +67,9 @@
 									<p class="cell_partTitle">开始时间</p>
 								</div>
 								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_marRig2 attr_left">
+								<div class="cell_partContent">
 									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入年" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="月" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="日" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input class="attr_center" type="text" placeholder="时间" />
+									<input type="text" value="" id="datetimepicker_mask" placeholder="请输入 年/月/日/时间" />
 								</div>
 							</div>
 							<!--横线-->
@@ -94,24 +82,9 @@
 									<p class="cell_partTitle">结束时间</p>
 								</div>
 								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_marRig2 attr_left">
+								<div class="cell_partContent">
 									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入年" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="月" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width17 attr_marRig2 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="日" />
-								</div>
-								<!--组件：input输入框-->
-								<div class="cell_partContent attr_width30 attr_left">
-									<!--如果只读请给input添加：readonly="readonly"-->
-									<input class="attr_center" type="text" placeholder="时间" />
+									<input type="text" value="" id="datetimepicker_mask2" placeholder="请输入 年/月/日/时间" />
 								</div>
 							</div>
 						</div>
@@ -485,4 +458,12 @@
 			<textarea placeholder="请输入文字内容"></textarea>
 		</div>
 	</body>
+	<script>
+		$('#datetimepicker_mask').datetimepicker({
+			mask:'9999/19/39 29:59'
+		});
+		$('#datetimepicker_mask2').datetimepicker({
+			mask:'9999/19/39 29:59'
+		});
+	</script>
 </html>
