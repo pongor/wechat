@@ -11,14 +11,13 @@ namespace Backend\Model;
 
 use Think\Model;
 
-class ActivityModel extends Model {
+class MemberModel extends Model {
 
 	//获取列表
-    public function getList($where=array()){
-        $start = $where['start'] ? $where['start'] : 0;
+    public function getList($where=array(),$order = ''){
+    	$start = $where['start'] ? $where['start'] : 0;
         unset($where['start']);
-        return $this->where($where)->limit($start,20)->select();
-
+        return $this->where($where)->limit($start,20)->order($order)->select();
     }
 
     //获取指定列
@@ -40,6 +39,8 @@ class ActivityModel extends Model {
     public function saveData($where,$data){
     	return $this->where($where)->save($data);
     }
+
+
 
 
 }

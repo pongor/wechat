@@ -29,7 +29,7 @@
 				</div>
 				<!--组件：操作按钮-->
 				<div class="cell_operate_activity attr_left attr_marLef26p ">
-					<a href="{:U('User/index')}" onclick="return isDisabled(this);" style="cursor:pointer"><p>用户积分</p></a>
+					<a href="{:U('Member/index')}" onclick="return isDisabled(this);" style="cursor:pointer"><p>用户积分</p></a>
 				</div>
 				
 				<!--元件：退出-->
@@ -167,7 +167,7 @@
 				window.location.href = url + parameter;
 			}
 
-			//修改
+			//查询
 			function search(){
 				var val = $('#searchName').val();
 				var url = '/wechat/Backend/Activity/index/title/'+val;

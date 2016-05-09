@@ -20,7 +20,7 @@ define('APP_DEBUG',True);
 // 定义应用目录
 define('APP_PATH','./App/');
 
- define('BIND_MODULE','Home');  //隐藏默认模块
+ // define('BIND_MODULE','Home');  //隐藏默认模块
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
