@@ -6,7 +6,7 @@ class IndexController extends Controller {
     public function index(){
 
         if(checkSignature()){
-            echo $_GET['echostr'];
+           // echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             reply($xml);
 
