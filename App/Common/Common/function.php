@@ -63,7 +63,7 @@ function access_token(){
 }
 function sendMessage($openid){
     $url = 'http://wechat.dulishuo.com';
-     $url .= U('Index/sendMessage');
+    echo  $url .= U('Index/sendMessage');
     $param = array(
         'openid'=>$openid,
     );
