@@ -120,17 +120,19 @@ class ActivityController extends Controller{
         $path = $_POST['path'];
 		$field = $_POST['field'];
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->maxSize   =     314572800 ;// 设置附件上传大小
         if($field == 'background_pic'){
         	$upload->exts = array('jpg','jpeg','gif','png');// 设置图片附件上传类型
-        }else{
+        }else if($field == 'volume'){
         	$upload->exts = array('mp3','wav','3gp');// 设置音频附件上传类型
+        }else{
+        	echo json_encode(array('error'=>1,'msg'=>'上传格式错误'));die;
         }
         //删除之前上传内容
-        if($oldpath != ''){
-        	$oldpath = getcwd().$oldpath;
-        	var_dump($oldpath);
-        	unlink(getcwd().$oldpath);
+
+        if($oldpath != '' && $oldpath != 'undefined'){
+    		$oldpath =getcwd().$oldpath;
+        	@unlink($oldpath);
         }
         $upload->autoSub = false;//关闭子目录
         self::mkDirs($path);

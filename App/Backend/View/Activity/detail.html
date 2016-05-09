@@ -118,7 +118,7 @@
 
 								<input id="input_background_pic" type="hidden" name="back_pic" value="{$result['back_pic']}">
 								<div>
-									<a><img class="cell_delImg" src="__IMG__/icon_delete.png" /></a>
+									<a><img class="cell_delImg" src="__IMG__/icon_delete.png" onclick="deletePic();" /></a>
 									<p class="cell_text">建议图片小于200k<br/>尺寸750*1334<br/>图片过大会上传失败</p>
 								</div>
 							</div>
@@ -152,8 +152,9 @@
 								<!--组件：selectSimilarity输入框-->
 								<div class="cell_partContent selectSimilarity">
 									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请上传60s以内的MP3.WAV.3gp" />
-									<div class="cell_partArrowBox-3"><img src="__IMG__/icon_delete.png"></div>
+									<input type="text" placeholder="请上传60s以内的MP3.WAV.3gp" id="volume_url" name="volume_url" onclick="javascript:$('#volume').click();" value="{$result['volume_url']}" />
+									<input id="volume" name="volume" type="file" style="display: none;" onchange="upLoad('./upload/wechat/volume/',this.id)">
+									<div class="cell_partArrowBox-3"><img src="__IMG__/icon_delete.png" onclick="deleteVolume();"></div>
 								</div>
 							</div>
 						</div>
@@ -477,7 +478,15 @@
 		// $('#datetimepicker_mask3').val("{$result['notice_time']|date='Y-m-d H:i:s'}");
     function upLoad(path,field)
     {
-    	var old = $("#input_"+field).val();
+
+    	if(field == 'background_pic'){
+    		//图片
+    		var old = $("#input_"+field).val();
+    	}else{
+    		//音频
+        	var old = $("#volume_url").val();
+    	}
+    	
         var root = '__ROOT__';
         $.ajaxFileUpload
         ({
@@ -492,8 +501,15 @@
                 var obj = $.parseJSON(data);
                 if(obj.error == 0)
                 {
-                    $("#img_"+field).attr('src',obj.url);
-                    $("#input_"+field).val(obj.url);
+                	if(field == 'background_pic'){
+                		//图片
+                		$("#img_"+field).attr('src',obj.url);
+                    	$("#input_"+field).val(obj.url);
+                	}else{
+                		//音频
+                    	$("#volume_url").attr('value',obj.url);
+                	}
+                    
                 }
                 else
                 {
@@ -506,6 +522,13 @@
             // }
         });//这是ajax1结束Tags
         return false;
+    }
+    function deletePic(){
+    	$('#img_background_pic').attr('src','__IMG__/icon_addImg.png');
+    	$('#input_background_pic').val('');
+    }
+    function deleteVolume(){
+    	$("#volume_url").val('');
     }
 </script>
 <include file="Public:footer"/>
