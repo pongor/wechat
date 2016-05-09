@@ -22,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="453">
@@ -76,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="20" />
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -108,10 +108,10 @@
         <option value="$PROJECT_DIR$/App/Backend/Model/ActivityModel.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Conf/config.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Home/Model/MenberModel.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -328,12 +328,12 @@
       <updated>1462515881197</updated>
       <workItem from="1462515882523" duration="7350000" />
       <workItem from="1462587460508" duration="5871000" />
-      <workItem from="1462761728732" duration="9982000" />
+      <workItem from="1462761728732" duration="10202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23203000" />
+    <option name="totallyTimeSpent" value="23423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -577,24 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <marker date="1462781091474" expanded="true" signature="1076:1365" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Model/MenberModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -617,6 +599,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <marker date="1462781091474" expanded="true" signature="1076:1365" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
