@@ -13,8 +13,8 @@ class ActivityController extends Controller{
             $whereArray = array();
         }
         $p = $p ? $p : 1;
-        $whereArray['start'] = ($p - 1) * 20;
         $count = M('Activity')->where($whereArray)->count();
+        $whereArray['start'] = ($p - 1) * 20;
 		$list = D('Activity')->getList($whereArray);
 
 		$this->assign('p',$p);
@@ -41,12 +41,7 @@ class ActivityController extends Controller{
 		$intArray = array('invite_num','egg_num','continue_num','rank_list');
 		$timeArray = array('start_time','end_time','notice_time');
 		$model = D('Activity');
-		if(!$model->create($_POST)){
-			exit();
-		}else{
-			true;
-		}
-		DIE;
+		
 		// $editor = D('User')->getField(array('id'=>intval($this->user_id)),'username')['username'];
 		// $data$data['editor'] = $editor;
         $data['edit_time'] = time();

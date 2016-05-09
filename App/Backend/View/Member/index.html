@@ -1,0 +1,87 @@
+<include file="Public:header"/>
+		<div class="layout_wrap">
+			<!--头部-->
+			<header class="mod_header">
+				<!--组件：返回1-->
+				<div class="cell_back_activity attr_left" onclick="history.go(-1)">
+					<img src="__IMG__/icon_back.png" />
+					<p>返回列表</p>
+				</div>
+				<div class="cell_title_userList attr_left">30天口语集中营听说读写样样精通特别精通超级精通</div>
+				<!--搜索活动名称-->
+				<div class="cell_search attr_right cell_search_user attr_marRig12p">
+					<a href="javascript:search();"><img src="__IMG__/icon_search.png" /></a>
+					<input type="text" placeholder="输入微信名" id="searchName" name="nickname" value="{$nickname}" />
+				</div>	
+				
+			</header>
+			<!--内容-->
+			<section class="mod_section" style="padding-top: 80px;">
+				<!--模块：表格-->
+				<table class="mod_table">
+					<!--表头-->
+					<thead class="mod_thead">
+						<!--注意！TWT专为设置宽度而设，TWT＊后面的＊为百分比的数字，总和应是100-->
+						<tr class="TWT">
+							<td class="TWT39">用户微信名</td>
+							<td class="allowOpera TWT21" style="cursor:pointer" onclick="javascript:search('integral');">积分<img class="cell_rankDown" src="__IMG__/icon_down.png" /></td>
+							<td class="allowOpera TWT40" style="cursor:pointer" onclick="javascript:search('sign_up_time');">报名时间<img class="cell_rankUp" src="__IMG__/icon_up.png" /></td>
+						</tr>
+					</thead>
+					<!--表内容-->
+					<tbody class="mod_tbody">
+						<tr class="mod_trMargin">
+						</tr>
+						<volist name="list" id="vo">
+						<tr>
+							<td>{$vo['nickname']}</td>
+							<td>{$vo['integral']}</td>
+							<td>{$vo['sign_up_time']|date='Y-m-d H:i:s',###}</td>
+						</tr>
+						
+					</tbody>
+				</table>
+	
+			</section>
+			<!--底部-->
+			<footer class="mod_foter attr_foterColor">
+				<!--总页数-->
+				<div class="cell_page">
+					<p>总共<span>1</span>页</p>
+					<p>当前第<span>一</span>页</p>
+				</div>
+				<!--组件：选页-->
+				<div class="cell_slew attr_right">
+					<p class="cell_slewOne"><a href="{:U('Member/index',array('nickname'=>$nickname,'p'=>1))}"><img src="__IMG__/icon_slewArrowLeft-1.png" /></a></p>
+					<p class="cell_slewOne"><a href="{:U('Member/index',array('nickname'=>$nickname,'p'=>($p - 1 >= 1 ? ($p - 1) : 1)))}"><img src="__IMG__/icon_slewArrowLeft-2.png" /></a></p>
+					<ul class="cell_slewOne">
+					<?php 
+						$pages = intval(ceil($count / 20));
+						for ($i = 1; $i <= $pages; $i ++) { 
+						
+					?>
+						<li <?php if($p == $i){ ?>class="offSlew"<?php } ?>><a href="{:U('Member/index',array('nickname'=>$nickname,'p'=>$i))}">{$i}</a></li>
+					<?php } ?>
+					</ul>
+					<p class="cell_slewOne"><a href="{:U('Member/index',array('nickname'=>$nickname,'p'=>($p + 1 <= $pages ? ($p + 1) : $pages)))}"><img src="__IMG__/icon_slewArrowRight-2.png" /></a></p>
+					<p class="cell_slewOne"><a href="{:U('Member/index',array('nickname'=>$nickname,'p'=>$pages))}"><img src="__IMG__/icon_slewArrowRight-1.png" /></a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			//查询
+			function search(condition){
+				var val = $('#searchName').val();
+				var url = '/wechat/Backend/Member/index/';
+				if(val){
+					url += 'nickname/'+val + '/';
+				}
+				if(condition){
+					url = url+'condition/'+condition;
+				}
+				window.location.href = url;
+				
+			}
+			
+		</script>
+<include file="Public:footer"/>
