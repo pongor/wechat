@@ -41,6 +41,12 @@ class ActivityController extends Controller{
 		$intArray = array('invite_num','egg_num','continue_num','rank_list');
 		$timeArray = array('start_time','end_time','notice_time');
 		$model = D('Activity');
+		if(!$model->create($_POST)){
+			exit();
+		}else{
+			true;
+		}
+		DIE;
 		// $editor = D('User')->getField(array('id'=>intval($this->user_id)),'username')['username'];
 		// $data$data['editor'] = $editor;
         $data['edit_time'] = time();
@@ -76,6 +82,7 @@ class ActivityController extends Controller{
 		// echo "<pre>";
 		// // var_dump($data);
 		// die;
+
 		if($id){
 			//修改
 			$r = $model->saveData(array('id'=>$id),$data);
