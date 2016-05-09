@@ -41,7 +41,7 @@ class IndexController extends Controller {
         }
    }
     public function sendMessage(){
-        open(json_encode($_POST));
+        open(json_encode($_REQUEST));
         $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
         $token = access_token();
         for($i=0;$i<4;$i++)
