@@ -45,21 +45,9 @@ function access_token(){
     S('access_token',$data,7150);
     return $data;
 }
-function reply($postStr){
-
-    if (!empty($postStr)){
-
-        $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-
-        $fromUsername = $postObj->FromUserName;
-
-        $toUsername = $postObj->ToUserName;
-
-        $keyword = trim($postObj->Content);
-
-        $time = time();
-
-        $textTpl = "<xml>  
+//回复普通消息模板
+    function msgText(){
+        return "<xml>  
   
             <ToUserName><![CDATA[%s]]></ToUserName>  
   
@@ -72,30 +60,4 @@ function reply($postStr){
             <Content><![CDATA[%s]]></Content>  
   
             </xml>";
-
-        if(!empty( $keyword ))
-
-        {
-
-            $msgType = "text";
-
-            $contentStr = '你好啊，屌丝';
-
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-
-            echo $resultStr;
-
-        }else{
-
-            echo '咋不说哈呢';
-
-        }
-
-    }else {
-
-        echo '咋不说哈呢';
-
-        exit;
-
-    }
 }

@@ -10,7 +10,25 @@ class IndexController extends Controller {
             open('success');
           //  echo 'success';
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-            reply($xml);
+            $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $fromUsername = $postObj->FromUserName;
+
+            $toUsername = $postObj->ToUserName;
+
+            $keyword = trim($postObj->Content);
+            $msgType = $postObj->MsgType;
+            $time = time();
+            if($msgType == 'text'){
+                $textTpl = msgText();
+                $contentStr = '嘿嘿';
+
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+
+                echo $resultStr;
+            }elseif ($msgType == ''){
+                
+            }
+           // reply($xml);
 
         }else{
             exit();
