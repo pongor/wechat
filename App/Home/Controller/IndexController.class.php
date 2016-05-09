@@ -43,7 +43,6 @@ class IndexController extends Controller {
     public function sendMessage(){
         $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
         $token = access_token();
-        var_dump($token);die;
         for($i=0;$i<4;$i++)
         {
             $contentStr="这是发送内容".$i;
