@@ -23,7 +23,7 @@ class IndexController extends Controller {
                     $contentStr = '你是第一次关注';
                 }else{
                     $textTpl = msgText();
-                    $contentStr = '找死是么。';
+                    $contentStr = 'dsdjohsdoiiosdohis。';
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
@@ -41,7 +41,7 @@ class IndexController extends Controller {
         }
    }
     public function sendMessage(){
-        $openid = $_POST['openid'];
+        $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
         $token = access_token();
         for($i=0;$i<4;$i++)
         {
@@ -61,7 +61,7 @@ class IndexController extends Controller {
            $res =  curl_exec($ch);
 
             curl_close($ch);
-            open(json_encode($res));
+            open(json_encode($_POST));
         }
     }
 }
