@@ -38,8 +38,6 @@ class ActivityController extends Controller{
 	public function saveDetail(){
 		$id = intval(I('get.id'));
 		$saveList = $_POST;
-		$intArray = array('invite_num','egg_num','continue_num','rank_list');
-		$timeArray = array('start_time','end_time','notice_time');
 		$model = D('Activity');
 		
 		// echo "<pre>";
@@ -49,7 +47,7 @@ class ActivityController extends Controller{
 		// $data$data['editor'] = $editor;
         if (!$model->create($saveList)){
 		     // 如果创建失败 表示验证没有通过 输出错误提示信息
-		     exit($model->getError());
+        	redirect(U('Activity/detail',array('time'=>time())),0.2,'<script>alert("'.$model->getError().'");</script>');
 		}else{
 			if($id){
 				//修改
