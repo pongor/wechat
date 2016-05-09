@@ -13,6 +13,58 @@ use Think\Model;
 
 class ActivityModel extends Model {
 
+
+     //自动验证
+    protected $_auto = array ( 
+        array('edit_time','time','3','function'),
+        array('invite_num','strToInt','3','callback'),
+        array('egg_num','strToInt','3','callback'),
+        array('continue_num','strToInt','3','callback'),
+        array('rank_list','strToInt','3','callback'),
+        array('start_time','strToTime','3','callback'),
+        array('end_time','strToTime','3','callback'),
+        array('notice_time','strToTime','3','callback'),
+        array('success_condition','convert','3','callback'),
+        array('text_content','text','3','callback'),
+     );
+
+    
+    function convert($success_condition){
+       if(trim($success_condition) == '邀请人数'){
+            $success_condition = 1;
+        }else if(trim($success_condition) == '排行榜'){
+            $success_condition = 2;
+        }else{
+            $success_condition = 0;
+        }
+        return $success_condition;
+    }
+
+    //格式转换 str -> time
+    function strToTime($value){
+        $value = ($value != '') ?  strtotime($value) : '';
+        return $value;
+    }
+    //格式转换str -> int
+    function strToInt($str){
+        return intval($str);
+    }
+
+    //将多个文本框合并成一个
+    function text($text){
+        $text_content = '';
+        foreach ($text as $k => $v) {
+            if($v != ''){
+                $text_content .= $v.'||';
+            }
+        }
+        
+        if($text_content != ''){
+            $text_content = substr($text_content,0,strlen($text_content)-2); 
+        }
+        return $text_content;
+    }
+
 	//获取列表
     public function getList($where=array()){
         $start = $where['start'] ? $where['start'] : 0;
