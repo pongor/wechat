@@ -6,8 +6,9 @@ class IndexController extends Controller {
     public function index(){
         open(json_encode($_REQUEST).'-----'.json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
-           // echo $_GET['echostr'];
-            echo 'success';
+            echo $_GET['echostr'];
+            open('success');
+          //  echo 'success';
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             reply($xml);
 
