@@ -71,8 +71,6 @@ function reply($postStr){
   
             <Content><![CDATA[%s]]></Content>  
   
-            <FuncFlag>0<FuncFlag>  
-  
             </xml>";
 
         if(!empty( $keyword ))
