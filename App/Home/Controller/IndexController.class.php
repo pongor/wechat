@@ -27,7 +27,7 @@ class IndexController extends Controller {
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
-                file_get_contents();
+                sendMessage($toUsername);
                 die;
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
@@ -41,6 +41,25 @@ class IndexController extends Controller {
         }
    }
     public function sendMessage(){
-        sendMessage();
+        $openid = $_POST['openid'];
+        $token = access_token();
+        for($i=0;$i<4;$i++)
+        {
+            $contentStr="这是发送内容".$i;
+            $contentStr=urlencode($contentStr);
+            $a=array("content"=>"{$contentStr}");
+            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
+            $post=json_encode($b);
+            $post=urldecode($post);
+            $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$token;
+            $ch=curl_init();
+            curl_setopt($ch,CURLOPT_URL,$posturl);//url
+            curl_setopt($ch,CURLOPT_POST,1);//POST
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
+            curl_exec($ch);
+            curl_close($ch);
+        }
     }
 }

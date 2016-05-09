@@ -43,7 +43,7 @@ function access_token(){
     $res = file_get_contents($url);
     $data = json_decode($res,true);
     S('access_token',$data,7150);
-    return $data;
+    return $data['access_token'];
 }
 //回复普通消息模板
     function msgText(){
@@ -61,11 +61,11 @@ function access_token(){
   
             </xml>";
 }
-function sendMessage(){
+function sendMessage($openid){
     $url = 'http://wechat.dulishuo.com';
-    echo $url .= U('Index/sendMessage');
+     $url .= U('Index/sendMessage');
     $param = array(
-        'name'=>'fdipzone',
+        'openid'=>$openid,
     );
     $urlinfo = parse_url($url);
 

@@ -9,7 +9,9 @@
 namespace Home\Controller;
 
 
-class UserController
+use Think\Controller;
+
+class UserController extends Controller
 {
 
 }
