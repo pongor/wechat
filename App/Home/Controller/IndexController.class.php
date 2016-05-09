@@ -7,8 +7,6 @@ class IndexController extends Controller {
         open(json_encode($_REQUEST).'-----'.json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
             echo $_GET['echostr'];
-            open('success');
-          //  echo 'success';
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
             $fromUsername = $postObj->FromUserName;
@@ -19,24 +17,26 @@ class IndexController extends Controller {
             $msgType = $postObj->MsgType;
             $time = time();
             if($msgType == 'text'){
-                $textTpl = msgText();
-                $contentStr = '嘿嘿';
-
+                if($keyword == 'Hello2BizUser'){
+                    $textTpl = msgText();
+                    $contentStr = '你是第一次关注';
+                }else{
+                    $textTpl = msgText();
+                    $contentStr = '找死是么。';
+                }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-
                 echo $resultStr;
-            }elseif ($msgType == ''){
-                
+                die;
+            }elseif ($msgType == 'image'){
+                $picUrl = $postObj->PicUrl;
+                $MediaId = $postObj->MediaId;
+
             }
            // reply($xml);
 
         }else{
             exit();
         }
-//        $data = json_encode($_REQUEST);
-//        echo  $_GET["echostr"];
-//        $data .= json_encode($GLOBALS["HTTP_RAW_POST_DATA"]);
-//        open($data);
-       // echo 'success';
+
    }
 }
