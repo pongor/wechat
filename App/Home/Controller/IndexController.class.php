@@ -4,7 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
-
+        open(json_encode($_REQUEST).'-----'.json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
            // echo $_GET['echostr'];
             echo 'success';
