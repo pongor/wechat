@@ -13,9 +13,14 @@ use Think\Model;
 
 class ActivityModel extends Model {
 
+    //自动验证
+    protected $_validate = array(
+        array('title','require','名称不能为空'),
+        // array('title','','已存在该活动',0,'unique',2)
+    );
 
-     //自动验证
-    protected $_auto = array ( 
+    //自动完成
+    protected $_auto = array (
         array('edit_time','time','3','function'),
         array('invite_num','strToInt','3','callback'),
         array('egg_num','strToInt','3','callback'),
@@ -28,7 +33,6 @@ class ActivityModel extends Model {
         array('text_content','text','3','callback'),
      );
 
-    
     function convert($success_condition){
        if(trim($success_condition) == '邀请人数'){
             $success_condition = 1;
