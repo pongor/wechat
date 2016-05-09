@@ -4,7 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
-        open(json_encode($_REQUEST));die;
+
         open(json_encode($_REQUEST).'-----'.json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
             echo $_GET['echostr'];
@@ -58,8 +58,10 @@ class IndexController extends Controller {
             curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
             curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
-            curl_exec($ch);
+           $res =  curl_exec($ch);
+
             curl_close($ch);
+            open(json_encode($res));
         }
     }
 }
