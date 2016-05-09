@@ -4,6 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
+        open(json_encode($_REQUEST));die;
         open(json_encode($_REQUEST).'-----'.json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
             echo $_GET['echostr'];
@@ -26,6 +27,7 @@ class IndexController extends Controller {
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
+                file_get_contents();
                 die;
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
@@ -37,6 +39,8 @@ class IndexController extends Controller {
         }else{
             exit();
         }
-
    }
+    public function sendMessage(){
+        sendMessage();
+    }
 }
