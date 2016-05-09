@@ -27,7 +27,7 @@ class IndexController extends Controller {
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
-                sendMessage($toUsername);
+             //   sendMessage($toUsername);
                 die;
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
