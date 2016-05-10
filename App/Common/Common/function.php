@@ -80,14 +80,14 @@ function sendMessage($openid){
     $timeout = 10;
 
     $fp = fsockopen($host, $port, $errno, $errstr, $timeout);
-var_dump($fp);
+
     $out = "POST ".$path." HTTP/1.1\r\n";
     $out .= "host:".$host."\r\n";
     $out .= "content-length:".strlen($query)."\r\n";
     $out .= "content-type:application/x-www-form-urlencoded\r\n";
     $out .= "connection:close\r\n\r\n";
     $out .= $query;
-    fputs($fp, $out);
+    var_dump(fputs($fp, $out));
     fclose($fp);
 }
 //获取用户信息
