@@ -27,7 +27,7 @@ class IndexController extends Controller {
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
-                sendMessage($toUsername);
+                self::sendMessage($toUsername);
                 die;
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
@@ -40,9 +40,9 @@ class IndexController extends Controller {
             exit();
         }
    }
-    public function sendMessage(){
-        open(json_encode($_REQUEST));
-        $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
+    public static function sendMessage($openid){
+        //open(json_encode($_REQUEST));
+      //  $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
         $token = access_token();
         for($i=0;$i<4;$i++)
         {
