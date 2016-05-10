@@ -4,7 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
-        sendMessage('1');die;
+        var_dump(_sock('1'));die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
