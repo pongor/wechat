@@ -60,7 +60,7 @@ class IndexController extends Controller {
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
             curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
            $res =  curl_exec($ch);
-
+            open(json_encode($res));
             curl_close($ch);
             open(json_encode($_POST));
         }
