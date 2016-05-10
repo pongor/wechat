@@ -66,35 +66,43 @@ function sendMessage($openid){
     $url = 'http://wechat.dulishuo.com';
   //  $url = 'http://127.0.0.1/';
    echo $url .= U('Index/sendMessage');
-   // file_get_contents($url);
-    $param = array(
-        'openid'=>$openid,
-    );
-    $urlinfo = parse_url($url);
+    $data["channel"]=1;
+    $data["mobile"]=2;
+    $data["gateway"]=3;
+    $data["isp"]=4;
+    $data["linkid"]=5;
+    $data["msg"]=6;
 
-    $host = $urlinfo['host'];
-    $path = $urlinfo['path'];
-    $query = isset($param)? http_build_query($param) : '';
-    $port = 80;
-    $errno = 0;
-    $errstr = '';
-    $timeout = 10;
+    $post = http_build_query($data);
+    $len = strlen($post);
+//发送
+    $host = "http://wechat.dulishuo.com";
+    $path = U('Index/sendMessage');
+    $fp = fsockopen( $host , 80, $errno, $errstr, 30);
+    if (!$fp) {
+        echo "$errstr ($errno)\n";
+    } else {
 
-    $fp = fsockopen($host, $port, $errno, $errstr, $timeout);
+        $out = "POST $path HTTP/1.1\r\n";
+        $out .= "Host: $host\r\n";
+        $out .= "Content-type: application/x-www-form-urlencoded\r\n";
+        $out .= "Connection: Close\r\n";
+        $out .= "Content-Length: $len\r\n";
+        $out .= "\r\n";
+        $out .= $post . "\r\n";
+        // echo($out);
+        fwrite($fp, $out);
 
-    $out = "POST ".$path." HTTP/1.1\r\n";
-    $out .= "host:".$host."\r\n";
-    $out .= "content-length:".strlen($query)."\r\n";
-    $out .= "content-type:application/x-www-form-urlencoded\r\n";
-    $out .= "connection:close\r\n\r\n";
-    $out .= $query;
-    fwrite($fp, $out);
-     $receive = '';
-     while (!feof($fp)) {
-     $receive .= fgets($fp, 128);
-     }
-     echo "<br />".$receive;
-    fclose($fp);
+        //实现异步把下面去掉
+        // $receive = '';
+        // while (!feof($fp)) {
+        // $receive .= fgets($fp, 128);
+        // }
+        // echo "<br />".$receive;
+        //实现异步把上面去掉
+
+        fclose($fp);
+    }
 }
 //获取用户信息
 function getUser($openid){
