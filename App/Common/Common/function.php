@@ -95,5 +95,10 @@ function getUser($openid){
     $url = C('USER_INFO');
     $url .= '?access_token='.access_token().'&openid='.$openid .'&lang=zh_CN';
     $result = file_get_contents($url);
-    print_r($result);
+    $array = json_decode($result,true);
+    if(!isset($array['errcode'])){
+        return $array;
+    }else{
+        return false;
+    }
 }
