@@ -63,10 +63,10 @@ function access_token(){
 }
 //异步通知
 
-function _curl($url='') {
+function _curl($openid) {
     $url = 'http://wechat.dulishuo.com';
   //  $url = 'http://127.0.0.1/';
-    echo $url .=  U('Index/sendMessage',array('d'=>'aaa'));
+    $url .=  U('Index/sendMessage',array('openid'=>$openid));
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL,$url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
