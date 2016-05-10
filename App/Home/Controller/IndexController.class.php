@@ -19,7 +19,7 @@ class IndexController extends Controller {
             'at_time'       =>   time()
         ];
         dump($model);
-        $user_id = $model->test($data);
+        $user_id = $model->insert($data);
         var_dump($user_id);
         die;
         if(checkSignature()){
