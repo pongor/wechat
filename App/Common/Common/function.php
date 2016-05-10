@@ -62,75 +62,18 @@ function access_token(){
             </xml>";
 }
 //异步通知
-function sendMessage($openid){
+
+function _curl($url='') {
     $url = 'http://wechat.dulishuo.com';
-    //$url = 'http://127.0.0.1/';
-   echo $url .= '/Index/sendMessage.html';// U('Index/sendMessage');
-   // file_get_contents($url);
-    $param = array(
-        'openid'=>$openid,
-    );
-    $urlinfo = parse_url($url);
-
-    $host = $urlinfo['host'];
-    $path = $urlinfo['path'];
-    $query = isset($param)? http_build_query($param) : '';
-    $port = 80;
-    $errno = 0;
-    $errstr = '';
-    $timeout = 10;
-    ignore_user_abort(true); // 忽略客户端断开
-    set_time_limit(0);
-    $fp = fsockopen($host, $port, $errno, $errstr, $timeout);
-
-    $out = "POST ".$path." HTTP/1.1\r\n";
-    $out .= "host:".$host."\r\n";
-    $out .= "content-length:".strlen($query)."\r\n";
-    $out .= "content-type:application/x-www-form-urlencoded\r\n";
-    $out .= "connection:close\r\n\r\n";
-    $out .= $query;
-    var_dump(fputs($fp, $out));
-     $receive = '';
-     while (!feof($fp)) {
-     $receive .= fgets($fp, 128);
-     }
-     echo "<br />".$receive;
-    fclose($fp);
-}
-function _sock($url ='') {
-    $url = 'http://wechat.dulishuo.com';
-    $url = 'http://127.0.0.1/';
-    echo $url .=  U('Index/sendMessage');
-//    $param = array(
-//        'openid'=>'11232345',
-//    );
-   // $query = isset($param)? http_build_query($param) : '';
-    $host = parse_url($url,PHP_URL_HOST);
-    $port = parse_url($url,PHP_URL_PORT);
-    $port = $port ? $port : 80;
-    $scheme = parse_url($url,PHP_URL_SCHEME);
-    $path = parse_url($url,PHP_URL_PATH);
-    $query = parse_url($url,PHP_URL_QUERY);
-    if($query) $path .= '?'.$query;
-    if($scheme == 'https') {
-        $host = 'ssl://'.$host;
-    }
-
-    $fp = fsockopen($host,$port,$error_code,$error_msg,1);
-    if(!$fp) {
-        return array('error_code' => $error_code,'error_msg' => $error_msg);
-    }
-    else {
-        stream_set_blocking($fp,true);//开启了手册上说的非阻塞模式
-        stream_set_timeout($fp,1);//设置超时
-        $header = "GET $path HTTP/1.1\r\n";
-        $header.="Host: $host\r\n";
-        $header.="Connection: close\r\n\r\n";//长连接关闭
-        fwrite($fp, $header);
-        usleep(1000); // 这一句也是关键，如果没有这延时，可能在nginx服务器上就无法执行成功
-        fclose($fp);
-        return array('error_code' => 0);
-    }
+  //  $url = 'http://127.0.0.1/';
+    echo $url .=  U('Index/sendMessage',array('d'=>'aaa'));
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch,CURLOPT_TIMEOUT,1);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
 }
 //获取用户信息
 function getUser($openid){
