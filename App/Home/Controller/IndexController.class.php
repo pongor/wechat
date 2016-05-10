@@ -40,10 +40,8 @@ class IndexController extends Controller {
         }
    }
     public function sendMessage($openid=''){
-        if($openid ==''){
-            open('openid not');die;
-        }
-        open($openid);die;
+        $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
+       // open($openid);die;
         $token = access_token();
         for($i=0;$i<4;$i++)
         {
