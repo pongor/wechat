@@ -16,7 +16,7 @@ class ActivityModel extends Model {
     //自动验证
     protected $_validate = array(
         array('title','require','名称不能为空'),
-        // array('title','','已存在该活动',0,'unique',2)
+        array('title','isExist','已存在该活动','3','callback')
     );
 
     //自动完成
@@ -32,6 +32,20 @@ class ActivityModel extends Model {
         array('success_condition','convert','3','callback'),
         array('text_content','text','3','callback'),
      );
+
+    function isExist($title){
+        $r = $this->getField(array('title'=>$title),'id');
+        $id = cookie('activity_id');
+        cookie('activity_id',null);
+        if($r){
+            if($r['id'] == $id){
+                return true;
+            }
+            return false;
+        }else{
+            return true;
+        }
+    }
 
     function convert($success_condition){
        if(trim($success_condition) == '邀请人数'){
