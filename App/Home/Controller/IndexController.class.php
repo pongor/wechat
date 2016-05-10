@@ -53,7 +53,7 @@ class IndexController extends Controller {
    }
     public function sendMessage(){
         $openid = I('get.openid');
-        $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
+        $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
        // open($openid);die;
         $token = access_token();
         for($i=0;$i<4;$i++)
