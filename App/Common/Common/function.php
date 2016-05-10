@@ -87,6 +87,10 @@ function getUser($openid){
         return false;
     }
 }
-function imgTo(){
-
+//生成图片   用户头像地址，活动id
+function imgTo($userPic,$aid){
+    if(!$userPic || $aid <=0 ){
+        return false;
+    }
+    
 }
