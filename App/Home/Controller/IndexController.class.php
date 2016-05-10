@@ -42,7 +42,7 @@ class IndexController extends Controller {
     public function sendMessage($openid=''){
         open(json_encode(array('d','d')));
      //   $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
-        $user_info = getUser('o0W5ms1hZCcATLP8hv5lV3QHogO0');
+      //  $user_info = getUser('o0W5ms1hZCcATLP8hv5lV3QHogO0');
 
         die;
         $token = access_token();
