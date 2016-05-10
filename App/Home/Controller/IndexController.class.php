@@ -48,7 +48,7 @@ class IndexController extends Controller {
                     $contentStr = '感谢关注留学独立说';
                 }else{
 
-                    $contentStr = '你好啊。感谢关注';
+                    $contentStr = '你好啊。<a href="http://www.baidu.com">感谢关注</a>';
                 }
 
             }elseif ($msgType == 'image'){
@@ -82,7 +82,7 @@ class IndexController extends Controller {
         $token = access_token();
         for($i=0;$i<4;$i++)
         {
-            $contentStr="这是发送内容".$i;
+            $contentStr="这是发送<a href='http://www.baidu.com'>内容</a>".$i;
             $contentStr=urlencode($contentStr);
             $a=array("content"=>"{$contentStr}");
             $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
