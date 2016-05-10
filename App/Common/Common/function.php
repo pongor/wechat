@@ -62,7 +62,6 @@ function access_token(){
             </xml>";
 }
 //异步通知
-
 function _curl($openid) {
     $url = 'http://wechat.dulishuo.com';
   //  $url = 'http://127.0.0.1/';
@@ -87,4 +86,7 @@ function getUser($openid){
     }else{
         return false;
     }
+}
+function imgTo(){
+    
 }

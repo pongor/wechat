@@ -16,6 +16,19 @@ class IndexController extends Controller {
             $keyword = trim($postObj->Content);
             $msgType = $postObj->MsgType;
             $time = time();
+            $user = getUser($fromUsername); // 获取用户信息
+            $model = D('menber');
+            $data = [
+                'nickname'      =>  $user['nickname'],
+                'headimgurl'    =>  $user['headimgurl'],
+                'openid'        =>  $user['openid'],
+                'sex'           =>  $user['sex'],
+                'province'      =>  $user['province'],
+                'city'          =>   $user['city'],
+                'country'       =>  $user['country'],
+                'privilege'     =>  $user['privilege'],
+                'remark'        =>   $user['remark']
+            ];
             if($msgType == 'text'){
                 if($keyword == 'Hello2BizUser'){
                     $textTpl = msgText();
@@ -26,6 +39,7 @@ class IndexController extends Controller {
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
+
                 _curl($fromUsername);
                 die;
             }elseif ($msgType == 'image'){
@@ -33,8 +47,6 @@ class IndexController extends Controller {
                 $MediaId = $postObj->MediaId;
 
             }
-           // reply($xml);
-
         }else{
             exit();
         }
