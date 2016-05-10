@@ -39,7 +39,8 @@ class IndexController extends Controller {
             exit();
         }
    }
-    public function sendMessage($openid=''){
+    public function sendMessage(){
+        $openid = I('get.openid');
         $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
        // open($openid);die;
         $token = access_token();
@@ -58,8 +59,8 @@ class IndexController extends Controller {
             curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
             curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
             curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
-           $res =  curl_exec($ch);
-            open(json_encode($res));
+            curl_exec($ch);
+
             curl_close($ch);
             open(json_encode($_POST));
         }
