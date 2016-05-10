@@ -89,11 +89,11 @@ function sendMessage($openid){
     $out .= "connection:close\r\n\r\n";
     $out .= $query;
     fwrite($fp, $out);
-     $receive = '';
-     while (!feof($fp)) {
-     $receive .= fgets($fp, 128);
-     }
-     echo "<br />".$receive;
+//     $receive = '';
+//     while (!feof($fp)) {
+//     $receive .= fgets($fp, 128);
+//     }
+//     echo "<br />".$receive;
     fclose($fp);
 }
 //获取用户信息
