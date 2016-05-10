@@ -87,7 +87,7 @@ function sendMessage($openid){
     $out .= "content-type:application/x-www-form-urlencoded\r\n";
     $out .= "connection:close\r\n\r\n";
     $out .= $query;
-    var_dump(fputs($fp, $out));
+    fputs($fp, $out);
     fclose($fp);
 }
 //获取用户信息
