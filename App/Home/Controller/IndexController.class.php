@@ -7,7 +7,7 @@ class IndexController extends Controller {
         $user = getUser("o0W5ms1hZCcATLP8hv5lV3QHogO0"); // 获取用户信息
 
         $model = D('member');
-        $result = $model->getUser('openid='.$user['openid']);
+        $result = $model->getUser(array('openid'=>$user['openid']));
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
