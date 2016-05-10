@@ -5,7 +5,6 @@ class IndexController extends Controller {
 
     public function index(){
 
-        open(json_encode($_REQUEST).'-----'.json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -43,6 +42,7 @@ class IndexController extends Controller {
     public function sendMessage($openid=''){
         //open(json_encode($_REQUEST));
      //   $openid = 'o0W5ms1hZCcATLP8hv5lV3QHogO0';//$_POST['openid'];
+        getUser('o0W5ms1hZCcATLP8hv5lV3QHogO0');die;
         $token = access_token();
         for($i=0;$i<4;$i++)
         {

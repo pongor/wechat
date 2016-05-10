@@ -6,4 +6,5 @@ return array(
     'APPSECRET' => '6169e3da0e21fecce48a833ebac8af76',
     'TOKEN'     => 'qwea',  //消息token
     'TOKEN_URL' => 'https://api.weixin.qq.com/cgi-bin/token', //获取用户登录授权的token 地址
+    'USER_INFO'     => 'https://api.weixin.qq.com/cgi-bin/user/info',//获取用户基本信息
 );

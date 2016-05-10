@@ -61,6 +61,7 @@ function access_token(){
   
             </xml>";
 }
+//异步通知
 function sendMessage($openid){
     $url = 'http://wechat.dulishuo.com';
     $url .= U('Index/sendMessage');
@@ -87,4 +88,12 @@ function sendMessage($openid){
     $out .= $query;
     fputs($fp, $out);
     fclose($fp);
+}
+//获取用户信息
+function getUser($openid){
+    //?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
+    $url = C('USER_INFO');
+    $url .= '?access_token='.access_token().'&openid='.$openid .'&lang=zh_CN';
+    $result = file_get_contents($url);
+    print_r($result);
 }
