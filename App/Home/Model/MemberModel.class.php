@@ -14,5 +14,11 @@ class MemberModel extends Model
     public function insert($data){
         return $this->add($data);
     }
+    public function getUser($where){
+        return $this->where($where)->find();
+    }
+    public function getUpdate($where,$data){
+        return $this->where($where)->save($data);
+    }
 
 }
