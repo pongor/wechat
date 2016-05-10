@@ -18,8 +18,8 @@ class IndexController extends Controller {
             'remark'        =>   $user['remark'],
             'at_time'       =>   time()
         ];
-        open(json_encode($data));
-        $user_id = $model->insert($data);
+        dump($model);
+        $user_id = $model->test($data);
         var_dump($user_id);
         die;
         if(checkSignature()){
