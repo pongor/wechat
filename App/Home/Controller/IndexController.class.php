@@ -27,8 +27,10 @@ class IndexController extends Controller {
                 'city'          =>   $user['city'],
                 'country'       =>  $user['country'],
                 'privilege'     =>  $user['privilege'],
-                'remark'        =>   $user['remark']
+                'remark'        =>   $user['remark'],
+                'at_time'       =>   time()
             ];
+            $user_id = $model->insert($data);
             if($msgType == 'text'){
                 if($keyword == 'Hello2BizUser'){
                     $textTpl = msgText();

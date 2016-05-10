@@ -10,6 +10,8 @@ namespace Think;
 use Think\Model;
 class MenberModel extends Model
 {
-    
+    public function insert($data){
+        return $this->add($data);
+    }
 
 }
