@@ -64,7 +64,7 @@ function access_token(){
 //异步通知
 function sendMessage($openid){
     $url = 'http://wechat.dulishuo.com';
-  //  $url = 'http://127.0.0.1/';
+    $url = 'http://127.0.0.1/';
    echo $url .= U('Index/sendMessage');
    // file_get_contents($url);
     $param = array(
@@ -89,7 +89,7 @@ function sendMessage($openid){
     $out .= "content-type:application/x-www-form-urlencoded\r\n";
     $out .= "connection:close\r\n\r\n";
     $out .= $query;
-    fwrite($fp, $out);
+    var_dump(fputs($fp, $out));
 //     $receive = '';
 //     while (!feof($fp)) {
 //     $receive .= fgets($fp, 128);
