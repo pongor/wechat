@@ -39,7 +39,7 @@ class ActivityController extends Controller{
 		$id = intval(I('get.id'));
 		$saveList = $_POST;
 		$model = D('Activity');
-		
+		cookie('activity_id',$id,3600); 
 		// echo "<pre>";
 		// var_dump($saveList);
 		// die;
@@ -47,6 +47,9 @@ class ActivityController extends Controller{
 		// $data$data['editor'] = $editor;
         if (!$model->create($saveList)){
 		     // 如果创建失败 表示验证没有通过 输出错误提示信息
+        	if($id){
+        		redirect(U('Activity/detail',array('time'=>time(),'id'=>$id)),0.2,'<script>alert("'.$model->getError().'");</script>');
+        	}
         	redirect(U('Activity/detail',array('time'=>time())),0.2,'<script>alert("'.$model->getError().'");</script>');
 		}else{
 			if($id){
@@ -58,7 +61,7 @@ class ActivityController extends Controller{
 			}
 		}
 		
-		if ($r) {
+		if($r) {
 			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("保存成功");</script>');
 		}else{
 			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("保存失败");</script>');
