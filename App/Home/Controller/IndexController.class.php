@@ -4,7 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
-    
+
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -40,24 +40,37 @@ class IndexController extends Controller {
                 $data['at_time']  = time();
                 $user_id = $model->insert($data);
             }
-
+            $textTpl = msgText();
             if($msgType == 'text'){
+
                 if($keyword == 'Hello2BizUser'){
-                    $textTpl = msgText();
-                    $contentStr = '你是第一次关注';
+
+                    $contentStr = '感谢关注留学独立说';
                 }else{
-                    $textTpl = msgText();
-                    $contentStr = 'dsdjohsdoiiosdohis。';
+
+                    $contentStr = '你好啊。感谢关注';
                 }
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-                _curl($fromUsername);
-                die;
+
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
                 $MediaId = $postObj->MediaId;
+                $contentStr = '图片';
+
+            }elseif ($msgType == 'event'){
+                switch ($postObj->Event){
+                    case 'subscribe':
+
+                        break;
+                    default:
+
+                        break;
+                }
 
             }
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            echo $resultStr;
+            _curl($fromUsername);
+            die;
         }else{
             exit();
         }
