@@ -5,7 +5,9 @@ class IndexController extends Controller {
 
     public function index(){
         $user = getUser('o0W5ms1hZCcATLP8hv5lV3QHogO0'); // 获取用户信息
-        $model = D('member');
+        echo '<pre>';
+        var_dump($user);
+    //    $model = D('member');
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
@@ -14,11 +16,12 @@ class IndexController extends Controller {
             'province'      =>  $user['province'],
             'city'          =>   $user['city'],
             'country'       =>  $user['country'],
+            'subscribe_time' => $user['subscribe_time'],
             'privilege'     =>  $user['privilege'],
             'remark'        =>   $user['remark'],
             'at_time'       =>   time()
         ];
-        dump($model);
+        print_r($data);die;
         $user_id = $model->insert($data);
         var_dump($user_id);
         die;
