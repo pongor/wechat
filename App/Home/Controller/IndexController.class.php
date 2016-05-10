@@ -4,7 +4,32 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
+        $user = getUser("o0W5ms1hZCcATLP8hv5lV3QHogO0"); // 获取用户信息
 
+        $model = D('member');
+        $result = $model->getUser('openid='.$user['openid']);
+        $data = [
+            'nickname'      =>  $user['nickname'],
+            'headimgurl'    =>  $user['headimgurl'],
+            'openid'        =>  $user['openid'],
+            'sex'           =>  $user['sex'],
+            'province'      =>  $user['province'],
+            'city'          =>   $user['city'],
+            'country'       =>  $user['country'],
+            'subscribe_time' => $user['subscribe_time'],
+            'privilege'     =>  $user['privilege'],
+            'remark'        =>   $user['remark'],
+
+        ];
+        if($result){
+            $model->getUpdate('id='.$result['id'],$data);
+            $user_id = $result['id'];
+        }else{
+            $data['at_time']  = time();
+            $user_id = $model->insert($data);
+        }
+        var_dump($user_id);
+        die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -17,7 +42,7 @@ class IndexController extends Controller {
             $msgType = $postObj->MsgType;
             $time = time();
             $user = getUser($fromUsername); // 获取用户信息
-            open(json_encode($user));
+
             $model = D('member');
             $result = $model->getUser('openid='.$user['openid']);
             $data = [
@@ -35,6 +60,7 @@ class IndexController extends Controller {
             ];
             if($result){
                 $model->getUpdate('id='.$result['id'],$data);
+                $user_id = $result['id'];
             }else{
                 $data['at_time']  = time();
                 $user_id = $model->insert($data);
