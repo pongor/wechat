@@ -4,7 +4,24 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
-
+        $user = getUser('o0W5ms1hZCcATLP8hv5lV3QHogO0'); // 获取用户信息
+        $model = D('menber');
+        $data = [
+            'nickname'      =>  $user['nickname'],
+            'headimgurl'    =>  $user['headimgurl'],
+            'openid'        =>  $user['openid'],
+            'sex'           =>  $user['sex'],
+            'province'      =>  $user['province'],
+            'city'          =>   $user['city'],
+            'country'       =>  $user['country'],
+            'privilege'     =>  $user['privilege'],
+            'remark'        =>   $user['remark'],
+            'at_time'       =>   time()
+        ];
+        open(json_encode($data));
+        $user_id = $model->insert($data);
+        var_dump($user_id);
+        die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -30,6 +47,7 @@ class IndexController extends Controller {
                 'remark'        =>   $user['remark'],
                 'at_time'       =>   time()
             ];
+            open(json_encode($data));
             $user_id = $model->insert($data);
             if($msgType == 'text'){
                 if($keyword == 'Hello2BizUser'){
@@ -41,7 +59,6 @@ class IndexController extends Controller {
                 }
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
-
                 _curl($fromUsername);
                 die;
             }elseif ($msgType == 'image'){
