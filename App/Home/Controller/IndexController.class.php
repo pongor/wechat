@@ -5,7 +5,7 @@ class IndexController extends Controller {
 
     public function index(){
         $user = getUser('o0W5ms1hZCcATLP8hv5lV3QHogO0'); // 获取用户信息
-        $model = D('menber');
+        $model = D('member');
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
