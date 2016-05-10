@@ -17,6 +17,7 @@ class IndexController extends Controller {
             $msgType = $postObj->MsgType;
             $time = time();
             $user = getUser($fromUsername); // 获取用户信息
+            open(json_encode($user));
             $model = D('member');
             $result = $model->getUser('openid='.$user['openid']);
             $data = [
