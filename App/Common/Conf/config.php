@@ -5,7 +5,7 @@ return array(
 
 //    'DEFAULT_MODULE'  =>  'Home',
    // 'BIND_MODULE'       => 'Home',
-    //'URL_MODEL'         => 2,
+    'URL_MODEL'         => 2,
     'MULTI_MODULE'      =>  true,
 
 
