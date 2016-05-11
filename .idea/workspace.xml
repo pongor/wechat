@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="434">
-              <caret line="84" column="81" selection-start-line="84" selection-start-column="81" selection-end-line="84" selection-end-column="81" />
+              <caret line="84" column="79" selection-start-line="84" selection-start-column="79" selection-end-line="84" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -448,15 +448,15 @@
       <workItem from="1462587460508" duration="5871000" />
       <workItem from="1462761728732" duration="17306000" />
       <workItem from="1462845682511" duration="20787000" />
-      <workItem from="1462932592075" duration="109000" />
+      <workItem from="1462932592075" duration="328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51423000" />
+    <option name="totallyTimeSpent" value="51642000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -817,7 +817,7 @@
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
-          <caret line="84" column="81" selection-start-line="84" selection-start-column="81" selection-end-line="84" selection-end-column="81" />
+          <caret line="84" column="79" selection-start-line="84" selection-start-column="79" selection-end-line="84" selection-end-column="79" />
           <folding />
         </state>
       </provider>

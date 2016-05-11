@@ -82,7 +82,7 @@ class IndexController extends Controller {
         $token = access_token();
         for($i=0;$i<4;$i++)
         {
-            $contentStr="这是发送<img src='https://www.baidu.com/img/bd_logo1.png'>内容".$i;
+            $contentStr="这是发送<img src='https://www.baidu.com/img/bd_logo1.png'/>内容".$i;
             $contentStr=urlencode($contentStr);
             $a=array("content"=>"{$contentStr}");
             $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
