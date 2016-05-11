@@ -48,7 +48,8 @@ class IndexController extends Controller {
                     $contentStr = '感谢关注留学独立说';
                 }else{
 
-                    $contentStr = 'https://www.baidu.com/img/bd_logo1.png';
+                  //  $contentStr = 'https://www.baidu.com/img/bd_logo1.png';
+                    $contentStr = 'lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q';
                 }
 
             }elseif ($msgType == 'image'){
