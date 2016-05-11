@@ -61,6 +61,18 @@ function access_token(){
   
             </xml>";
 }
+//回复图片消息
+function msgImg(){
+    return "<xml>
+<ToUserName><![CDATA[%s]]></ToUserName>
+<FromUserName><![CDATA[%s]]></FromUserName>
+<CreateTime>%s</CreateTime>
+<MsgType><![CDATA[%s]]></MsgType>
+<Image>
+<MediaId><![CDATA[%s]]></MediaId>
+</Image>
+</xml>";
+}
 //异步通知
 function _curl($openid) {
     $url = 'http://wechat.dulishuo.com';

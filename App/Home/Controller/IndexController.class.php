@@ -40,7 +40,7 @@ class IndexController extends Controller {
                 $data['at_time']  = time();
                 $user_id = $model->insert($data);
             }
-            $textTpl = msgText();
+            $textTpl = msgImg();
             if($msgType == 'text'){
 
                 if($keyword == 'Hello2BizUser'){
@@ -67,7 +67,7 @@ class IndexController extends Controller {
                 }
 
             }
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'image', $contentStr);
             echo $resultStr;
             _curl($fromUsername);
             die;
