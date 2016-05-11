@@ -73,6 +73,38 @@ function msgImg(){
 </Image>
 </xml>";
 }
+//上传微信素材
+/*
+ * $file_info=array(
+    'filename'=>'/images/1.png',  //国片相对于网站根目录的路径
+    'content-type'=>'image/png',  //文件类型
+    'filelength'=>'11011'         //图文大小
+);
+ */
+function add_material($file_info){
+    $access_token=access_token();
+    $url="https://api.weixin.qq.com/cgi-bin/material/add_material?access_token={$access_token}&type=image";
+    $ch1 = curl_init ();
+    $timeout = 5;
+    $real_path="{$_SERVER['DOCUMENT_ROOT']}{$file_info['filename']}";
+    $data= array("media"=>"@{$real_path}",'form-data'=>$file_info);
+    curl_setopt ( $ch1, CURLOPT_URL, $url );
+    curl_setopt ( $ch1, CURLOPT_POST, 1 );
+    curl_setopt ( $ch1, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt ( $ch1, CURLOPT_CONNECTTIMEOUT, $timeout );
+    curl_setopt ( $ch1, CURLOPT_SSL_VERIFYPEER, FALSE );
+    curl_setopt ( $ch1, CURLOPT_SSL_VERIFYHOST, false );
+    curl_setopt ( $ch1, CURLOPT_POSTFIELDS, $data );
+    $result = curl_exec ( $ch1 );
+    curl_close ( $ch1 );
+    if(curl_errno()==0){
+        $result=json_decode($result,true);
+        //var_dump($result);
+        return $result['media_id'];
+    }else {
+        return false;
+    }
+}
 //异步通知
 function _curl($openid) {
     $url = 'http://wechat.dulishuo.com';

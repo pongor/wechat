@@ -49,7 +49,14 @@ class IndexController extends Controller {
                 }else{
 
                   //  $contentStr = 'https://www.baidu.com/img/bd_logo1.png';
-                    $contentStr = 'lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q';
+                    $file_data = array(
+                        'filename'=>__APP__.'/images/1.png',  //国片相对于网站根目录的路径
+                        'content-type'=>'image/png',  //文件类型
+                        'filelength'=>'11011'         //图文大小
+                    );
+                   $a = add_material($file_data);
+                    open(json_encode($a));
+                    $contentStr =$a;
                 }
 
             }elseif ($msgType == 'image'){
