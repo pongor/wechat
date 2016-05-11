@@ -83,11 +83,12 @@ function msgImg(){
  */
 function add_material($file_info){
     $access_token=access_token();
-    $url="https://api.weixin.qq.com/cgi-bin/material/add_material?access_token={$access_token}&type=image";
+    $url="https://api.weixin.qq.com/cgi-bin/media/upload?access_token={$access_token}&type=image";
     $ch1 = curl_init ();
+    curl_setopt ( $ch1, CURLOPT_SAFE_UPLOAD, false);
     $timeout = 5;
-    $real_path="{$_SERVER['DOCUMENT_ROOT']}{$file_info['filename']}";
-    $data= array("media"=>"@{$real_path}",'form-data'=>$file_info);
+   echo $real_path="{$_SERVER['DOCUMENT_ROOT']}{$file_info['filename']}";
+    $data= array("media"=>"@$real_path",'form-data'=>$file_info);
     curl_setopt ( $ch1, CURLOPT_URL, $url );
     curl_setopt ( $ch1, CURLOPT_POST, 1 );
     curl_setopt ( $ch1, CURLOPT_RETURNTRANSFER, 1 );
@@ -99,7 +100,7 @@ function add_material($file_info){
     curl_close ( $ch1 );
     if(curl_errno()==0){
         $result=json_decode($result,true);
-        //var_dump($result);
+        var_dump($result);
         return $result['media_id'];
     }else {
         return false;

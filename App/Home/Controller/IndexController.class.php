@@ -49,14 +49,14 @@ class IndexController extends Controller {
                 }else{
 
                   //  $contentStr = 'https://www.baidu.com/img/bd_logo1.png';
-                    $file_data = array(
-                        'filename'=>__APP__.'/images/1.png',  //国片相对于网站根目录的路径
-                        'content-type'=>'image/png',  //文件类型
-                        'filelength'=>'11011'         //图文大小
-                    );
-                   $a = add_material($file_data);
-                    open(json_encode($a));
-                    $contentStr =$a;
+//                    $file_data = array(
+//                        'filename'=>__APP__.'/images/1.png',  //国片相对于网站根目录的路径
+//                        'content-type'=>'image/png',  //文件类型
+//                        'filelength'=>'11011'         //图文大小
+//                    );
+//                   $a = add_material($file_data);
+//                    open(json_encode($a));
+                    $contentStr ="ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4";
                 }
 
             }elseif ($msgType == 'image'){
@@ -83,6 +83,9 @@ class IndexController extends Controller {
             exit();
         }
    }
+    /*
+     D:/web/wechat/img/2531170_213554844000_2.jpgarray(3) { ["type"]=> string(5) "image" ["media_id"]=> string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4" ["created_at"]=> int(1462937403) } string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4"
+     */
     public function sendMessage(){
         $openid = I('get.openid');
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
