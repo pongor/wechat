@@ -143,24 +143,29 @@ function imgTo(){
    // var_dump($a);
 
 }
-//生成圆角图片
-function get_lt_rounder_corner($radius) {
-    $img     = imagecreatetruecolor($radius, $radius);  // 创建一个正方形的图像
-    $bgcolor    = imagecolorallocate($img, 255, 255, 255);   // 图像的背景
-    $fgcolor    = imagecolorallocate($img, 0, 0, 0);
-    imagefill($img, 0, 0, $bgcolor);
-    // $radius,$radius：以图像的右下角开始画弧
-    // $radius*2, $radius*2：已宽度、高度画弧
-    // 180, 270：指定了角度的起始和结束点
-    // fgcolor：指定颜色
-    imagefilledarc($img, $radius, $radius, $radius*2, $radius*2, 180, 270, $fgcolor, IMG_ARC_PIE);
-    // 将弧角图片的颜色设置为透明
-    imagecolortransparent($img, $fgcolor);
-    // 变换角度
-    // $img = imagerotate($img, 90, 0);
-    // $img = imagerotate($img, 180, 0);
-    // $img = imagerotate($img, 270, 0);
-    // header('Content-Type: image/png');
-    // imagepng($img);
-    return $img;
+//将用户头像生成圆角图片
+function get_lt_rounder_corner($file_path,$openid) {
+    $image_file = getcwd().$file_path;
+    $image = new Imagick($image_file);
+//$image->newPseudoImage(200, 200, "magick:rose");
+    $image->setImageFormat("png");
+    $image->roundCorners(100,50);
+    $path = '/img/'.$openid.'.png';
+    if($image->writeImage(getcwd().$path)){
+        return $path;
+    }else{
+        return false;
+    }
+}
+//将用户头像保存到本地
+
+function savaPic(){
+
+}
+function downloadFile($url,$savePath='./img')
+{
+    $fileName = rand(0,1000).'.jpg';
+    $file = file_get_contents($url);
+    file_put_contents($savePath.'/'.$fileName,$file);
+    return $fileName;
 }

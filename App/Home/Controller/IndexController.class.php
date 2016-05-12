@@ -4,8 +4,6 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
-        
-        imgTo();die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -91,14 +89,20 @@ class IndexController extends Controller {
         $openid = I('get.openid');
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
        // open($openid);die;
-        $token = access_token();
-        for($i=0;$i<4;$i++)
-        {
-            $contentStr="这是发送<a href='https://www.baidu.com'/>内容</a>".$i;
-            $contentStr=urlencode($contentStr);
-            $a=array("content"=>"{$contentStr}");
-            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
-            $post=json_encode($b);
+            $token = access_token();
+            $array = array(
+                    'touser'    =>  $openid,
+                    'msgtype'   =>  'image',
+                    'image'     =>  array(
+                        "media_id"  =>  'ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4'
+                    ),
+
+            );
+//            $contentStr="这是发送<a href='https://www.baidu.com'/>内容</a>";
+//            $contentStr=urlencode($contentStr);
+//            $a=array("content"=>"{$contentStr}");
+//            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
+            $post=json_encode($array);
             $post=urldecode($post);
             $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$token;
             $ch=curl_init();
@@ -109,7 +113,5 @@ class IndexController extends Controller {
             curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
             curl_exec($ch);
             curl_close($ch);
-            open(json_encode($_POST));
-        }
     }
 }
