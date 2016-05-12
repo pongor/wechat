@@ -11,7 +11,7 @@ $image = new Imagick($image_file);
 //$image->newPseudoImage(200, 200, "magick:rose");
 var_dump($image->setImageFormat("png"));
 //echo '11';
-$image->a();
+
 var_dump($image->roundCorners(100,51));
 echo '22';
 var_dump($image->writeImage(getcwd().'/img/bd_logo5.png'));
