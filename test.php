@@ -2,6 +2,8 @@
 <?php
 
 //header("Content-type:image/png");
+ini_set("display_errors", "On");
+error_reporting(E_ALL | E_STRICT);
 $image_file = getcwd()."/img/96.jpg";
 
 $image = new Imagick($image_file);
