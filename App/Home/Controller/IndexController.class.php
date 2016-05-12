@@ -74,7 +74,7 @@ class IndexController extends Controller {
                 }
 
             }
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'image', $contentStr);
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;
             _curl($fromUsername);
             die;
