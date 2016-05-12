@@ -3,12 +3,11 @@
 
 //header("Content-type:image/png");
 $image_file = getcwd()."/img/96.jpg";
-
+phpinfo();die;
 $image = new Imagick($image_file);
 
 //$image->newPseudoImage(200, 200, "magick:rose");
 var_dump($image->setImageFormat("png"));
-
 var_dump($image->roundCorners(100,51));
 var_dump($image->writeImage(getcwd().'/img/bd_logo5.png'));
 die;
