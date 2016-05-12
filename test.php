@@ -2,14 +2,14 @@
 <?php
 
 //header("Content-type:image/png");
-$image_file = "D:/web/wechat/img/96.jpg";
+$image_file = "./img/96.jpg";
 
 $image = new Imagick($image_file);
 //$image->newPseudoImage(200, 200, "magick:rose");
 $image->setImageFormat("png");
 
 $image->roundCorners(100,51);
-$image->writeImage('D:/web/wechat/img/bd_logo3.png');
+$image->writeImage('./img/bd_logo4.png');
 die;
 $corner_radius =  252; // The default corner radius is set to 20px
 
