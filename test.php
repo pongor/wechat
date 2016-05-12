@@ -7,11 +7,11 @@ error_reporting(E_ALL | E_STRICT);
 $image_file = getcwd()."/img/96.jpg";
 
 $image = new Imagick($image_file);
-
+phpinfo();
 //$image->newPseudoImage(200, 200, "magick:rose");
 var_dump($image->setImageFormat("png"));
 //echo '11';
-
+var_dump($image->writeImage(getcwd().'/img/bd_logo5.png'));
 var_dump($image->roundCorners(100,51));
 echo '22';
 var_dump($image->writeImage(getcwd().'/img/bd_logo5.png'));
