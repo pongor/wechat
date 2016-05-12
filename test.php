@@ -1,7 +1,7 @@
 
 <?php
 
-//header("Content-type:image/png");
+header("Content-type:image/png");
 $image_file = getcwd()."/img/96.jpg";
 
 $image = new Imagick($image_file);
