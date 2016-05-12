@@ -64,14 +64,14 @@ function access_token(){
 //回复图片消息
 function msgImg(){
     return "<xml>
-<ToUserName><![CDATA[%s]]></ToUserName>
-<FromUserName><![CDATA[%s]]></FromUserName>
-<CreateTime>%s</CreateTime>
-<MsgType><![CDATA[%s]]></MsgType>
-<Image>
-<MediaId><![CDATA[%s]]></MediaId>
-</Image>
-</xml>";
+    <ToUserName><![CDATA[%s]]></ToUserName>
+    <FromUserName><![CDATA[%s]]></FromUserName>
+    <CreateTime>%s</CreateTime>
+    <MsgType><![CDATA[%s]]></MsgType>
+    <Image>
+    <MediaId><![CDATA[%s]]></MediaId>
+    </Image>
+    </xml>";
 }
 //上传微信素材
 /*
@@ -133,9 +133,34 @@ function getUser($openid){
     }
 }
 //生成图片   用户头像地址，活动id
-function imgTo($userPic,$aid){
-    if(!$userPic || $aid <=0 ){
-        return false;
-    }
-    
+function imgTo(){
+    $image = new \Think\Image();
+
+    $image->open('./img/2531170_213554844000_2.jpg');//->water('./img/bd_logo1.jpg',\Think\Image::IMAGE_WATER_NORTHWEST)->save(__APP__."/wechat/water.jpg");
+
+    $image->water('./img/bd_logo3.png',\Think\Image::IMAGE_WATER_NORTH,100);
+    $image->save('./a.jpg');
+   // var_dump($a);
+
+}
+//生成圆角图片
+function get_lt_rounder_corner($radius) {
+    $img     = imagecreatetruecolor($radius, $radius);  // 创建一个正方形的图像
+    $bgcolor    = imagecolorallocate($img, 255, 255, 255);   // 图像的背景
+    $fgcolor    = imagecolorallocate($img, 0, 0, 0);
+    imagefill($img, 0, 0, $bgcolor);
+    // $radius,$radius：以图像的右下角开始画弧
+    // $radius*2, $radius*2：已宽度、高度画弧
+    // 180, 270：指定了角度的起始和结束点
+    // fgcolor：指定颜色
+    imagefilledarc($img, $radius, $radius, $radius*2, $radius*2, 180, 270, $fgcolor, IMG_ARC_PIE);
+    // 将弧角图片的颜色设置为透明
+    imagecolortransparent($img, $fgcolor);
+    // 变换角度
+    // $img = imagerotate($img, 90, 0);
+    // $img = imagerotate($img, 180, 0);
+    // $img = imagerotate($img, 270, 0);
+    // header('Content-Type: image/png');
+    // imagepng($img);
+    return $img;
 }

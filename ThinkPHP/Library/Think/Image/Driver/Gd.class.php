@@ -359,7 +359,7 @@ class Gd{
             /* 上居中水印 */
             case Image::IMAGE_WATER_NORTH:
                 $x = ($this->info['width'] - $info[0])/2;
-                $y = 0;
+                $y = 15;
                 break;
 
             /* 左居中水印 */
