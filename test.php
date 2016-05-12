@@ -3,14 +3,17 @@
 
 //header("Content-type:image/png");
 $image_file = getcwd()."/img/96.jpg";
-phpinfo();die;
+
 $image = new Imagick($image_file);
 
 //$image->newPseudoImage(200, 200, "magick:rose");
 var_dump($image->setImageFormat("png"));
+echo '11';
 var_dump($image->roundCorners(100,51));
+echo '22';
 var_dump($image->writeImage(getcwd().'/img/bd_logo5.png'));
-die;
+
+die('33');
 $corner_radius =  252; // The default corner radius is set to 20px
 
 $topleft = true; // Top-left rounded corner is shown by default
