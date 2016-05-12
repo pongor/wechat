@@ -4,7 +4,7 @@
 //header("Content-type:image/png");
 $image_file = getcwd()."/img/96.jpg";
 
-$image = new Imagick($image_file);
+$image = new Imagick();
 
 $image->newPseudoImage(200, 200, "magick:rose");
 $image->setImageFormat("png");
