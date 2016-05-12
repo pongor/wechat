@@ -4,13 +4,13 @@
 //header("Content-type:image/png");
 $image_file = getcwd()."/img/96.jpg";
 
-$image = new Imagick();
+$image = new Imagick($image_file);
 
-$image->newPseudoImage(200, 200, "magick:rose");
-$image->setImageFormat("png");
+//$image->newPseudoImage(200, 200, "magick:rose");
+var_dump($image->setImageFormat("png"));
 
-$image->roundCorners(100,51);
-$image->writeImage(getcwd().'/img/bd_logo5.png');
+var_dump($image->roundCorners(100,51));
+var_dump($image->writeImage(getcwd().'/img/bd_logo5.png'));
 die;
 $corner_radius =  252; // The default corner radius is set to 20px
 
