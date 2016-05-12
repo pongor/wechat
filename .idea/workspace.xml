@@ -25,8 +25,8 @@
       <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="93" column="43" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
+            <state relative-caret-position="738">
+              <caret line="104" column="26" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -55,12 +55,12 @@
       <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="151" column="31" selection-start-line="151" selection-start-column="31" selection-end-line="151" selection-end-column="31" />
+            <state relative-caret-position="472">
+              <caret line="160" column="20" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="20" />
               <folding>
-                <marker date="1463047396335" expanded="true" signature="1108:1397" placeholder="..." />
-                <marker date="1463047396335" expanded="true" signature="1447:1683" placeholder="..." />
-                <marker date="1463047396335" expanded="true" signature="1621:1672" placeholder="..." />
+                <marker date="1463048059569" expanded="true" signature="1108:1397" placeholder="..." />
+                <marker date="1463048059569" expanded="true" signature="1447:1683" placeholder="..." />
+                <marker date="1463048059569" expanded="true" signature="1621:1672" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -107,8 +107,8 @@
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Image.class.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Image/Driver/Gd.class.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Image/Driver/Imagick.class.php" />
+        <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
       </list>
     </option>
@@ -535,12 +535,12 @@
       <workItem from="1462761728732" duration="17306000" />
       <workItem from="1462845682511" duration="20787000" />
       <workItem from="1462932592075" duration="19859000" />
-      <workItem from="1463018600890" duration="16628000" />
+      <workItem from="1463018600890" duration="16865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87801000" />
+    <option name="totallyTimeSpent" value="88038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -594,9 +594,9 @@
         <state relative-caret-position="1786">
           <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
           <folding>
-            <marker date="1463047396335" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -629,9 +629,9 @@
         <state relative-caret-position="1691">
           <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
           <folding>
-            <marker date="1463047396335" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -686,9 +686,9 @@
         <state relative-caret-position="513">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <marker date="1463047396335" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -721,9 +721,9 @@
         <state relative-caret-position="285">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="23" />
           <folding>
-            <marker date="1463047396335" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -917,18 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="151" column="31" selection-start-line="151" selection-start-column="31" selection-end-line="151" selection-end-column="31" />
-          <folding>
-            <marker date="1463047396335" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463047396335" expanded="true" signature="1621:1672" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Image/Driver/Imagick.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -953,10 +941,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="160" column="20" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="20" />
+          <folding>
+            <marker date="1463048059569" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463048059569" expanded="true" signature="1621:1672" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="93" column="43" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
+        <state relative-caret-position="738">
+          <caret line="104" column="26" selection-start-line="104" selection-start-column="26" selection-end-line="104" selection-end-column="26" />
           <folding />
         </state>
       </provider>

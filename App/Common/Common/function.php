@@ -157,11 +157,22 @@ function get_lt_rounder_corner($file_path,$openid) {
         return false;
     }
 }
+//发送客服消息 array 传入消息信息
+function sendMessage($array){
+    $post=json_encode($array);
+    $post=urldecode($post);
+    $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$token;
+    $ch=curl_init();
+    curl_setopt($ch,CURLOPT_URL,$posturl);//url
+    curl_setopt($ch,CURLOPT_POST,1);//POST
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
+    curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+    curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
+    curl_exec($ch);
+    curl_close($ch);
+}
 //将用户头像保存到本地
 
-function savaPic(){
-
-}
 function downloadFile($url,$savePath='./img')
 {
     $fileName = rand(0,1000).'.jpg';

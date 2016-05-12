@@ -39,7 +39,7 @@ class IndexController extends Controller {
                 $data['at_time']  = time();
                 $user_id = $model->insert($data);
             }
-            $textTpl = msgImg();
+            $textTpl = msgText();
             if($msgType == 'text'){
 
                 if($keyword == 'Hello2BizUser'){
@@ -55,7 +55,7 @@ class IndexController extends Controller {
 //                    );
 //                   $a = add_material($file_data);
 //                    open(json_encode($a));
-                    $contentStr ="ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4";
+                    $contentStr ="欢迎回来！！！";
                 }
 
             }elseif ($msgType == 'image'){
@@ -102,16 +102,6 @@ class IndexController extends Controller {
 //            $contentStr=urlencode($contentStr);
 //            $a=array("content"=>"{$contentStr}");
 //            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
-            $post=json_encode($array);
-            $post=urldecode($post);
-            $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$token;
-            $ch=curl_init();
-            curl_setopt($ch,CURLOPT_URL,$posturl);//url
-            curl_setopt($ch,CURLOPT_POST,1);//POST
-            curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
-            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-            curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
-            curl_exec($ch);
-            curl_close($ch);
+        sendMessage($array);
     }
 }
