@@ -88,8 +88,6 @@ class IndexController extends Controller {
     public function sendMessage(){
         $openid = I('get.openid');
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
-       // open($openid);die;
-            $token = access_token();
             $array = array(
                     'touser'    =>  $openid,
                     'msgtype'   =>  'image',

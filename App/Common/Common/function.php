@@ -161,7 +161,7 @@ function get_lt_rounder_corner($file_path,$openid) {
 function sendMessage($array){
     $post=json_encode($array);
     $post=urldecode($post);
-    $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$token;
+    $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".access_token();
     $ch=curl_init();
     curl_setopt($ch,CURLOPT_URL,$posturl);//url
     curl_setopt($ch,CURLOPT_POST,1);//POST
