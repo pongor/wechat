@@ -1,6 +1,8 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+ini_set("display_errors", "On");
+error_reporting(E_ALL | E_STRICT);
 class IndexController extends Controller {
 
     public function index(){
