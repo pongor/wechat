@@ -117,7 +117,7 @@ class IndexController extends Controller {
 
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
-                'filename'=>__APP__.rtrim($fiel,'.'),  //国片相对于网站根目录的路径
+                'filename'=>__APP__.ltrim($fiel,'.'),  //国片相对于网站根目录的路径
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
