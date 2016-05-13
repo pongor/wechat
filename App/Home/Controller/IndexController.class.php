@@ -108,13 +108,15 @@ class IndexController extends Controller {
             $headimg = dowload($data['headimgurl'].'.jpg');
             //生成分享图片
             $headimg = get_lt_rounder_corner(getcwd().'/'.$headimg,$data['openid']); //圆角头像
-           $fiel =  imgTo('./img/807893500556499641.png',$headimg,$data['nickname']);
+           echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$data['nickname']);
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
                 'filename'=>__APP__.$fiel,  //国片相对于网站根目录的路径
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
+            
+            die;
            $media_id = add_material($file_data);
         }
 
