@@ -108,7 +108,7 @@ class IndexController extends Controller {
             $codeUrl = getCode($array);
             $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
             //下载用户头像
-            $headimg = dowload($result['headimgurl'].'.jpg');
+            $headimg = './img/20160513185910.jpg';//dowload($result['headimgurl'].'.jpg');
 
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $result['openid']); //圆角头像
