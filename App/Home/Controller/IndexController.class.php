@@ -61,6 +61,7 @@ class IndexController extends Controller {
      D:/web/wechat/img/2531170_213554844000_2.jpgarray(3) { ["type"]=> string(5) "image" ["media_id"]=> string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4" ["created_at"]=> int(1462937403) } string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4"
      */
     public function sendMessage(){
+        $a = time();
         $openid = I('get.openid');
 
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
@@ -105,11 +106,12 @@ class IndexController extends Controller {
             $codeUrl = getCode($array);
             $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
             //下载用户头像
-            $headimg = dowload($result['headimgurl'].'.jpg');
+            echo $headimg = dowload($result['headimgurl'].'.jpg');
 
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $result['openid']); //圆角头像
-   
+            echo $headimg;
+                die;
            echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$result['nickname']);
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
@@ -138,6 +140,7 @@ class IndexController extends Controller {
 //            $a=array("content"=>"{$contentStr}");
 //            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
         sendMessage($array);
+        echo $a-time();
     }
 
 }
