@@ -140,22 +140,22 @@ function getUser($openid){
 function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
     $image = new \Think\Image();
 
-    $image->open($tplImg);//->water('./img/bd_logo1.jpg',\Think\Image::IMAGE_WATER_NORTHWEST)->save(__APP__."/wechat/water.jpg");
+    $image->open(getcwd().'/'.$tplImg);//->water('./img/bd_logo1.jpg',\Think\Image::IMAGE_WATER_NORTHWEST)->save(__APP__."/wechat/water.jpg");
     $head = new \Think\Image();
-    $head->open($headImg);
+    $head->open(getcwd().'/'.$headImg);
 
     $image->water($headImg,\Think\Image::IMAGE_WATER_MARGIN,100,C('IMG_height')); //水印用户头像
     $height = $head->height()+C('IMG_height')+C('IMG_NAME_HEIGHT'); // 字符串据上的距离
 
     $image->text($str,'./img/ttf/msyh.ttf','20',C('IMG_TEXT_COLOR'),\Think\Image::IMAGE_WATER_MARGIN,0,0,$height);//水印用户昵称
     $code = new Think\Image();
-    $code->open($codeImg);
+    $code->open(getcwd().'/'.$codeImg);
     $codeThumb = './img/temp/';
     mkDirs($codeThumb);
     $codeThumb .= time().rand(rand(100,999),3000).'.jpg';
     $code->thumb(C('IMG_CODE'),C('IMG_CODE'))->save($codeThumb);
 
-    $image->water($codeThumb,\Think\Image::IMAGE_WATER_CODE ,100,C('IMG_LEFT'),C('IMG_NEXT')); //水印二维码
+    $image->water(getcwd().'/'.$codeThumb,\Think\Image::IMAGE_WATER_CODE ,100,C('IMG_LEFT'),C('IMG_NEXT')); //水印二维码
     $file = './img/user/f/';
     mkDirs($file);
     $file .= time().'-'.rand(0,10000).'.png';
