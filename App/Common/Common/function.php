@@ -171,8 +171,8 @@ function get_lt_rounder_corner($file_path,$openid) {
     $thumbTemp = './img/temp/';
     mkDirs($thumbTemp);
     $thumbTemp .= time().'-'.rand(1,10000).'.jpg';
-    $thumb->thumb(C('IMG_HEADER_SIZE'),C('IMG_HEADER_SIZE'))->save($thumbTemp); //缩放头像
-
+    var_dump($thumb->thumb(C('IMG_HEADER_SIZE'),C('IMG_HEADER_SIZE'))->save($thumbTemp)); //缩放头像
+die;
     $image = new Imagick(getcwd().'/'.$thumbTemp);
 //$image->newPseudoImage(200, 200, "magick:rose");
     $image->setImageFormat("png");
