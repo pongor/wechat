@@ -109,9 +109,8 @@ class IndexController extends Controller {
 
             //生成分享图片
            $headimg = get_lt_rounder_corner('/'.$headimg, $result['openid']); //圆角头像
-            var_dump($headimg);
-            die;
-           echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$result['nickname']);
+
+           echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$result['nickname']);
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
                 'filename'=>__APP__.$fiel,  //国片相对于网站根目录的路径
