@@ -80,7 +80,7 @@ class IndexController extends Controller {
             'privilege'     =>  $user['privilege'],
             'remark'        =>   $user['remark'],
         ];
-        if($result){ //如果用户存在
+        if(!$result){ //如果用户存在
             $model->getUpdate('id='.$result['id'],$data);
             $user_id = $result['id'];
             //拿到分享图片
@@ -93,30 +93,30 @@ class IndexController extends Controller {
 
         }else{
             $data['at_time']  = time();
-            $user_id = $model->insert($data);  //是新用户.
+          //  $user_id = $model->insert($data);  //是新用户.
             //拿到二维码
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_str' => $user_id
+                        'scene_str' => $result['id']
                     ),
                 ),
             );
             $codeUrl = getCode($array);
-            $file_code = saveCode($codeUrl,$user_id); // 二维码图片路径
+            $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
             //下载用户头像
-            $headimg = dowload($data['headimgurl'].'.jpg');
+            $headimg = dowload($result['headimgurl'].'.jpg');
             //生成分享图片
-            $headimg = get_lt_rounder_corner(getcwd().'/'.$headimg,$data['openid']); //圆角头像
-           echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$data['nickname']);
+            $headimg = get_lt_rounder_corner(getcwd().'/'.$headimg, $result['openid']); //圆角头像
+           echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$result['nickname']);
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
                 'filename'=>__APP__.$fiel,  //国片相对于网站根目录的路径
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
-            
-            die;
+
+
            $media_id = add_material($file_data);
         }
 
