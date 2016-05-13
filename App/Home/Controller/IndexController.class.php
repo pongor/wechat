@@ -143,6 +143,15 @@ class IndexController extends Controller {
 //            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
         sendMessage($array);
         echo $a-time();
+        /*
+        $curl = curl_init($url);
+$filename = date("Ymdhis").$i.".jpg";
+curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+$imageData = curl_exec($curl);
+curl_close($curl);
+$tp = @fopen($filename, 'a');
+fwrite($tp, $imageData);
+fclose($tp)*/
     }
 
 }
