@@ -165,7 +165,7 @@ function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
 }
 //将用户头像生成圆角图片
 function get_lt_rounder_corner($file_path,$openid) {
-    $image_file = getcwd().'/'.$file_path;die;
+    $image_file = getcwd().'/'.$file_path;
     $thumb = new \Think\Image();
     $thumb->open($image_file);
     $thumbTemp = './img/temp/';

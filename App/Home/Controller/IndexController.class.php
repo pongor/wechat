@@ -112,8 +112,7 @@ class IndexController extends Controller {
 
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $result['openid']); //圆角头像
-            var_dump($headimg);
-                die;
+
            echo $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$result['nickname']);
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
@@ -121,7 +120,7 @@ class IndexController extends Controller {
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
-
+            echo $file_data['filename'];
 
            $media_id = add_material($file_data);
         }
