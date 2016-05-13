@@ -4,6 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 
     public function index(){
+
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -15,30 +16,7 @@ class IndexController extends Controller {
             $keyword = trim($postObj->Content);
             $msgType = $postObj->MsgType;
             $time = time();
-            $user = getUser($fromUsername); // 获取用户信息
 
-            $model = D('member');
-            $result = $model->getUser(array('openid'=>$user['openid']));
-            $data = [
-                'nickname'      =>  $user['nickname'],
-                'headimgurl'    =>  $user['headimgurl'],
-                'openid'        =>  $user['openid'],
-                'sex'           =>  $user['sex'],
-                'province'      =>  $user['province'],
-                'city'          =>   $user['city'],
-                'country'       =>  $user['country'],
-                'subscribe_time' => $user['subscribe_time'],
-                'privilege'     =>  $user['privilege'],
-                'remark'        =>   $user['remark'],
-
-            ];
-            if($result){
-                $model->getUpdate('id='.$result['id'],$data);
-                $user_id = $result['id'];
-            }else{
-                $data['at_time']  = time();
-                $user_id = $model->insert($data);
-            }
             $textTpl = msgText();
             if($msgType == 'text'){
 
@@ -48,11 +26,7 @@ class IndexController extends Controller {
                 }else{
 
                   //  $contentStr = 'https://www.baidu.com/img/bd_logo1.png';
-//                    $file_data = array(
-//                        'filename'=>__APP__.'/images/1.png',  //国片相对于网站根目录的路径
-//                        'content-type'=>'image/png',  //文件类型
-//                        'filelength'=>'11011'         //图文大小
-//                    );
+
 //                   $a = add_material($file_data);
 //                    open(json_encode($a));
                     $contentStr ="欢迎回来！！！";
@@ -69,11 +43,12 @@ class IndexController extends Controller {
 
                         break;
                     default:
-
+                        $contentStr ="事件";
                         break;
                 }
 
             }
+            $contentStr =@$postObj->Event ? $postObj->Event :'sdhoshohsduohsdo';
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;
             _curl($fromUsername);
@@ -87,12 +62,70 @@ class IndexController extends Controller {
      */
     public function sendMessage(){
         $openid = I('get.openid');
+
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
+        $user = getUser($openid); // 获取用户信息
+
+        $model = D('member');
+        $result = $model->getUser(array('openid'=>$user['openid']));
+        $data = [
+            'nickname'      =>  $user['nickname'],
+            'headimgurl'    =>  $user['headimgurl'],
+            'openid'        =>  $user['openid'],
+            'sex'           =>  $user['sex'],
+            'province'      =>  $user['province'],
+            'city'          =>   $user['city'],
+            'country'       =>  $user['country'],
+            'subscribe_time' => $user['subscribe_time'],
+            'privilege'     =>  $user['privilege'],
+            'remark'        =>   $user['remark'],
+        ];
+        if($result){ //如果用户存在
+            $model->getUpdate('id='.$result['id'],$data);
+            $user_id = $result['id'];
+            //拿到分享图片
+
+            // 是否素材是否过期
+
+            //上传微信素材 有效期三天
+
+
+
+        }else{
+            $data['at_time']  = time();
+            $user_id = $model->insert($data);  //是新用户.
+            //拿到二维码
+            $array = array(
+                'action_info' => array(
+                    'scene' => array(
+                        'scene_str' => $user_id
+                    ),
+                ),
+            );
+            $codeUrl = getCode($array);
+            $file_code = saveCode($codeUrl,$user_id); // 二维码图片路径
+            //下载用户头像
+            $headimg = dowload($data['headimgurl'].'.jpg');
+            //生成分享图片
+            $headimg = get_lt_rounder_corner(getcwd().'/'.$headimg,$data['openid']); //圆角头像
+           $fiel =  imgTo('./img/807893500556499641.png',$headimg,$data['nickname']);
+            //上传微信素材服务器  获取素材media_id
+            $file_data = array(
+                'filename'=>__APP__.$fiel,  //国片相对于网站根目录的路径
+                'content-type'=>'image/png',  //文件类型
+                'filelength'=>'11011'         //图文大小
+            );
+           $media_id = add_material($file_data);
+        }
+
+        //获取活动要推送给用户的信息.
+
+
             $array = array(
                     'touser'    =>  $openid,
                     'msgtype'   =>  'image',
                     'image'     =>  array(
-                        "media_id"  =>  'ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4'
+                        "media_id"  => $media_id
                     ),
 
             );
@@ -102,4 +135,5 @@ class IndexController extends Controller {
 //            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
         sendMessage($array);
     }
+
 }

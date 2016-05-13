@@ -295,7 +295,7 @@ class Gd{
      * @param  integer $locate 水印位置
      * @param  integer $alpha  水印透明度
      */
-    public function water($source, $locate = Image::IMAGE_WATER_SOUTHEAST,$alpha=80){
+    public function water($source, $locate = Image::IMAGE_WATER_SOUTHEAST,$alpha=80,$margin=0,$next=0){
         //资源检测
         if(empty($this->img)) E('没有可以被添加水印的图像资源');
         if(!is_file($source)) E('水印图像不存在');
@@ -359,7 +359,7 @@ class Gd{
             /* 上居中水印 */
             case Image::IMAGE_WATER_NORTH:
                 $x = ($this->info['width'] - $info[0])/2;
-                $y = 15;
+                $y = 0;
                 break;
 
             /* 左居中水印 */
@@ -367,6 +367,17 @@ class Gd{
                 $x = 0;
                 $y = ($this->info['height'] - $info[1])/2;
                 break;
+            /* 居中水印 与上距离*/
+                case Image::IMAGE_WATER_MARGIN:
+                     $x = ($this->info['width'] - $info[0])/2;
+                     $y = $margin;
+                break;
+            /*二维码图片 左下角*/
+                     case Image::IMAGE_WATER_CODE:
+                       $x = $margin;
+                     $y = $this->info['height'] - $info[1]-$next;
+                break;
+                     break;
 
             default:
                 /* 自定义水印坐标 */
@@ -407,7 +418,7 @@ class Gd{
      * @param  integer $angle  文字倾斜角度
      */
     public function text($text, $font, $size, $color = '#00000000', 
-        $locate = Image::IMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0){
+        $locate = Image::IMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0,$margin=0){
         //资源检测
         if(empty($this->img)) E('没有可以被写入文字的图像资源');
         if(!is_file($font)) E("不存在的字体文件：{$font}");
@@ -424,7 +435,6 @@ class Gd{
         $y = abs($miny);
         $w = $maxx - $minx;
         $h = $maxy - $miny;
-
         /* 设定文字位置 */
         switch ($locate) {
             /* 右下角文字 */
@@ -475,7 +485,11 @@ class Gd{
             case Image::IMAGE_WATER_WEST:
                 $y += ($this->info['height'] - $h)/2;
                 break;
-
+            /*上居中文字 距离*/
+                case Image::IMAGE_WATER_MARGIN:
+                 $x += ($this->info['width'] - $w)/2;
+                  $y += $margin;
+                break;
             default:
                 /* 自定义文字坐标 */
                 if(is_array($locate)){

@@ -41,6 +41,9 @@ class Image{
     const IMAGE_WATER_SOUTHWEST =   7 ; //常量，标识左下角水印
     const IMAGE_WATER_SOUTH     =   8 ; //常量，标识下居中水印
     const IMAGE_WATER_SOUTHEAST =   9 ; //常量，标识右下角水印
+    const IMAGE_WATER_MARGIN    =   10; //常量 居中居上像素距离
+    const IMAGE_WATER_CODE    =   11; //常量 居中居上像素距离
+
 
     /**
      * 图片资源
@@ -165,10 +168,11 @@ class Image{
      * @param  string  $source 水印图片路径
      * @param  integer $locate 水印位置
      * @param  integer $alpha  水印透明度
+     * @param  integer $margin  水印居上位置
      * @return Object          当前图片处理库对象
      */
-    public function water($source, $locate = self::IMAGE_WATER_SOUTHEAST,$alpha=80){
-        $this->img->water($source, $locate,$alpha);
+    public function water($source, $locate = self::IMAGE_WATER_SOUTHEAST,$alpha=80,$margin=0,$next=0){
+        $this->img->water($source, $locate,$alpha,$margin,$next);
         return $this;
     }
 
@@ -184,8 +188,9 @@ class Image{
      * @return Object          当前图片处理库对象
      */
     public function text($text, $font, $size, $color = '#00000000', 
-        $locate = self::IMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0){
-        $this->img->text($text, $font, $size, $color, $locate, $offset, $angle);
+        $locate = self::IMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0,$margin){
+
+        $this->img->text($text, $font, $size, $color, $locate, $offset, $angle,$margin);
         return $this;
     }
 }

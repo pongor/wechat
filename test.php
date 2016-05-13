@@ -1,6 +1,6 @@
 
 <?php
-
+dowload('http://wx.qlogo.cn/mmopen/Bjh2PsrktErO2MjibnBKee7dicJ2ibUibXEbPdW8oG9nfcPaEVjbUw8WA5UlVxMtCpYCHFMBdsTuJDDNotVyXWgCxfCEutia1jHYn/0.jpg');
 die('33');
 $corner_radius =  252; // The default corner radius is set to 20px
 
