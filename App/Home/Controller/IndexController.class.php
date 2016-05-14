@@ -176,12 +176,11 @@ class IndexController extends Controller {
         $array = '{
                     "touser":"'.$openid.'",
                     "msgtype":"image",
-                    "text":
+                    "image":
                     {
                          "media_id":"'.$media_id.'"
                     }
                 }';
-        echo $array;
         sendMessage($array);
     }
     //用户支持用户扫码事件
