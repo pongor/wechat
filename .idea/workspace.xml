@@ -3,10 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="1819c1a8-c02d-4558-86d8-caa51b7e85f2" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/App/Home/Model/MenberModel.class.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/0 - 副本.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/0.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/1.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/132.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/1_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/20160513182956.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/20160513183016.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/20160514104216.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/411.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/475595801819567647.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/863.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/8888.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/96.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo1.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo1.png" afterPath="" />
@@ -15,6 +24,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo4.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo5.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.php" afterPath="$PROJECT_DIR$/test.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +49,8 @@
       <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+            <state relative-caret-position="206">
+              <caret line="65" column="176" selection-start-line="65" selection-start-column="176" selection-end-line="65" selection-end-column="176" />
               <folding />
             </state>
           </provider>
@@ -50,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
-              <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -144,8 +154,8 @@
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Image.class.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Image/Driver/Gd.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Conf/config.php" />
-        <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
+        <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
       </list>
     </option>
@@ -535,12 +545,12 @@
       <workItem from="1463018600890" duration="17998000" />
       <workItem from="1463104875706" duration="13999000" />
       <workItem from="1463130111731" duration="8197000" />
-      <workItem from="1463192610546" duration="1115000" />
+      <workItem from="1463192610546" duration="1827000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112482000" />
+    <option name="totallyTimeSpent" value="113194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -844,6 +854,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="907" column="9" selection-start-line="907" selection-start-column="9" selection-end-line="907" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -924,14 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -944,10 +947,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+        <state relative-caret-position="206">
+          <caret line="65" column="176" selection-start-line="65" selection-start-column="176" selection-end-line="65" selection-end-column="176" />
           <folding />
         </state>
       </provider>
