@@ -225,7 +225,9 @@ function getCode($action_info=array(),$expire_seconds=259200,$action_name='QR_SC
     $post = json_encode($action_info);
     $result = httpPost($ticket_url,$post);
     $array = json_decode($result,true);
+    var_dump($array);
     if(isset($array['errcode'])){
+
         S('access_token',null);
     }
     return  C('CODE_IMG')."?ticket=".urlencode($array['ticket']);
