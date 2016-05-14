@@ -83,6 +83,8 @@ class IndexController extends Controller {
             'privilege'     =>  $user['privilege'],
             'remark'        =>   $user['remark'],
         ];
+        var_dump($result);
+        die;
         if(!$result){ //如果用户存在
           //  $model->getUpdate('id='.$result['id'],$data);
             //$user_id = $result['id'];
@@ -95,6 +97,7 @@ class IndexController extends Controller {
 
 
         }else{
+
             $data['at_time']  = time();
           //  $user_id = $model->insert($data);  //是新用户.
             //拿到二维码
@@ -105,8 +108,7 @@ class IndexController extends Controller {
                     ),
                 ),
             );
-            die;
-          echo  $codeUrl = getCode($array);
+            $codeUrl = getCode($array);
             $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
 
             //下载用户头像
