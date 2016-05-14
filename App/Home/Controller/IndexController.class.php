@@ -128,7 +128,7 @@ class IndexController extends Controller {
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
             
-            $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$data['nickname']);
+            echo $fiel =  imgTo('/img/807893500556499641.png',$headimg,$file_code,$data['nickname']);
 
            $fiel =  ltrim($fiel,'.');
             //上传微信素材服务器  获取素材media_id

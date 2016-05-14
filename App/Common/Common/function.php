@@ -141,8 +141,8 @@ function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
 
 
     $image = new \Think\Image();
-    echo getcwd().'/'.$tplImg;die;
-    $image->open(getcwd().'/'.$tplImg);//->water('./img/bd_logo1.jpg',\Think\Image::IMAGE_WATER_NORTHWEST)->save(__APP__."/wechat/water.jpg");
+
+    $image->open(getcwd().$tplImg);//->water('./img/bd_logo1.jpg',\Think\Image::IMAGE_WATER_NORTHWEST)->save(__APP__."/wechat/water.jpg");
     $head = new \Think\Image();
 
     $head->open(getcwd().'/'.$headImg);
