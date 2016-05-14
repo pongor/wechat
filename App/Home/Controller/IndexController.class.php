@@ -119,7 +119,7 @@ class IndexController extends Controller {
                 ),
             );
             $codeUrl = getCode($array);
-            $file_code = saveCode($codeUrl, $data['id']); // 二维码图片路径
+            $file_code = saveCode($codeUrl, 100); // 二维码图片路径
         echo $file_code;
             //下载用户头像
             $headimg = dowload($data['headimgurl'].'.jpg');
