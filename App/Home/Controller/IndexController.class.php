@@ -26,12 +26,14 @@ class IndexController extends Controller {
 
                     $contentStr = '感谢关注留学独立说';
                 }else{
+                    $model = D('activity');
+                    $res = $model->getFind(array('back_keyword'=>array('like'=>$keyword),'start_time'=>array('LT'=>time()),'end_time'=>array('GT'=>time())));
+                    if($res){
+                        $contentStr ="{$res['title']}".$keyword;
+                    }else{
+                        $contentStr ="没有活动！！！".$keyword;
+                    }
 
-                  //  $contentStr = 'https://www.baidu.com/img/bd_logo1.png';
-
-//                   $a = add_material($file_data);
-//                    open(json_encode($a));
-                    $contentStr ="欢迎回来！！！".$keyword;
                 }
 
             }elseif ($msgType == 'image'){
