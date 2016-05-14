@@ -172,14 +172,14 @@ class IndexController extends Controller {
             }
         }
         //推送给用户的信息.
-            $array = array(
-                    'touser'    =>  $openid,
-                    'msgtype'   =>  'image',
-                    'image'     =>  array(
-                        "media_id"  => $media_id
-                    ),
-
-            );
+        $array = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"image",
+                    "text":
+                    {
+                         "media_id":"'.$media_id.'"
+                    }
+                }';
         sendMessage($array);
     }
     //用户支持用户扫码事件
