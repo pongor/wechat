@@ -63,7 +63,7 @@ class IndexController extends Controller {
 
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;
-            //_curl($fromUsername);
+            _curl($fromUsername,$res['id']);
             die;
         }else{
             exit();
@@ -73,9 +73,8 @@ class IndexController extends Controller {
      D:/web/wechat/img/2531170_213554844000_2.jpgarray(3) { ["type"]=> string(5) "image" ["media_id"]=> string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4" ["created_at"]=> int(1462937403) } string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4"
      */
     public function sendMessage(){
-        $a = time();
         $openid = I('get.openid');
-
+        $id = intval(I('get.id'));
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
 
@@ -94,27 +93,24 @@ class IndexController extends Controller {
             'remark'        =>   $user['remark'],
         ];
 
-        if(1==1){ //如果用户存在
-//            $model->getUpdate('id='.$result['id'],$data);
-//            $user_id = $result['id'];
+        if($result){ //如果用户存在
+            $model->getUpdate('id='.$result['id'],$data);
+            $share = D('share');
+            $share_info = $share->getInfo('user_id='.$result['id'].' and a_id='.$id);
+            $user_id = $result['id'];
             //拿到分享图片
-
-
-            // 是否素材是否过期
-
-            //上传微信素材 有效期三天
-
-
-
-    ///    }else{
-
+            if(($share_info['up_time'] + 3*24*60*60) < time() && $share_info['share']){  //素材过期  重新上传
+                $media_id = add_material(array('filename'=>__APP__.ltrim($share_info['share'],'.'), 'content-type'=>'image/png','filelength'=>'11011')); //上传素材
+                $share->getUpdate('id='.$share_info['id'],array('media_id'=>$share_info['media_id'],'up_time'=>time())); //更新用户活动数据
+            }
+        }else{
             $data['at_time']  = time();
-          //  $user_id = $model->insert($data);  //是新用户.
-            //拿到二维码
+            $user_id = $model->insert($data);  //是新用户.
+            //生成二维码图片ca
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_id' => 192000000000010
+                        'scene_id' => $id
                     ),
                 ),
             );
@@ -128,20 +124,46 @@ class IndexController extends Controller {
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
             
-            echo $fiel =  imgTo('/img/tpl.png',$headimg,$file_code,$data['nickname']);
+            $fiel =  imgTo('/img/tpl.png',$headimg,$file_code,$data['nickname']);
 
            $fiel =  ltrim($fiel,'.');
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
-                'filename'=>__APP__.$fiel,'.',  //国片相对于网站根目录的路径
+                'filename'=>__APP__.$fiel,  //国片相对于网站根目录的路径
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
            $media_id = add_material($file_data);
         }
-
-        //获取活动要推送给用户的信息.
-
+        $share = D('share');
+        //保存用户分享信息
+        $share_data = array(
+            'user_id' => $user_id,
+            'a_id'      =>  $id,
+            'share'     =>  $fiel,
+            'up_time'   =>  time(),
+            'at_time'   =>  time(),
+            'media_id'  =>  $media_id,
+            'number'    =>  0
+        );
+        $share->Insert($share_data);
+        $activity = D('activity');
+        $a_info = $activity->getInfo('id='.$id);
+        if($a_info['text_content']){
+            $array = explode('||',$a_info['text_content']);
+            //发送用户参加活动的信息
+            for($i=0;$i<count($array);$i++){
+                $msgArray = array(
+                    'touser' => $openid,
+                    'msgtype'=> 'text',
+                    'text'   => array('content'=>$array[$i]),
+                );
+                if(isset($array[$i]) && $array[$i]){
+                    sendMessage($msgArray);
+                }
+            }
+        }
+        //推送给用户的信息.
             $array = array(
                     'touser'    =>  $openid,
                     'msgtype'   =>  'image',
@@ -150,13 +172,19 @@ class IndexController extends Controller {
                     ),
 
             );
-//            $contentStr="这是发送<a href='https://www.baidu.com'/>内容</a>";
-//            $contentStr=urlencode($contentStr);
-//            $a=array("content"=>"{$contentStr}");
-//            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
         sendMessage($array);
-        echo $a-time();
-
     }
-
+    //用户支持用户扫码事件
+    public static function support($id,$openid){
+        if($id <= 0) {
+            return false;
+        }
+        $share = D('share');
+        $share_info = $share->getInfo('id='.$id);
+        if(!$share_info) {
+            return false;
+        }
+        $aid = $share_info['a_id'];
+        
+    }
 }

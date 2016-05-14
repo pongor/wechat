@@ -106,9 +106,9 @@ function add_material($file_info){
     }
 }
 //异步通知
-function _curl($openid) {
+function _curl($openid,$id) {
     $url = 'http://wechat.dulishuo.com';
-    $url .=  U('Index/sendMessage',array('openid'=>$openid));
+    $url .=  U('Index/sendMessage',array('openid'=>$openid,'id'=>$id));
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL,$url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
@@ -141,7 +141,7 @@ function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
 
 
     $image = new \Think\Image();
-    var_dump($image->open(getcwd().$tplImg));
+    $image->open(getcwd().$tplImg);
 
     $head = new \Think\Image();
 
