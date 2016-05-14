@@ -52,6 +52,7 @@ class IndexController extends Controller {
                         break;
                     case 'SCAN':   //用户已关注 扫描事件
                         $contentStr = $postObj->EventKey .'扫描';
+
                         break;
                     default:
                         $contentStr = '';
@@ -93,9 +94,9 @@ class IndexController extends Controller {
             'remark'        =>   $user['remark'],
         ];
 
-        if(!$result){ //如果用户存在
-            $model->getUpdate('id='.$result['id'],$data);
-            $user_id = $result['id'];
+        if(1==1){ //如果用户存在
+//            $model->getUpdate('id='.$result['id'],$data);
+//            $user_id = $result['id'];
             //拿到分享图片
 
 
@@ -105,7 +106,7 @@ class IndexController extends Controller {
 
 
 
-        }else{
+    ///    }else{
 
             $data['at_time']  = time();
           //  $user_id = $model->insert($data);  //是新用户.
@@ -113,20 +114,20 @@ class IndexController extends Controller {
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_str' => $result['id']
+                        'scene_str' => $data['id']
                     ),
                 ),
             );
             $codeUrl = getCode($array);
-            $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
+            $file_code = saveCode($codeUrl, $data['id']); // 二维码图片路径
 
             //下载用户头像
-            $headimg = dowload($result['headimgurl'].'.jpg');
+            $headimg = dowload($data['headimgurl'].'.jpg');
 
             //生成分享图片
-           $headimg = get_lt_rounder_corner($headimg, $result['openid']); //圆角头像
+           $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
 
-           $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$result['nickname']);
+           $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$data['nickname']);
            $fiel =  ltrim($fiel,'.');
             //上传微信素材服务器  获取素材media_id
             $file_data = array(

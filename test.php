@@ -1,7 +1,12 @@
 
 <?php
-copy('http://wx.qlogo.cn/mmopen/Bjh2PsrktErO2MjibnBKee7dicJ2ibUibXEbPdW8oG9nfcPaEVjbUw8WA5UlVxMtCpYCHFMBdsTuJDDNotVyXWgCxfCEutia1jHYn/0.jpg','./img/assss.jpg');
-die('33');
+
+$a = strrev('50000000000000008550000');
+$b = explode('000000000',$a);
+var_dump($b);
+echo strlen($a);
+var_dump(strrev($b[1]));
+die('');
 $corner_radius =  252; // The default corner radius is set to 20px
 
 $topleft = true; // Top-left rounded corner is shown by default
