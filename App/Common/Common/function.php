@@ -138,12 +138,14 @@ function getUser($openid){
  * @param  str  用户昵称
  */
 function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
+
+    echo $tplImg.'<br>'.$headImg.'<br>'.$codeImg;die;
     $image = new \Think\Image();
 
     $image->open(getcwd().'/'.$tplImg);//->water('./img/bd_logo1.jpg',\Think\Image::IMAGE_WATER_NORTHWEST)->save(__APP__."/wechat/water.jpg");
     $head = new \Think\Image();
     $head->open(getcwd().'/'.$headImg);
-        die;
+      
     $image->water(getcwd().'/'.$headImg,\Think\Image::IMAGE_WATER_MARGIN,100,C('IMG_height')); //水印用户头像
     $height = $head->height()+C('IMG_height')+C('IMG_NAME_HEIGHT'); // 字符串据上的距离
 
