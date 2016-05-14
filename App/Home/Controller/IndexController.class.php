@@ -35,18 +35,19 @@ class IndexController extends Controller {
                         $contentStr ="{$res['title']}".$keyword;
                     }else{
                         $contentStr ="没有活动！！！".$keyword;
+                        die(' ');
                     }
-
                 }
-
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
                 $MediaId = $postObj->MediaId;
                 $contentStr = '图片';
+                die(' ');
 
             }elseif ($msgType == 'event'){
                 switch ($postObj->Event){
-                    case 'subscribe':
+                    case 'subscribe':   //扫描待参数的二维码
+                           $contentStr = $postObj->EventKey .'扫描';
 
                         break;
                     default:
