@@ -50,8 +50,11 @@ class IndexController extends Controller {
                            $contentStr = $postObj->EventKey .'扫描';
 
                         break;
+                    case 'SCAN':   //用户已关注 扫描事件
+                        $contentStr = $postObj->EventKey .'扫描';
+                        break;
                     default:
-                        $contentStr =$postObj->Event."事件";
+                        $contentStr = '';
                         break;
                 }
 
