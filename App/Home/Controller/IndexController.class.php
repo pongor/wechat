@@ -71,6 +71,8 @@ class IndexController extends Controller {
 
         $model = D('member');
         $result = $model->getUser(array('openid'=>$user['openid']));
+        var_dump(dowload($result['headimgurl'].'.jpg'));
+        die;
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
