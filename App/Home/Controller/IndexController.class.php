@@ -123,7 +123,7 @@ class IndexController extends Controller {
             $file_code = codeImg($codeUrl,152);//saveCode($codeUrl, 100); // 二维码图片路径
 
             //下载用户头像
-            $headimg = dowload($data['headimgurl'].'.jpg');
+            $headimg = downloadFile($data['headimgurl'].'.jpg');
 
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像

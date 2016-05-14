@@ -212,10 +212,10 @@ function downloadFile($url,$savePath='./img')
     fclose($tp);
     return $filename;
     die;
-    $fileName = rand(0,1000).'.jpg';
-    $file = file_get_contents($url);
-    file_put_contents($savePath.'/'.$fileName,$file);
-    return $fileName;
+//    $fileName = rand(0,1000).'.jpg';
+//    $file = file_get_contents($url);
+//    file_put_contents($savePath.'/'.$fileName,$file);
+//    return $fileName;
 }
 //创建二维码tichet  并返回获取二维码图片的url
 function getCode($action_info=array(),$expire_seconds=259200,$action_name='QR_SCENE'){
