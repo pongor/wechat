@@ -221,11 +221,11 @@ function downloadFile($url,$savePath='./img')
 function getCode($action_info=array(),$expire_seconds=259200,$action_name='QR_SCENE'){
     $action_info['expire_seconds'] = $expire_seconds; // 有效期
     $action_info['action_name'] = $action_name; // 临时 ticket
-     $ticket_url = C('CODE_ticket').'?access_token='.access_token();
+     $ticket_url = C('CODE_ticket').'?access_token='.access_token();die;
     $post = json_encode($action_info);
     $result = httpPost($ticket_url,$post);
     $array = json_decode($result,true);
-    var_dump($array);
+
     if(isset($array['errcode'])){
 
         S('access_token',null);
