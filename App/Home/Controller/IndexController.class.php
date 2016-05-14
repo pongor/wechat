@@ -68,7 +68,7 @@ class IndexController extends Controller {
 
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
-        die;
+
         $model = D('member');
         $result = $model->getUser(array('openid'=>$user['openid']));
         $data = [
@@ -107,6 +107,7 @@ class IndexController extends Controller {
             );
             $codeUrl = getCode($array);
             $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
+            die;
             //下载用户头像
             $headimg = dowload($result['headimgurl'].'.jpg');
 
