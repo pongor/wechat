@@ -108,9 +108,11 @@ class IndexController extends Controller {
         $a_info = $activity->getFind('id='.$id); //活动信息
 
         //拿到分享图片
-        if(($share_info['up_time'] + 3*24*60*60) < time() && $share_info['share']){  //素材过期  重新上传
+        if($share_info && ($share_info['up_time'] + 3*24*60*60) > time() && $share_info['share']){  //素材未过期
+            $media_id = $share_info['media_id'];
+        }else if(($share_info['up_time'] + 3*24*60*60) <= time() && $share_info['share']){  //素材过期  重新上传
             $media_id = add_material(array('filename'=>__APP__.ltrim($share_info['share'],'.'), 'content-type'=>'image/png','filelength'=>'11011')); //上传素材
-            $share->getUpdate('id='.$share_info['id'],array('media_id'=>$share_info['media_id'],'up_time'=>time())); //更新用户活动数据
+            $share->getUpdate('id='.$share_info['id'],array('media_id'=>$media_id,'up_time'=>time())); //更新用户活动数据
         }else{  //不存在信息
             //生成二维码图片ca
             $array = array(
@@ -152,7 +154,6 @@ class IndexController extends Controller {
             );
             $share->Insert($share_data);
         }
-
         if($a_info['text_content']){
             $array = explode('||',$a_info['text_content']);
             //发送用户参加活动的信息
