@@ -6,6 +6,18 @@ error_reporting(E_ALL | E_STRICT);
 class IndexController extends Controller {
 
     public function index(){
+        $model = D('activity');
+        $keyword = '剩';
+        $res = $model->getFind(array('back_keyword'=>array('like'=>$keyword),'start_time'=>array('LT'=>time()),'end_time'=>array('GT'=>time())));
+
+        if($res){
+            $contentStr ="{$res['title']}".$keyword;
+        }else{
+            $contentStr ="没有活动！！！".$keyword;
+        }
+        var_dump($res);
+        echo $model->_sql();
+        die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -54,7 +66,7 @@ class IndexController extends Controller {
 
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;
-            _curl($fromUsername);
+            //_curl($fromUsername);
             die;
         }else{
             exit();
