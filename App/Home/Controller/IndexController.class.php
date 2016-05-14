@@ -157,11 +157,15 @@ class IndexController extends Controller {
             $array = explode('||',$a_info['text_content']);
             //发送用户参加活动的信息
             for($i=0;$i<count($array);$i++){
-                $msgArray = array(
-                    'touser' => $openid,
-                    'msgtype'=> 'text',
-                    'text'   => array('content'=>$array[$i]),
-                );
+
+                $msgArray = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$array[$i].'"
+                    }
+                }';
                 if(isset($array[$i]) && $array[$i]){
                     sendMessage($msgArray);
                 }

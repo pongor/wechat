@@ -189,8 +189,8 @@ function get_lt_rounder_corner($file_path,$openid) {
 }
 //发送客服消息 array 传入消息信息
 function sendMessage($array){
-    $post=json_encode($array);
-    $post=urldecode($post);
+    //$post=json_encode($array);
+    $post=urldecode($array);
     $posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".access_token();
     $ch=curl_init();
     curl_setopt($ch,CURLOPT_URL,$posturl);//url
