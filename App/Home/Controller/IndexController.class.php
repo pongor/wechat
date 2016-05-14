@@ -105,7 +105,8 @@ class IndexController extends Controller {
                     ),
                 ),
             );
-          echo  $codeUrl = getCode($array);die;
+            die;
+          echo  $codeUrl = getCode($array);
             $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
 
             //下载用户头像
