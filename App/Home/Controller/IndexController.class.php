@@ -95,17 +95,20 @@ class IndexController extends Controller {
 
         if($result){ //如果用户存在
             $model->getUpdate('id='.$result['id'],$data);
-            $share = D('share');
-            $share_info = $share->getInfo('user_id='.$result['id'].' and a_id='.$id);
             $user_id = $result['id'];
-            //拿到分享图片
-            if(($share_info['up_time'] + 3*24*60*60) < time() && $share_info['share']){  //素材过期  重新上传
-                $media_id = add_material(array('filename'=>__APP__.ltrim($share_info['share'],'.'), 'content-type'=>'image/png','filelength'=>'11011')); //上传素材
-                $share->getUpdate('id='.$share_info['id'],array('media_id'=>$share_info['media_id'],'up_time'=>time())); //更新用户活动数据
-            }
-        }else{
-            $data['at_time']  = time();
+
+        }else {
+            $data['at_time'] = time();
             $user_id = $model->insert($data);  //是新用户.
+        }
+        $share = D('share');
+        $share_info = $share->getInfo('user_id='.$result['id'].' and a_id='.$id);
+
+        //拿到分享图片
+        if(($share_info['up_time'] + 3*24*60*60) < time() && $share_info['share']){  //素材过期  重新上传
+            $media_id = add_material(array('filename'=>__APP__.ltrim($share_info['share'],'.'), 'content-type'=>'image/png','filelength'=>'11011')); //上传素材
+            $share->getUpdate('id='.$share_info['id'],array('media_id'=>$share_info['media_id'],'up_time'=>time())); //更新用户活动数据
+        }else{  //不存在信息
             //生成二维码图片ca
             $array = array(
                 'action_info' => array(
@@ -116,37 +119,36 @@ class IndexController extends Controller {
             );
             $codeUrl = getCode($array);
 
-            $file_code = codeImg($codeUrl,152);//saveCode($codeUrl, 100); // 二维码图片路径
+            $file_code = codeImg($codeUrl,$user_id);//saveCode($codeUrl, 100); // 二维码图片路径
 
             //下载用户头像
             $headimg = downloadFile($data['headimgurl'].'.jpg');
 
             //生成分享图片
-           $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
-            
+            $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
+
             $fiel =  imgTo('/img/tpl.png',$headimg,$file_code,$data['nickname']);
 
-           $fiel =  ltrim($fiel,'.');
+            $fiel =  ltrim($fiel,'.');
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
                 'filename'=>__APP__.$fiel,  //国片相对于网站根目录的路径
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
-           $media_id = add_material($file_data);
+            $media_id = add_material($file_data);
+            //保存用户分享信息
+            $share_data = array(
+                'user_id' => $user_id,
+                'a_id'      =>  $id,
+                'share'     =>  $fiel,
+                'up_time'   =>  time(),
+                'at_time'   =>  time(),
+                'media_id'  =>  $media_id,
+                'number'    =>  0
+            );
+            $share->Insert($share_data);
         }
-        $share = D('share');
-        //保存用户分享信息
-        $share_data = array(
-            'user_id' => $user_id,
-            'a_id'      =>  $id,
-            'share'     =>  $fiel,
-            'up_time'   =>  time(),
-            'at_time'   =>  time(),
-            'media_id'  =>  $media_id,
-            'number'    =>  0
-        );
-        $share->Insert($share_data);
         $activity = D('activity');
         $a_info = $activity->getInfo('id='.$id);
         if($a_info['text_content']){
