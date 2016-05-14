@@ -230,8 +230,22 @@ function getCode($action_info=array(),$expire_seconds=259200,$action_name='QR_SC
 
         S('access_token',null);
     }
+    return $array['url'];
     return  C('CODE_IMG')."?ticket=".urlencode($array['ticket']);
 
+}
+// 生成二维码
+function codeImg($data,$user_id = 1){
+    vendor("phpqrcode.phpqrcode");
+    // 纠错级别：L、M、Q、H
+    $level = 'L';
+    // 点的大小：1到10,用于手机端4就可以了
+    $size = 6;
+    // 下面注释了把二维码图片保存到本地的代码,如果要保存图片,用$fileName替换第二个参数false
+    $path = "./img/";
+    // 生成的文件名
+     $fileName = $path.$user_id.'.png';
+    QRcode::png($data, $fileName, $level, $size);
 }
 //保存微信二维码图片 二维码图片存在则覆盖
 function saveCode($code_url,$user_id){

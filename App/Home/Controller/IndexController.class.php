@@ -120,11 +120,11 @@ class IndexController extends Controller {
             );
             echo $codeUrl = getCode($array);
 
-            $file_code = saveCode($codeUrl, 100); // 二维码图片路径
-        echo $file_code;
+            $file_code = codeImg($codeUrl,152);//saveCode($codeUrl, 100); // 二维码图片路径
+
             //下载用户头像
             $headimg = dowload($data['headimgurl'].'.jpg');
-        die;
+
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
 
