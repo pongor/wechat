@@ -77,7 +77,7 @@ class IndexController extends Controller {
         $id = intval(I('get.id')) ? intval(I('get.id')) :1;
         $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
-        
+        var_dump($user);die;
         $model = D('member');
         $result = $model->getUser(array('openid'=>$openid));
         $data = [
