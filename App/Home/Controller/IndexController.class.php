@@ -68,7 +68,7 @@ class IndexController extends Controller {
 
         $openid = $openid ;//? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
-        die;
+
         $model = D('member');
         $result = $model->getUser(array('openid'=>$user['openid']));
         $data = [
