@@ -31,7 +31,7 @@ class IndexController extends Controller {
 
 //                   $a = add_material($file_data);
 //                    open(json_encode($a));
-                    $contentStr ="欢迎回来！！！";
+                    $contentStr ="欢迎回来！！！".$keyword;
                 }
 
             }elseif ($msgType == 'image'){
@@ -83,12 +83,12 @@ class IndexController extends Controller {
             'privilege'     =>  $user['privilege'],
             'remark'        =>   $user['remark'],
         ];
-        var_dump($result);
-        die;
+
         if(!$result){ //如果用户存在
-          //  $model->getUpdate('id='.$result['id'],$data);
-            //$user_id = $result['id'];
+            $model->getUpdate('id='.$result['id'],$data);
+            $user_id = $result['id'];
             //拿到分享图片
+
 
             // 是否素材是否过期
 
@@ -118,10 +118,10 @@ class IndexController extends Controller {
            $headimg = get_lt_rounder_corner($headimg, $result['openid']); //圆角头像
 
            $fiel =  imgTo('./img/807893500556499641.png',$headimg,$file_code,$result['nickname']);
-
+           $fiel =  ltrim($fiel,'.');
             //上传微信素材服务器  获取素材media_id
             $file_data = array(
-                'filename'=>__APP__.ltrim($fiel,'.'),  //国片相对于网站根目录的路径
+                'filename'=>__APP__.$fiel,'.',  //国片相对于网站根目录的路径
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
