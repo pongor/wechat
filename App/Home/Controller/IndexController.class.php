@@ -9,7 +9,7 @@ class IndexController extends Controller {
         $model = D('activity');
         $keyword = '剩';
         $time = time();
-        $where = "back_keyword like %{$keyword}% and start_time < {$time} and end_time > {$time}";
+        $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
         $res = $model->getFind($where);
 
         if($res){
