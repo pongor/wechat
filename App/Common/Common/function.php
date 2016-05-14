@@ -141,7 +141,6 @@ function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
 
 
     $image = new \Think\Image();
-    echo getcwd().$tplImg;
     var_dump($image->open(getcwd().$tplImg));
 
     $head = new \Think\Image();

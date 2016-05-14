@@ -23,7 +23,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo3.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo4.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo5.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/Common/function.php" afterPath="$PROJECT_DIR$/App/Common/Common/function.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,10 +45,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="363">
               <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding />
             </state>
@@ -85,15 +85,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="function.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="143" column="26" selection-start-line="143" selection-start-column="26" selection-end-line="143" selection-end-column="26" />
+            <state relative-caret-position="271">
+              <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
               <folding>
-                <marker date="1463211494862" expanded="true" signature="1108:1397" placeholder="..." />
-                <marker date="1463211494862" expanded="true" signature="1447:1683" placeholder="..." />
-                <marker date="1463211494862" expanded="true" signature="1621:1672" placeholder="..." />
+                <marker date="1463211723033" expanded="true" signature="1108:1397" placeholder="..." />
+                <marker date="1463211723033" expanded="true" signature="1447:1683" placeholder="..." />
+                <marker date="1463211723033" expanded="true" signature="1621:1672" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -164,8 +164,8 @@
         <option value="$PROJECT_DIR$/App/Home/Model/ActivityModel.Model.php" />
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Vendor/phpqrcode/qrimage.php" />
-        <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
       </list>
     </option>
   </component>
@@ -554,12 +554,12 @@
       <workItem from="1463018600890" duration="17998000" />
       <workItem from="1463104875706" duration="13999000" />
       <workItem from="1463130111731" duration="8197000" />
-      <workItem from="1463192610546" duration="12401000" />
+      <workItem from="1463192610546" duration="12456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123768000" />
+    <option name="totallyTimeSpent" value="123823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -652,9 +652,9 @@
         <state relative-caret-position="513">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <marker date="1463211494862" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463211494862" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463211494862" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -686,9 +686,9 @@
         <state relative-caret-position="285">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="23" />
           <folding>
-            <marker date="1463211494862" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463211494862" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463211494862" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -960,23 +960,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+    <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="143" column="26" selection-start-line="143" selection-start-column="26" selection-end-line="143" selection-end-column="26" />
-          <folding>
-            <marker date="1463211494862" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463211494862" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463211494862" expanded="true" signature="1621:1672" placeholder="..." />
-          </folding>
+        <state relative-caret-position="363">
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="271">
+          <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+          <folding>
+            <marker date="1463211723033" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463211723033" expanded="true" signature="1621:1672" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
