@@ -6,20 +6,7 @@ error_reporting(E_ALL | E_STRICT);
 class IndexController extends Controller {
 
     public function index(){
-        $model = D('activity');
-        $keyword = '剩';
-        $time = time();
-        $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
-        $res = $model->getFind($where);
 
-        if($res){
-            $contentStr ="{$res['title']}".$keyword;
-        }else{
-            $contentStr ="没有活动！！！".$keyword;
-        }
-        var_dump($res);
-        echo $model->_sql();
-        die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -40,7 +27,10 @@ class IndexController extends Controller {
                     $contentStr = '感谢关注留学独立说';
                 }else{
                     $model = D('activity');
-                    $res = $model->getFind(array('back_keyword'=>array('like'=>$keyword),'start_time'=>array('LT'=>time()),'end_time'=>array('GT'=>time())));
+                    $time = time();
+                    $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
+                    $res = $model->getFind($where);
+
                     if($res){
                         $contentStr ="{$res['title']}".$keyword;
                     }else{
