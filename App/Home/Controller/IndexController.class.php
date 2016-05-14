@@ -104,6 +104,9 @@ class IndexController extends Controller {
         $share = D('share');
         $share_info = $share->getInfo('user_id='.$result['id'].' and a_id='.$id);
 
+        $activity = D('activity');
+        $a_info = $activity->getInfo('id='.$id); //活动信息
+
         //拿到分享图片
         if(($share_info['up_time'] + 3*24*60*60) < time() && $share_info['share']){  //素材过期  重新上传
             $media_id = add_material(array('filename'=>__APP__.ltrim($share_info['share'],'.'), 'content-type'=>'image/png','filelength'=>'11011')); //上传素材
@@ -127,7 +130,7 @@ class IndexController extends Controller {
             //生成分享图片
             $headimg = get_lt_rounder_corner($headimg, $data['openid']); //圆角头像
 
-            $fiel =  imgTo('/img/tpl.png',$headimg,$file_code,$data['nickname']);
+            $fiel =  imgTo($a_info['back_pic'],$headimg,$file_code,$data['nickname']);
 
             $fiel =  ltrim($fiel,'.');
             //上传微信素材服务器  获取素材media_id
@@ -149,8 +152,7 @@ class IndexController extends Controller {
             );
             $share->Insert($share_data);
         }
-        $activity = D('activity');
-        $a_info = $activity->getInfo('id='.$id);
+
         if($a_info['text_content']){
             $array = explode('||',$a_info['text_content']);
             //发送用户参加活动的信息
