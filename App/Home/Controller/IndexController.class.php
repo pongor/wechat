@@ -6,6 +6,7 @@ error_reporting(E_ALL | E_STRICT);
 class IndexController extends Controller {
 
     public function index(){
+        //OPENTM207685059
 
         if(checkSignature()){
             echo $_GET['echostr'];
@@ -60,7 +61,6 @@ class IndexController extends Controller {
                 }
 
             }
-
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;
             _curl($fromUsername,$res['id']);
@@ -77,9 +77,9 @@ class IndexController extends Controller {
         $id = intval(I('get.id')) ? intval(I('get.id')) :1;
         $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
-
+        
         $model = D('member');
-        $result = $model->getUser(array('openid'=>$user['openid']));
+        $result = $model->getUser(array('openid'=>$openid));
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
@@ -118,7 +118,7 @@ class IndexController extends Controller {
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_id' => $id
+                        'scene_id' => $share_info['id']
                     ),
                 ),
             );
@@ -189,11 +189,109 @@ class IndexController extends Controller {
             return false;
         }
         $share = D('share');
-        $share_info = $share->getInfo('id='.$id);
+        $share_info = $share->getInfo('id='.$id);  //用户分享详情
         if(!$share_info) {
             return false;
         }
-        $aid = $share_info['a_id'];
+        $aid = $share_info['a_id'];  //活动ud
+        $a_user_id = $share_info['user_id']; //被支持的用户
+        $model = D('member');
+        $user_info = $model->getInfo(array('openid'=>$openid)); //支持用户的详情
+        $a_user_info =$model->getInfo(array('id'=>$a_user_id)); //被支持着
+        if(!$user_info) { //如果用户信息不存在
+            $user = getUser($openid);
+            $data = [
+                'nickname'      =>  $user['nickname'],
+                'headimgurl'    =>  $user['headimgurl'],
+                'openid'        =>  $user['openid'],
+                'sex'           =>  $user['sex'],
+                'province'      =>  $user['province'],
+                'city'          =>   $user['city'],
+                'country'       =>  $user['country'],
+                'subscribe_time' => $user['subscribe_time'],
+                'privilege'     =>  $user['privilege'],
+                'remark'        =>   $user['remark'],
+                'at_time'       =>  time()
+            ];
+            $user_id = $model->Insert($data); //保存新用户信息
+        }
+        $activity = D('activity');
+        $a_info = $activity->getInfo(array('id'=>$aid));
+        if(!$a_info){
+            return false;
+        }
+        $support = D('support');  //支持model
+        $res = $support->getInfo(array('user_id'=>$a_user_id,'a_id'=>$aid,'s_user_id'=>$user_id));
+        if($res){ //用户已经支持过了  回复用户错误信息
+            $msgArray = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['re_invite_content'].'"
+                    }
+                }';
+            sendMessage($msgArray);return ;
+        }else{  //用户为支持过
+            $s_data = array(
+                'user_id' => $a_user_id,
+                'a_id'      =>  $aid,
+                's_user_id' => $user_id,
+                'at_time'   =>  time()
+            );
+            $support->Insert($s_data); //保存支持信息
+            $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number');
+           $number = $share_info['number']+1;
+            if($number >= $a_info['success_condition']){
+                //succ_content
+                $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['succ_content'].'"
+                    }
+                }';
+                sendMessage($msgArray); //达到条件
+            }else{
+               // continue_content
+                $msgArray = ' {
+           "touser":"'.$a_user_info['openid'].'",
+           "template_id":"lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q",
+           "url":"'.$a_info['invite_url'].'",            
+           "data":{
+                   "first": {
+                       "value":"恭喜你购买成功！",
+                       "color":"#173177"
+                   },
+                   "keynote1":{
+                       "value":"巧克力",
+                       "color":"#173177"
+                   },
+                   "keynote2": {
+                       "value":"39.8元",
+                       "color":"#173177"
+                   },
+                   "remark":{
+                       "value":"欢迎再次购买！",
+                       "color":"#173177"
+                   }
+           }
+       }';
+                $template_url = C('template').'?access_token='.access_token();
+                httpPost($template_url,urlencode($msgArray));
+                //额外通知信息
+                $msgArray = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['succ_content'].'"
+                    }
+                }';
+                sendMessage($msgArray); //达到条件
+            }
+        }
 
     }
 }
