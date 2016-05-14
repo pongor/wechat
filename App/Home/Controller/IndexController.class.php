@@ -114,7 +114,7 @@ class IndexController extends Controller {
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_str' => $data['id']
+                        'scene_str' => 19200000000001
                     ),
                 ),
             );
