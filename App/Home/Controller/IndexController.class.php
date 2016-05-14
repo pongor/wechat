@@ -63,6 +63,8 @@ class IndexController extends Controller {
      D:/web/wechat/img/2531170_213554844000_2.jpgarray(3) { ["type"]=> string(5) "image" ["media_id"]=> string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4" ["created_at"]=> int(1462937403) } string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4"
      */
     public function sendMessage(){
+        var_dump(dowload('http://wx.qlogo.cn/mmopen/Bjh2PsrktErO2MjibnBKee7dicJ2ibUibXEbPdW8oG9nfcPaEVjbUw8WA5UlVxMtCpYCHFMBdsTuJDDNotVyXWgCxfCEutia1jHYn/0'.'.jpg'));
+        die;
         $a = time();
         $openid = I('get.openid');
 
@@ -71,8 +73,7 @@ class IndexController extends Controller {
 
         $model = D('member');
         $result = $model->getUser(array('openid'=>$user['openid']));
-        var_dump(dowload($result['headimgurl'].'.jpg'));
-        die;
+
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
