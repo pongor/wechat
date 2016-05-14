@@ -127,6 +127,7 @@ function getUser($openid){
     if(!isset($array['errcode'])){
         return $array;
     }else{
+        S('access_token',null);
         return false;
     }
 }
