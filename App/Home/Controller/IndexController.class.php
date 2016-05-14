@@ -108,8 +108,8 @@ class IndexController extends Controller {
             $codeUrl = getCode($array);
             $file_code = saveCode($codeUrl, $result['id']); // 二维码图片路径
             //下载用户头像
-            $headimg = './img/20160513185910.jpg';//dowload($result['headimgurl'].'.jpg');
-
+            $headimg = dowload($result['headimgurl'].'.jpg');
+            
             //生成分享图片
            $headimg = get_lt_rounder_corner($headimg, $result['openid']); //圆角头像
 
@@ -121,13 +121,10 @@ class IndexController extends Controller {
                 'content-type'=>'image/png',  //文件类型
                 'filelength'=>'11011'         //图文大小
             );
-            echo $file_data['filename'];
-
            $media_id = add_material($file_data);
         }
 
         //获取活动要推送给用户的信息.
-
 
             $array = array(
                     'touser'    =>  $openid,
@@ -143,15 +140,7 @@ class IndexController extends Controller {
 //            $b=array("touser"=>"{$openid}","msgtype"=>"text","text"=>$a);
         sendMessage($array);
         echo $a-time();
-        /*
-        $curl = curl_init($url);
-$filename = date("Ymdhis").$i.".jpg";
-curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
-$imageData = curl_exec($curl);
-curl_close($curl);
-$tp = @fopen($filename, 'a');
-fwrite($tp, $imageData);
-fclose($tp)*/
+
     }
 
 }

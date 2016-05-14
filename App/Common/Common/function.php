@@ -202,6 +202,16 @@ function sendMessage($array){
 
 function downloadFile($url,$savePath='./img')
 {
+    $curl = curl_init($url);
+    $filename = $savePath.date("Ymdhis").".jpg";
+    curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+    $imageData = curl_exec($curl);
+    curl_close($curl);
+    $tp = @fopen($filename, 'a');
+    fwrite($tp, $imageData);
+    fclose($tp);
+    return $filename;
+    die;
     $fileName = rand(0,1000).'.jpg';
     $file = file_get_contents($url);
     file_put_contents($savePath.'/'.$fileName,$file);
