@@ -105,7 +105,7 @@ class IndexController extends Controller {
         $share_info = $share->getInfo('user_id='.$result['id'].' and a_id='.$id);
 
         $activity = D('activity');
-        $a_info = $activity->getInfo('id='.$id); //活动信息
+        $a_info = $activity->getFind('id='.$id); //活动信息
 
         //拿到分享图片
         if(($share_info['up_time'] + 3*24*60*60) < time() && $share_info['share']){  //素材过期  重新上传
