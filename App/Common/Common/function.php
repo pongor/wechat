@@ -246,6 +246,7 @@ function codeImg($data,$user_id = 1){
     // 生成的文件名
      $fileName = $path.$user_id.'.png';
     QRcode::png($data, $fileName, $level, $size);
+    return $fileName;
 }
 //保存微信二维码图片 二维码图片存在则覆盖
 function saveCode($code_url,$user_id){
