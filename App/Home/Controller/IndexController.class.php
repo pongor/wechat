@@ -114,11 +114,12 @@ class IndexController extends Controller {
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_str' => 19200000000001
+                        'scene_id' => 192000000000010
                     ),
                 ),
             );
-            $codeUrl = getCode($array);
+            echo $codeUrl = getCode($array);
+
             $file_code = saveCode($codeUrl, 100); // 二维码图片路径
         echo $file_code;
             //下载用户头像
