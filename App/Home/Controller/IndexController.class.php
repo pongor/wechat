@@ -8,7 +8,9 @@ class IndexController extends Controller {
     public function index(){
         $model = D('activity');
         $keyword = '剩';
-        $res = $model->getFind(array('back_keyword'=>array('like'=>$keyword),'start_time'=>array('LT'=>time()),'end_time'=>array('GT'=>time())));
+        $time = time();
+        $where = "back_keyword like %{$keyword}% and start_time < {$time} and end_time > {$time}";
+        $res = $model->getFind($where);
 
         if($res){
             $contentStr ="{$res['title']}".$keyword;
