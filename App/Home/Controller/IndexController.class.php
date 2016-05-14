@@ -50,7 +50,7 @@ class IndexController extends Controller {
                 }
 
             }
-            $contentStr =@$postObj->Event ? $postObj->Event :'sdhoshohsduohsdo';
+
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;
             _curl($fromUsername);
