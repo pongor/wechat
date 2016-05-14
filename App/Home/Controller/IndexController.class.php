@@ -51,7 +51,7 @@ class IndexController extends Controller {
 
                         break;
                     default:
-                        $contentStr ="事件";
+                        $contentStr =$postObj->Event."事件";
                         break;
                 }
 
