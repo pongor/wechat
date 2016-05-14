@@ -150,7 +150,7 @@ function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
     $image->water(getcwd().'/'.$headImg,\Think\Image::IMAGE_WATER_MARGIN,100,C('IMG_height')); //水印用户头像
     $height = $head->height()+C('IMG_height')+C('IMG_NAME_HEIGHT'); // 字符串据上的距离
 
-    $image->text($str,getcwd().'/img/ttf/msyh.ttf','20',C('IMG_TEXT_COLOR'),\Think\Image::IMAGE_WATER_MARGIN,0,0,$height);//水印用户昵称
+    $image->text($str,getcwd().'/img/tf/msyh.ttf','20',C('IMG_TEXT_COLOR'),\Think\Image::IMAGE_WATER_MARGIN,0,0,$height);//水印用户昵称
     $code = new Think\Image();
 
     $code->open(getcwd().'/'.$codeImg);
