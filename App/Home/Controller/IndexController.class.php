@@ -63,14 +63,15 @@ class IndexController extends Controller {
                 }
 
             }
-            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$id.'--'.$postObj->EventKey;
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-            echo $resultStr;die;
+
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }
+            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$id.'--'.$postObj->EventKey;
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+            echo $resultStr;die;
             if($id >0 ){ //扫码事件
                 self::support($id,$fromUsername);
             }else{ //活动事件
