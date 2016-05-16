@@ -1,0 +1,41 @@
+<include file="Public:header" />
+			<form id="loginForm" method="post" action="{:U('Login/login')}">
+				<!--标题-->
+				<!--用户名-->
+				<div>
+					用户名
+					<input type="text" placeholder="输入用户名" name="username" id="username"/>
+				</div>
+				<!--密码-->
+				<div>
+					密码
+					<input type="password" placeholder="输入你的密码" name="password" id="password"/>
+				</div>
+				<!--提交按钮-->
+				<button type="button" onclick="login()">登陆</button>
+				<button type="button" onclick="window.location.href='{:U('Login/register')}'">注册</button>
+				
+			</form>
+		<script>
+		function login(){
+			var username = $('#username').val();
+			var password = $('#password').val();
+			$.ajax({
+				url : "{:U('Login/verify')}",
+				type : 'post',
+				data : {'username':username,'password':password},
+				success : function(res){
+					var data = $.parseJSON(res);
+					if(data.status == 1){
+						$('#loginForm').submit();
+					}else if(data.status == 0){
+						alert('用户名或密码错误，请重新输入！');
+					}else{
+						alert('系统连接异常，请稍后再试');
+					}
+				}
+			});
+		}
+
+		</script>
+<include file="Public:footer" />

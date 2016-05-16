@@ -2,7 +2,7 @@
 namespace Backend\Controller;
 use Think\Controller;
 
-class ActivityController extends Controller{
+class ActivityController extends RbacController{
 	public function index(){
 		$title = I('get.title');
         $p = I('get.p');

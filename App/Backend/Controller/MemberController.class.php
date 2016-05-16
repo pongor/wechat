@@ -2,7 +2,7 @@
 namespace Backend\Controller;
 
 use Think\Controller;
-class MemberController extends Controller{
+class MemberController extends RbacController{
 	public function index(){
 		$nickname = I('get.nickname');
 		$condition = I('get.condition');
@@ -26,7 +26,6 @@ class MemberController extends Controller{
         $count = M('Member')->where($whereArray)->count();
         $whereArray['start'] = ($p - 1) * 20;
 		$list = D('Member')->getList($whereArray,$order);
-
 		$this->assign('p',$p);
         $this->assign('count',$count);
 		$this->assign('list',$list);

@@ -14,8 +14,6 @@ use Think\Model;
 
 class UserModel extends Model
 {
-    protected $tableName  = 'member_activity';
-
     /*
      * 获取用户活动信息
      */
