@@ -7,7 +7,7 @@ return array(
     //'BIND_MODULE'       => 'Home',
     'URL_MODEL'         => 2,
   //  'MULTI_MODULE'      =>  true,
-    'MODULE_ALLOW_LIST' => array('Home','Backend')
+  //  'MODULE_ALLOW_LIST' => array('Home','Backend')
 
 
 );
