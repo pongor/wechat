@@ -64,9 +64,9 @@ class IndexController extends Controller {
 
             }
             if($res['is_start'] != 1 ){
-//                $contentStr = '这个活动已经结束报名啦，下次早点来哦！';
-//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-//                echo $resultStr;die;
+                $contentStr = '这个活动已经结束报名啦，下次早点来哦！';
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                echo $resultStr;die;
             }
             if($id >0 ){ //扫码事件
 
@@ -74,12 +74,12 @@ class IndexController extends Controller {
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
             }
-            $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-            echo $resultStr;die;
-            die;
+//            $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
+//            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+//            echo $resultStr;die;
+//            die;
         }else{
-            exit();
+            exit( '');
         }
    }
     /*
