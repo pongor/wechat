@@ -7,7 +7,7 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-
+        self::support(1,'o0W5ms1hZCcATLP8hv5lV3QHogO0');
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -239,11 +239,24 @@ class IndexController extends Controller {
                 'at_time'   =>  time()
             );
             $support->Insert($s_data); //保存支持信息
-            $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number');
-           $number = $share_info['number']+1;
-            if($number >= $a_info['success_condition']){
-                //succ_content
-                $msgArray = '{
+            $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
+           $number = $share_info['number']+1;  //人数
+            if($a_info['success_condition'] != 1){ //代表a条件
+                if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
+                    //continue_content
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['continue_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //达到条件
+                }else  if($number >= $a_info['invite_num']){ //达到A条件
+
+                    //succ_content  达到条件成功通知的内容
+                    $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",
                     "msgtype":"text",
                     "text":
@@ -251,10 +264,58 @@ class IndexController extends Controller {
                          "content":"'.$a_info['succ_content'].'"
                     }
                 }';
-                sendMessage($msgArray); //达到条件
-            }else{
-               // continue_content
-                $msgArray = ' {
+                    sendMessage($msgArray); //达到条件
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['egg_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //出发彩蛋消息
+
+                }else if($number == $a_info['egg_num']){ //彩蛋条件
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['finish_egg_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //完成彩蛋通知内容
+
+                }
+
+
+            }else{ //B条件
+                $rank = D('share')->where(array('a_id'=>$aid,'number'=>array('GT'=>$number)))->count();
+                $rank++; //用户排名
+                if($rank >= $a_info['rank_list']){
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['rank_notice'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //完成彩蛋通知内容
+                }else{
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['un_rank_notice'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //完成彩蛋通知内容
+                }
+
+            }
+            $msgArray = ' {
            "touser":"'.$a_user_info['openid'].'",
            "template_id":"lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q",
            "url":"'.$a_info['invite_url'].'",            
@@ -277,19 +338,8 @@ class IndexController extends Controller {
                    }
            }
        }';
-                $template_url = C('template').'?access_token='.access_token();
-                httpPost($template_url,urlencode($msgArray));
-                //额外通知信息
-                $msgArray = '{
-                    "touser":"'.$openid.'",
-                    "msgtype":"text",
-                    "text":
-                    {
-                         "content":"'.$a_info['succ_content'].'"
-                    }
-                }';
-                sendMessage($msgArray); //达到条件
-            }
+            $template_url = C('template').'?access_token='.access_token();
+            httpPost($template_url,urlencode($msgArray));
         }
 
     }
