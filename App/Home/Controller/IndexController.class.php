@@ -214,7 +214,24 @@ class IndexController extends Controller {
                 'at_time'       =>  time()
             ];
             $user_id = $model->Insert($data); //保存新用户信息
+        }else{
+            $user = getUser($openid);
+            $data = [
+                'nickname'      =>  $user['nickname'],
+                'headimgurl'    =>  $user['headimgurl'],
+                'openid'        =>  $user['openid'],
+                'sex'           =>  $user['sex'],
+                'province'      =>  $user['province'],
+                'city'          =>   $user['city'],
+                'country'       =>  $user['country'],
+                'subscribe_time' => $user['subscribe_time'],
+                'privilege'     =>  $user['privilege'],
+                'remark'        =>   $user['remark'],
+            ];
+            $model->getUpdate(array('id'=>$user_info['id']),$data);
+            $user_id = $user_info['id'];
         }
+
         $activity = D('activity');
         $a_info = $activity->getInfo(array('id'=>$aid));
         if(!$a_info){
