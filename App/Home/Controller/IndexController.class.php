@@ -63,7 +63,7 @@ class IndexController extends Controller {
                 }
 
             }
-            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$postObj->Event.'--'.$postObj->EventKey;
+            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$id.'--'.$postObj->EventKey;
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             echo $resultStr;die;
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
