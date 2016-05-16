@@ -7,7 +7,7 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-     //   self::support(6,'o0W5ms1hZCcATLP8hv5lV3QHogO0');die;
+        self::support(6,'o0W5mswVR8UcrxhelR6e8g2eQkqA');die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
