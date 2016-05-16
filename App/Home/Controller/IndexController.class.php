@@ -7,18 +7,18 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-        $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName>
-<FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName>
-<CreateTime>'.time().'</CreateTime>
-<MsgType><![CDATA[event]]></MsgType>
-<Event><![CDATA[subscribe]]></Event>
-<EventKey><![CDATA[qrscene_6]]></EventKey>
-<Ticket><![CDATA[TICKET]]></Ticket>
-</xml>';
-        if(!checkSignature()){
+//        $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName>
+//<FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName>
+//<CreateTime>'.time().'</CreateTime>
+//<MsgType><![CDATA[event]]></MsgType>
+//<Event><![CDATA[subscribe]]></Event>
+//<EventKey><![CDATA[qrscene_6]]></EventKey>
+//<Ticket><![CDATA[TICKET]]></Ticket>
+//</xml>';
+        if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-            $postObj = simplexml_load_string($a, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
             $fromUsername = $postObj->FromUserName;
 
             $toUsername = $postObj->ToUserName;
@@ -54,7 +54,7 @@ class IndexController extends Controller {
 
             }elseif ($msgType == 'event'){
                 switch ($postObj->Event){
-                    case 'subscribe':   //扫描待参数的二维码
+                    case 'subscribe':   //用户没有关注
                            $contentStr = $postObj->EventKey .'扫描';
                            $arr =  explode('qrscene_',$postObj->EventKey);
                            $id = $arr[1];
@@ -70,9 +70,6 @@ class IndexController extends Controller {
                 }
 
             }
-            echo '<pre>';
-var_dump($postObj);
-            var_dump(self::support($id,$fromUsername));
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
@@ -81,9 +78,6 @@ var_dump($postObj);
 
             if($id >0 ){ //扫码事件
                 self::support($id,$fromUsername);
-                $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                echo $resultStr;die;
 
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
@@ -224,14 +218,13 @@ var_dump($postObj);
     //用户支持用户扫码事件
     public static function support($id,$openid){
        // open(json_encode(array($id,$openid)));
-        var_dump($id);
+
         if($id <= 0) {
             return false;
         }
         $share = D('share');
         $share_info = $share->getInfo('id='.$id);  //用户分享详情
-        echo $share->_sql();
-        return $share_info;
+
         if(!$share_info) {
             return false;
         }
