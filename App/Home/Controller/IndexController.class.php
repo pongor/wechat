@@ -7,7 +7,7 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-        self::support(1,'o0W5ms1hZCcATLP8hv5lV3QHogO0');die;
+        self::support(6,'o0W5ms1hZCcATLP8hv5lV3QHogO0');die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -189,8 +189,7 @@ class IndexController extends Controller {
         }
         $share = D('share');
         $share_info = $share->getInfo('id='.$id);  //用户分享详情
-        echo $share->_sql();
-        var_dump($share_info);
+        
         if(!$share_info) {
             return false;
         }
