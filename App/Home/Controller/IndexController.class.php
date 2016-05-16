@@ -208,7 +208,7 @@ class IndexController extends Controller {
     }
     //用户支持用户扫码事件
     public static function support($id,$openid){
-        open(json_encode(array($id,$openid)));
+       // open(json_encode(array($id,$openid)));
         if($id <= 0) {
             return false;
         }
