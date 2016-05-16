@@ -69,11 +69,12 @@ class IndexController extends Controller {
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }
-            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$id.'--'.$postObj->EventKey;
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-            echo $resultStr;die;
+
             if($id >0 ){ //扫码事件
                 self::support($id,$fromUsername);
+                $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$id.'--'.$postObj->EventKey;
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                echo $resultStr;die;
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
             }
