@@ -73,10 +73,10 @@ class IndexController extends Controller {
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
             }
-//            $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
-//            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-//            echo $resultStr;die;
-//            die;
+            $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+            echo $resultStr;die;
+            die;
         }else{
             exit( '');
         }
