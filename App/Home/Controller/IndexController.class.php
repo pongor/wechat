@@ -63,7 +63,7 @@ class IndexController extends Controller {
                 }
 
             }
-            if($res['is_start'] != 1  && $id == 0){
+            if($res['is_start'] != 1  && $msgType != 'event'){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
