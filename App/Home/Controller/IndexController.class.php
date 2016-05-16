@@ -11,7 +11,7 @@ class IndexController extends Controller {
 <FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName>
 <CreateTime>'.time().'</CreateTime>
 <MsgType><![CDATA[event]]></MsgType>
-<Event><![CDATA[SCAN]]></Event>
+<Event><![CDATA[subscribe]]></Event>
 <EventKey><![CDATA[qrscene_6]]></EventKey>
 <Ticket><![CDATA[TICKET]]></Ticket>
 </xml>';
