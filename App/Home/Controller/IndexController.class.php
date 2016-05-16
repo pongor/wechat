@@ -189,6 +189,7 @@ class IndexController extends Controller {
         }
         $share = D('share');
         $share_info = $share->getInfo('id='.$id);  //用户分享详情
+        echo $share->_sql();
         var_dump($share_info);
         if(!$share_info) {
             return false;
