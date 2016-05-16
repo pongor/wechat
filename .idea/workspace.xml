@@ -24,7 +24,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo4.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo5.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/ttf/msyh.ttf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Model/ActivityModel.class.php" afterPath="$PROJECT_DIR$/App/Home/Model/ActivityModel.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
+            <state relative-caret-position="171">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -66,7 +66,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityModel.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ActivityModel.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Home/Model/ActivityModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
@@ -157,9 +157,9 @@
         <option value="$PROJECT_DIR$/App/Home/Conf/config.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/db.php" />
-        <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Model/MemberModel.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Model/ActivityModel.class.php" />
+        <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
       </list>
     </option>
   </component>
@@ -549,12 +549,12 @@
       <workItem from="1463104875706" duration="13999000" />
       <workItem from="1463130111731" duration="8197000" />
       <workItem from="1463192610546" duration="22658000" />
-      <workItem from="1463367071063" duration="7349000" />
+      <workItem from="1463367071063" duration="7857000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141374000" />
+    <option name="totallyTimeSpent" value="141882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -935,14 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Model/MemberModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -955,6 +947,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding />
         </state>
       </provider>
