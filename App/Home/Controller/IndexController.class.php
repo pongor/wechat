@@ -19,7 +19,7 @@ class IndexController extends Controller {
             $keyword = trim($postObj->Content);
             $msgType = $postObj->MsgType;
             $time = time();
-
+            $id = 0;
             $textTpl = msgText();
             if($msgType == 'text'){
 
@@ -63,13 +63,12 @@ class IndexController extends Controller {
                 }
 
             }
-            if($res['is_start'] != 1 ){
+            if($res['is_start'] != 1  && $id == 0){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }
             if($id >0 ){ //扫码事件
-
                 self::support($id,$fromUsername);
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
