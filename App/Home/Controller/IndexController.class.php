@@ -49,21 +49,31 @@ class IndexController extends Controller {
                 switch ($postObj->Event){
                     case 'subscribe':   //扫描待参数的二维码
                            $contentStr = $postObj->EventKey .'扫描';
-
+                           $arr =  explode('qrscene_',$postObj->EventKey);
+                           $id = $arr[1];
                         break;
                     case 'SCAN':   //用户已关注 扫描事件
                         $contentStr = $postObj->EventKey .'扫描';
-
+                        $id = $postObj->EventKey;
                         break;
                     default:
                         $contentStr = '';
+                        echo '';die;
                         break;
                 }
 
             }
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-            echo $resultStr;
-            _curl($fromUsername,$res['id']);
+            if($res['is_start'] != 1 ){
+                $contentStr = '活动已经结束下次早点来啊！';
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                echo $resultStr;die;
+            }
+            if($id >0 ){ //扫码事件
+                self::support($id,$fromUsername);
+            }else{ //活动事件
+
+                _curl($fromUsername,$res['id']);
+            }
             die;
         }else{
             exit();
@@ -114,16 +124,21 @@ class IndexController extends Controller {
             $share->getUpdate('id='.$share_info['id'],array('media_id'=>$media_id,'up_time'=>time())); //更新用户活动数据
         }else{  //不存在信息
             //保存用户分享信息
-            $share_data = array(
-                'user_id' => $user_id,
-                'a_id'      =>  $id,
-                'share'     =>  '',
-                'up_time'   =>  time(),
-                'at_time'   =>  time(),
-                'media_id'  =>  '',
-                'number'    =>  0
-            );
-           $share_id =  $share->Insert($share_data);
+            if(!$share_info){
+                $share_data = array(
+                    'user_id' => $user_id,
+                    'a_id'      =>  $id,
+                    'share'     =>  '',
+                    'up_time'   =>  time(),
+                    'at_time'   =>  time(),
+                    'media_id'  =>  '',
+                    'number'    =>  0
+                );
+                $share_id =  $share->Insert($share_data);
+            }else{
+                $share_id = $share_info['id'];
+            }
+
             //生成二维码图片ca
             $array = array(
                 'action_info' => array(
