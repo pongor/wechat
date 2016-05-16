@@ -7,18 +7,18 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-        $a ='<xml><ToUserName><![CDATA[toUser]]></ToUserName>
+        $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName>
 <FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName>
-<CreateTime>123456789</CreateTime>
+<CreateTime>'.time().'</CreateTime>
 <MsgType><![CDATA[event]]></MsgType>
 <Event><![CDATA[SCAN]]></Event>
 <EventKey><![CDATA[qrscene_6]]></EventKey>
 <Ticket><![CDATA[TICKET]]></Ticket>
 </xml>';
-        if(checkSignature()){
+        if(!checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-            $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $postObj = simplexml_load_string($a, 'SimpleXMLElement', LIBXML_NOCDATA);
             $fromUsername = $postObj->FromUserName;
 
             $toUsername = $postObj->ToUserName;
@@ -70,9 +70,6 @@ class IndexController extends Controller {
                 }
 
             }
-                        $contentStr = $postObj->Event.'-'.$id.'-'.$toUsername;
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-            echo $resultStr;die;
 
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
