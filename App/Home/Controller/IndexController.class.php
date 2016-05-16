@@ -76,10 +76,10 @@ class IndexController extends Controller {
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
             }
-            $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
-            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-            echo $resultStr;die;
-            die;
+//            $contentStr = $postObj->Event.'-'.$id.'-'.$fromUsername;
+//            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+//            echo $resultStr;die;
+            die(' ');
         }else{
             exit( '');
         }
@@ -217,7 +217,7 @@ class IndexController extends Controller {
         }
         $share = D('share');
         $share_info = $share->getInfo('id='.$id);  //用户分享详情
-        open(json_encode($share_info));
+        open(json_encode($share->_sql()));
         if(!$share_info) {
             return false;
         }
