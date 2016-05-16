@@ -20,5 +20,7 @@ class MemberModel extends Model
     public function getUpdate($where,$data){
         return $this->where($where)->save($data);
     }
-
+    public function getInfo($where){
+        return $this->where($where)->find();
+    }
 }
