@@ -7,7 +7,7 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-        self::support(6,'o0W5mswVR8UcrxhelR6e8g2eQkqA');die;
+      //  self::support(6,'o0W5mswVR8UcrxhelR6e8g2eQkqA');die;
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -63,6 +63,9 @@ class IndexController extends Controller {
                 }
 
             }
+            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.@$res['is_start'].@$res['id'];
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+            echo $resultStr;die;
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
