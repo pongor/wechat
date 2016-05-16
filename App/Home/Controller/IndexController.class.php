@@ -220,7 +220,7 @@ class IndexController extends Controller {
         }
         $share = D('share');
         $share_info = $share->getInfo('id='.$id);  //用户分享详情
-        open(json_encode($share_info));
+
         if(!$share_info) {
             return false;
         }
@@ -229,6 +229,7 @@ class IndexController extends Controller {
         $model = D('member');
         $user_info = $model->getInfo(array('openid'=>$openid)); //支持用户的详情
         $a_user_info =$model->getInfo(array('id'=>$a_user_id)); //被支持着
+        open(json_encode($user_info));
         if(!$user_info) { //如果用户信息不存在
             $user = getUser($openid);
             $data = [
