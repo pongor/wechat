@@ -64,14 +64,13 @@ class IndexController extends Controller {
 
             }
             if($res['is_start'] != 1 ){
-                $contentStr = '活动已经结束下次早点来啊！';
+                $contentStr = '这个活动已经结束报名啦，下次早点来哦！';
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }
             if($id >0 ){ //扫码事件
                 self::support($id,$fromUsername);
             }else{ //活动事件
-
                 _curl($fromUsername,$res['id']);
             }
             die;
@@ -206,6 +205,7 @@ class IndexController extends Controller {
     }
     //用户支持用户扫码事件
     public static function support($id,$openid){
+        open(json_encode(array($id,$openid)));
         if($id <= 0) {
             return false;
         }
