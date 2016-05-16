@@ -48,9 +48,9 @@ class ActivityModel extends Model {
     }
 
     function convert($success_condition){
-       if(trim($success_condition) == '邀请人数'){
+       if(trim($success_condition) == 'A'){
             $success_condition = 1;
-        }else if(trim($success_condition) == '排行榜'){
+        }else if(trim($success_condition) == 'B'){
             $success_condition = 2;
         }else{
             $success_condition = 0;

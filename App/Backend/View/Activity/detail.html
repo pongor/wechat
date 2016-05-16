@@ -202,11 +202,11 @@
 							<!--组件：selectSimilarity输入框-->
 							<div class="cell_partContent selectSimilarity">
 								<!--如果只读请给input添加：readonly="readonly"-->
-								<input type="text" placeholder="请选择" name="success_condition" value="<?php echo $result['success_condition'] != 0 ? ($result['success_condition']==1 ? '邀请人数' : '排行榜') : ''; ?>" readonly />
+								<input type="text" placeholder="请选择" name="success_condition" value="<?php echo $result['success_condition'] != 0 ? ($result['success_condition']==1 ? 'A' : 'B') : ''; ?>" readonly />
 								<div class="cell_partArrowBox"><img src="__IMG__/icon_arrowDown.png"></div>
 								<div class="cell_selSimiOptBox selectSimiOptBox">
-									<p class="selectSimiOption">邀请人数</p>
-									<p class="selectSimiOption">排行榜</p>
+									<p class="selectSimiOption">A</p>
+									<p class="selectSimiOption">B</p>
 								</div>
 							</div>
 						</div>
