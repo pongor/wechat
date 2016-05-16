@@ -72,7 +72,7 @@ class IndexController extends Controller {
 
             if($id >0 ){ //扫码事件
                 self::support($id,$fromUsername);
-                
+
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
             }
@@ -217,7 +217,7 @@ class IndexController extends Controller {
         }
         $share = D('share');
         $share_info = $share->getInfo('id='.$id);  //用户分享详情
-
+        open(json_encode($share_info));
         if(!$share_info) {
             return false;
         }
