@@ -64,7 +64,6 @@ class IndexController extends Controller {
                 }
 
             }
-            var_dump( self::support($id,$fromUsername));
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
@@ -228,7 +227,7 @@ class IndexController extends Controller {
         $model = D('member');
         $user_info = $model->getInfo("openid = '$openid'"); //支持用户的详情
         $a_user_info =$model->getInfo(array('id'=>$a_user_id)); //被支持着
-        open(json_encode($user_info));
+
         if(!$user_info) { //如果用户信息不存在
             $user = getUser($openid);
             $data = [
