@@ -224,6 +224,7 @@ var_dump($postObj);
     //用户支持用户扫码事件
     public static function support($id,$openid){
        // open(json_encode(array($id,$openid)));
+        var_dump($id);
         if($id <= 0) {
             return false;
         }
