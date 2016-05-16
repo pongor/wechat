@@ -113,11 +113,22 @@ class IndexController extends Controller {
             $media_id = add_material(array('filename'=>__APP__.ltrim($share_info['share'],'.'), 'content-type'=>'image/png','filelength'=>'11011')); //上传素材
             $share->getUpdate('id='.$share_info['id'],array('media_id'=>$media_id,'up_time'=>time())); //更新用户活动数据
         }else{  //不存在信息
+            //保存用户分享信息
+            $share_data = array(
+                'user_id' => $user_id,
+                'a_id'      =>  $id,
+                'share'     =>  '',
+                'up_time'   =>  time(),
+                'at_time'   =>  time(),
+                'media_id'  =>  '',
+                'number'    =>  0
+            );
+           $share_id =  $share->Insert($share_data);
             //生成二维码图片ca
             $array = array(
                 'action_info' => array(
                     'scene' => array(
-                        'scene_id' => $share_info['id']
+                        'scene_id' => $share_id
                     ),
                 ),
             );
@@ -141,17 +152,13 @@ class IndexController extends Controller {
                 'filelength'=>'11011'         //图文大小
             );
             $media_id = add_material($file_data);
-            //保存用户分享信息
-            $share_data = array(
-                'user_id' => $user_id,
-                'a_id'      =>  $id,
-                'share'     =>  $fiel,
-                'up_time'   =>  time(),
-                'at_time'   =>  time(),
-                'media_id'  =>  $media_id,
-                'number'    =>  0
+
+            //保存分享的图片 与微信上传的素材
+            $share_save = array(
+                'share' => $fiel,
+                'media_id' => $media_id
             );
-            $share->Insert($share_data);
+            $share->getUpdate(array('id'=>$share_id),$share_save);
         }
         if($a_info['text_content']){
             $array = explode('||',$a_info['text_content']);
