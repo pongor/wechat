@@ -226,7 +226,7 @@ class IndexController extends Controller {
         $aid = $share_info['a_id'];  //活动ud
         $a_user_id = $share_info['user_id']; //被支持的用户
         $model = D('member');
-        $user_info = $model->getInfo(array('openid'=>$openid)); //支持用户的详情
+        $user_info = $model->getInfo("openid = '$openid'"); //支持用户的详情
         $a_user_info =$model->getInfo(array('id'=>$a_user_id)); //被支持着
         open(json_encode($user_info));
         if(!$user_info) { //如果用户信息不存在
