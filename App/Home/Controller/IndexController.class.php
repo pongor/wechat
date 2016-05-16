@@ -15,6 +15,7 @@ class IndexController extends Controller {
 //<EventKey><![CDATA[qrscene_6]]></EventKey>
 //<Ticket><![CDATA[TICKET]]></Ticket>
 //</xml>';
+        open(json_encode($GLOBALS["HTTP_RAW_POST_DATA"]));
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -70,7 +71,7 @@ class IndexController extends Controller {
                 }
 
             }
-            open(json_encode($postObj->EventKey));
+
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
