@@ -325,7 +325,7 @@ function serviceMsg($openid,$msg,$type='text'){
                     }
                 }';
     }else if($type == 'image'){
-        $array = '{
+        $msgArray = '{
                     "touser":"'.$openid.'",
                     "msgtype":"image",
                     "image":
