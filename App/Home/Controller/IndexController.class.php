@@ -359,8 +359,8 @@ class IndexController extends Controller {
             }else{ //B条件
                 $rank = D('share')->where(array('a_id'=>$aid,'number'=>array('GT'=>$number)))->count();
                 $rank++; //用户排名
-                open(json_encode(array($rank)));
-                if($rank >= $a_info['rank_list']){
+
+                if($rank <= $a_info['rank_list']){
                     $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",
                     "msgtype":"text",
