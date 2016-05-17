@@ -339,7 +339,8 @@ class IndexController extends Controller {
                 }';
                     sendMessage($msgArray); //出发彩蛋消息
 
-                }else if($number == $a_info['egg_num']){ //彩蛋条件
+                }
+                if($number == $a_info['egg_num']){ //彩蛋条件
                     $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",
                     "msgtype":"text",
@@ -351,6 +352,7 @@ class IndexController extends Controller {
                     sendMessage($msgArray); //完成彩蛋通知内容
 
                 }
+
 
 
             }else{ //B条件
