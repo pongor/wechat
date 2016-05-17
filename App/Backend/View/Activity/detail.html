@@ -540,13 +540,13 @@
     		success: function (data, status)  //服务器成功响应处理函数
             {
                 var obj = $.parseJSON(data);
-                if(obj.error == 0)
+                if(obj.errcode == 0)
                 {
-                    
+                    alert('发送成功')
                 }
                 else
                 {
-                    alert(obj.msg);
+                    alert("发送失败，错误码："+obj.errcode);
                 }
             }
 		
