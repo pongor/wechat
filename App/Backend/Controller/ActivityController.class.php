@@ -146,7 +146,10 @@ class ActivityController extends RbacController{
     	echo $result;die;
     	
     }
-
+	public function test(){
+		$url = 'https://api.weixin.qq.com/cgi-bin/message/mass/get?access_token='.access_token();
+		var_dump(httpPost($url,'{"msg_id":"416998735"}'));
+	}
     private static function mkDirs($dir){
         if(!is_dir($dir)){
             if(!self::mkDirs(dirname($dir))){
