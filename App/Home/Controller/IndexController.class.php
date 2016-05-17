@@ -6,7 +6,6 @@ error_reporting(E_ALL | E_STRICT);
 class IndexController extends Controller {
 
     public function index(){
-
         //OPENTM207685059
       //  $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
 
@@ -187,14 +186,30 @@ class IndexController extends Controller {
             $array = explode('||',$a_info['text_content']);
             //发送用户参加活动的信息
             for($i=0;$i<count($array);$i++){
+
+                $msgArray = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$array[$i].'"
+                    }
+                }';
                 if(isset($array[$i]) && $array[$i]){
-                    serviceMsg($openid,$array[$i]);//($msgArray);
+                    sendMessage($msgArray);
                 }
             }
         }
         //推送给用户的信息.
-        serviceMsg($openid,$media_id,'image'); //发送图片信息
-
+        $array = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"image",
+                    "image":
+                    {
+                         "media_id":"'.$media_id.'"
+                    }
+                }';
+        sendMessage($array);
     }
     //用户支持用户扫码事件
     public static function support($id,$openid){
@@ -257,8 +272,16 @@ class IndexController extends Controller {
         $support = D('support');  //支持model
         $res = $support->getInfo(array('user_id'=>$a_user_id,'a_id'=>$aid,'s_user_id'=>$user_id));
         if($res){ //用户已经支持过了  回复用户错误信息
+            $msgArray = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['re_invite_content'].'"
+                    }
+                }';
 
-            serviceMsg($openid,$a_info['re_invite_content']);//发送用户已经支持过的信息
+            $res = sendMessage($msgArray);
           //  return ;
         }else{  //用户为支持过
             if($a_user_id == $user_id){
@@ -273,7 +296,6 @@ class IndexController extends Controller {
 //                sendMessage($msgArray); //达到条件
                 return;
             }
-
             $s_data = array(
                 'user_id' => $a_user_id,
                 'a_id'      =>  $aid,
@@ -283,28 +305,53 @@ class IndexController extends Controller {
             $support->Insert($s_data); //保存支持信息
             $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
            $number = $share_info['number']+1;  //人数
-            //成员加入提醒
-
-
-
-
             if($a_info['success_condition'] == 1){ //代表a条件
                 if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
                     //continue_content
-
-                    serviceMsg($a_user_info['openid'],$a_info['continue_content']);
-
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['continue_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //达到条件
                 }else  if($number >= $a_info['invite_num']){ //达到A条件
 
                     //succ_content  达到条件成功通知的内容
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['succ_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //达到条件
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['egg_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //出发彩蛋消息
 
-                    serviceMsg($a_user_info['openid'],$a_info['succ_content']);
-                    serviceMsg($a_user_info['openid'],$a_info['egg_content']);
                 }
 
                 if($number == $a_info['egg_num']){ //彩蛋条件
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['finish_egg_content'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //完成彩蛋通知内容
 
-                    serviceMsg($a_user_info['openid'],$a_info['finish_egg_content']);
                 }
 
 
@@ -314,24 +361,28 @@ class IndexController extends Controller {
                 $rank++; //用户排名
 
                 if($rank <= $a_info['rank_list']){
-
-                  //  sendMessage($msgArray); //完成彩蛋通知内容
-                    serviceMsg($a_user_info['openid'],$a_info['rank_notice']);
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['rank_notice'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //完成彩蛋通知内容
                 }else{
-//                    $msgArray = '{
-//                    "touser":"'.$a_user_info['openid'].'",
-//                    "msgtype":"text",
-//                    "text":
-//                    {
-//                         "content":"'.$a_info['un_rank_notice'].'"
-//                    }
-//                }';
-//                    sendMessage($msgArray); //完成彩蛋通知内容
-                    serviceMsg($a_user_info['openid'],$a_info['un_rank_notice']);
+                    $msgArray = '{
+                    "touser":"'.$a_user_info['openid'].'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$a_info['un_rank_notice'].'"
+                    }
+                }';
+                    sendMessage($msgArray); //完成彩蛋通知内容
                 }
 
             }
-
             $msgArray = ' {
            "touser":"'.$a_user_info['openid'].'",
            "template_id":"lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q",
@@ -356,7 +407,7 @@ class IndexController extends Controller {
            }
        }';
             $template_url = C('template').'?access_token='.access_token();
-            httpPost($template_url,$msgArray);
+            httpPost($template_url,urlencode($msgArray));
         }
 
     }
