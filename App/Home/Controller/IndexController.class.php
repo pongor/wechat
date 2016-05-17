@@ -280,6 +280,7 @@ class IndexController extends Controller {
                          "content":"'.$a_info['re_invite_content'].'"
                     }
                 }';
+            return;
             sendMessage($msgArray);return ;
         }else{  //用户为支持过
             $s_data = array(
