@@ -312,6 +312,32 @@ function dowload($url,$filename=''){
     return $filename;
 }
 /*
+ * 发送客服消息
+ */
+function serviceMsg($openid,$msg,$type='text'){
+    if($type == 'text'){
+        $msgArray = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"text",
+                    "text":
+                    {
+                         "content":"'.$msg.'"
+                    }
+                }';
+    }else if($type == 'image'){
+        $array = '{
+                    "touser":"'.$openid.'",
+                    "msgtype":"image",
+                    "image":
+                    {
+                         "media_id":"'.$msg.'"
+                    }
+                }';
+    }
+    return sendMessage($msgArray);
+
+}
+/*
  * 递归创建目录
  * dir 目录
  */

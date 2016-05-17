@@ -24,6 +24,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo4.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo5.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/ttf/msyh.ttf" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/Common/function.php" afterPath="$PROJECT_DIR$/App/Common/Common/function.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
     </list>
     <ignored path="wechat.iws" />
@@ -49,8 +50,8 @@
       <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="362" column="27" selection-start-line="362" selection-start-column="27" selection-end-line="362" selection-end-column="27" />
+            <state relative-caret-position="1104">
+              <caret line="351" column="29" selection-start-line="351" selection-start-column="29" selection-end-line="351" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -59,12 +60,12 @@
       <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="197" column="32" selection-start-line="197" selection-start-column="20" selection-end-line="197" selection-end-column="32" />
+            <state relative-caret-position="347">
+              <caret line="332" column="34" selection-start-line="332" selection-start-column="26" selection-end-line="332" selection-end-column="34" />
               <folding>
-                <marker date="1463454596066" expanded="true" signature="1108:1397" placeholder="..." />
-                <marker date="1463454596066" expanded="true" signature="1447:1683" placeholder="..." />
-                <marker date="1463454596066" expanded="true" signature="1621:1672" placeholder="..." />
+                <marker date="1463469782910" expanded="true" signature="1108:1397" placeholder="..." />
+                <marker date="1463469782910" expanded="true" signature="1447:1683" placeholder="..." />
+                <marker date="1463469782910" expanded="true" signature="1621:1672" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -530,12 +531,12 @@
       <workItem from="1463130111731" duration="8197000" />
       <workItem from="1463192610546" duration="22658000" />
       <workItem from="1463367071063" duration="17516000" />
-      <workItem from="1463449690222" duration="7186000" />
+      <workItem from="1463449690222" duration="9692000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158727000" />
+    <option name="totallyTimeSpent" value="161233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -613,9 +614,9 @@
         <state relative-caret-position="513">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <marker date="1463454596066" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463454596066" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463454596066" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -647,9 +648,9 @@
         <state relative-caret-position="285">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="23" />
           <folding>
-            <marker date="1463454596066" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463454596066" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463454596066" expanded="true" signature="1621:1672" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1621:1672" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -904,18 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="197" column="32" selection-start-line="197" selection-start-column="20" selection-end-line="197" selection-end-column="32" />
-          <folding>
-            <marker date="1463454596066" expanded="true" signature="1108:1397" placeholder="..." />
-            <marker date="1463454596066" expanded="true" signature="1447:1683" placeholder="..." />
-            <marker date="1463454596066" expanded="true" signature="1621:1672" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Backend/Model/UserModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -932,10 +921,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="332" column="34" selection-start-line="332" selection-start-column="26" selection-end-line="332" selection-end-column="34" />
+          <folding>
+            <marker date="1463469782910" expanded="true" signature="1108:1397" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1447:1683" placeholder="..." />
+            <marker date="1463469782910" expanded="true" signature="1621:1672" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="362" column="27" selection-start-line="362" selection-start-column="27" selection-end-line="362" selection-end-column="27" />
+        <state relative-caret-position="1104">
+          <caret line="351" column="29" selection-start-line="351" selection-start-column="29" selection-end-line="351" selection-end-column="29" />
           <folding />
         </state>
       </provider>
