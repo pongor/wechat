@@ -535,6 +535,7 @@
     	var text = $('textarea[name=activity_rank_notice]').val();
     	$.ajax({
     		url:'{:U("Activity/sendAll")}',
+    		type:'post',
     		data:{'text':text},
     		success: function (data, status)  //服务器成功响应处理函数
             {
