@@ -39,7 +39,8 @@ function access_token(){
     if($data){
         return $data['access_token'];
     }
-   echo $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
+    var_dump(C());
+   $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
     $res = file_get_contents($url);
     $data = json_decode($res,true);
     if(isset($data['access_token'])){
