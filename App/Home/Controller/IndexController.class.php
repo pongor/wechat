@@ -11,6 +11,7 @@ class IndexController extends Controller {
 
         if(!checkSignature()){
             echo $_GET['echostr'];
+
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($a, 'SimpleXMLElement', LIBXML_NOCDATA);
             $fromUsername = $postObj->FromUserName;
@@ -72,8 +73,11 @@ class IndexController extends Controller {
             }
 
             if($id >0 ){ //扫码事件
+                echo "";
+                ob_flush();
+                flush();
                 self::support($id,$fromUsername);
-                echo '';die;
+
             }else{ //活动事件
                 _curl($fromUsername,$res['id']);
             }
