@@ -71,11 +71,11 @@ class IndexController extends Controller {
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }
-
+            echo "success";
+            ob_flush();
+            flush();
             if($id >0 ){ //扫码事件
-                echo "";
-                ob_flush();
-                flush();
+
                 self::support($id,$fromUsername);
 
             }else{ //活动事件
