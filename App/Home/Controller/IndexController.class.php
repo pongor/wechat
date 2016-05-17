@@ -7,13 +7,13 @@ class IndexController extends Controller {
 
     public function index(){
         //OPENTM207685059
-     //   $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
+        $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5mswVR8UcrxhelR6e8g2eQkqA]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
 
-        if(checkSignature()){
+        if(!checkSignature()){
             echo $_GET['echostr'];
 
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-            $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $postObj = simplexml_load_string($a, 'SimpleXMLElement', LIBXML_NOCDATA);
             $fromUsername = $postObj->FromUserName;
 
             $toUsername = $postObj->ToUserName;
