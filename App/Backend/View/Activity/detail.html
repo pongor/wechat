@@ -421,7 +421,7 @@
 						</div>
 						<div class="cell_sendInfo">
 							<p>只发送给达到成功条件的用户</p>
-							<button class="cell_buttonSend" type="button">发&nbsp;&nbsp;&nbsp;送</button>
+							<button class="cell_buttonSend" type="button" onclick="sendAll()">发&nbsp;&nbsp;&nbsp;送</button>
 						</div>
 					</div>
 				</div>
@@ -529,6 +529,28 @@
     }
     function deleteVolume(){
     	$("#volume_url").val('');
+    }
+
+    function sendAll(){
+    	var text = $('textarea[name=activity_rank_notice]').val();
+    	$.ajax({
+    		url:'{:U("Activity/sendAll")}',
+    		data:{'text':text},
+    		success: function (data, status)  //服务器成功响应处理函数
+            {
+                var obj = $.parseJSON(data);
+                if(obj.error == 0)
+                {
+                    
+                }
+                else
+                {
+                    alert(obj.msg);
+                }
+            }
+		
+    	});
+    	
     }
 </script>
 <include file="Public:footer"/>

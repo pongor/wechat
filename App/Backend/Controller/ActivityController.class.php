@@ -126,6 +126,29 @@ class ActivityController extends RbacController{
         echo json_encode(array('error'=>0,'url'=>$infoPath));die;
         
     }
+
+    //微信群发
+    public function sendAll(){
+    	$text = $_POST['text'];
+
+    	$access_token=access_token();
+
+    	$url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=".$access_token;
+    	$string = '{
+		   "filter":{
+		      "is_to_all":false,
+		      "tag_id":2
+		   },
+		   "text":{
+		      "content":"'.$text.'"
+		   },
+		    "msgtype":"text"
+		}';
+    	$result = httpPost($url,$string);
+    	var_dump($result);
+    	
+    }
+
     private static function mkDirs($dir){
         if(!is_dir($dir)){
             if(!self::mkDirs(dirname($dir))){
