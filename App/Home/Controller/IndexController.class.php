@@ -340,6 +340,7 @@ class IndexController extends Controller {
                     sendMessage($msgArray); //出发彩蛋消息
 
                 }
+                open($number.'-'.$a_info['egg_num']);
                 if($number == $a_info['egg_num']){ //彩蛋条件
                     $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",
