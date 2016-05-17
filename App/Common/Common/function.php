@@ -42,8 +42,13 @@ function access_token(){
     $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
     $res = file_get_contents($url);
     $data = json_decode($res,true);
-    S('access_token',$data,7150);
-    return $data['access_token'];
+    if(isset($data['access_token'])){
+        S('access_token',$data,7150);
+        return $data['access_token'];
+    }
+    S('access_token',null);
+    return false;
+
 }
 //回复普通消息模板
     function msgText(){

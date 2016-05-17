@@ -130,7 +130,7 @@ class ActivityController extends RbacController{
     //微信群发
     public function sendAll(){
     	$text = $_POST['text'];
-    	$access_token=access_token();
+    	$access_token = access_token();
 
     	echo $url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=".$access_token;
     	$string = '{
