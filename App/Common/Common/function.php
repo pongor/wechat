@@ -199,8 +199,9 @@ function sendMessage($array){
     curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
     curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
     curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
-    curl_exec($ch);
+    $result = curl_exec($ch);
     curl_close($ch);
+    return json_encode($result);
 }
 //将用户头像保存到本地
 
