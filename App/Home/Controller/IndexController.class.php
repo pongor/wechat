@@ -340,7 +340,7 @@ class IndexController extends Controller {
                     sendMessage($msgArray); //出发彩蛋消息
 
                 }
-                open($number.'-'.$a_info['egg_num']);
+
                 if($number == $a_info['egg_num']){ //彩蛋条件
                     $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",
@@ -359,6 +359,7 @@ class IndexController extends Controller {
             }else{ //B条件
                 $rank = D('share')->where(array('a_id'=>$aid,'number'=>array('GT'=>$number)))->count();
                 $rank++; //用户排名
+                open(json_encode(array($rank)));
                 if($rank >= $a_info['rank_list']){
                     $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",
