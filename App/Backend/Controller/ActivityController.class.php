@@ -62,9 +62,9 @@ class ActivityController extends RbacController{
 		}
 		
 		if($r) {
-			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("保存成功");</script>');
+			redirect(U('Activity/index',array('time'=>time())),0.2,'<script>alert("保存成功");</script>');
 		}else{
-			redirect(U('Activity/Index',array('time'=>time())),0.2,'<script>alert("保存失败");</script>');
+			redirect(U('Activity/index',array('time'=>time())),0.2,'<script>alert("保存失败");</script>');
 		}
 		
 	}
