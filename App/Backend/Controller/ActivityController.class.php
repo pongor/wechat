@@ -131,7 +131,7 @@ class ActivityController extends RbacController{
     public function sendAll(){
     	$text = $_POST['text'];
     	$access_token = access_token();
-
+		var_dump($access_token);
     	echo $url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=".$access_token;
     	$string = '{
 		   "filter":{

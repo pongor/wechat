@@ -47,7 +47,7 @@ function access_token(){
         return $data['access_token'];
     }
     S('access_token',null);
-    return false;
+    return $data;
 
 }
 //回复普通消息模板
