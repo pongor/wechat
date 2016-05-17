@@ -285,15 +285,15 @@ class IndexController extends Controller {
           //  return ;
         }else{  //用户为支持过
             if($a_user_id == $user_id){
-                $msgArray = '{
-                    "touser":"'.$openid.'",
-                    "msgtype":"text",
-                    "text":
-                    {
-                         "content":"'.$a_info['re_invite_content'].'"
-                    }
-                }';
-                sendMessage($msgArray); //达到条件
+//                $msgArray = '{
+//                    "touser":"'.$openid.'",
+//                    "msgtype":"text",
+//                    "text":
+//                    {
+//                         "content":"'.$a_info['re_invite_content'].'"
+//                    }
+//                }';
+//                sendMessage($msgArray); //达到条件
                 return;
             }
             $s_data = array(
