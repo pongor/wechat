@@ -38,14 +38,14 @@ class IndexController extends Controller {
                         $contentStr ="{$res['title']}".$keyword;
                     }else{
                         $contentStr ="没有活动！！！".$keyword;
-                        die(' ');
+                        die('success');
                     }
                 }
             }elseif ($msgType == 'image'){
                 $picUrl = $postObj->PicUrl;
                 $MediaId = $postObj->MediaId;
                 $contentStr = '图片';
-                die(' ');
+                die('success');
 
             }elseif ($msgType == 'event'){
                 switch ($postObj->Event){
