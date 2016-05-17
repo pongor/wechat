@@ -305,7 +305,7 @@ class IndexController extends Controller {
             $support->Insert($s_data); //保存支持信息
             $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
            $number = $share_info['number']+1;  //人数
-            if($a_info['success_condition'] != 1){ //代表a条件
+            if($a_info['success_condition'] == 1){ //代表a条件
                 if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
                     //continue_content
                     $msgArray = '{
