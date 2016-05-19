@@ -16,12 +16,21 @@ class IndexController extends Controller {
     "Content":"哈哈",
     "MsgId":"6286309276681876036"
 }';
-        if(checkSignature()) {
+        $json = '{
+    "ToUserName":"gh_cbfe978fe9e3",
+    "FromUserName":"o0W5ms_CO3BqzzXbN0NuvMR41Wx8",
+    "CreateTime":"1463646741",
+    "MsgType":"event",
+    "Event":"SCAN",
+    "EventKey":"11",
+    "Ticket":"gQFN8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdFaWxiMXZseWVHd0dXNGk0R1lWAAIEuLk6VwMEgPQDAA=="
+}'; //扫码
+        if(!checkSignature()) {
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-            // $postObj = json_decode($json);
-              open(json_encode($postObj));
+             $postObj = json_decode($json);
+            //  open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
@@ -89,9 +98,9 @@ class IndexController extends Controller {
                     die('success');
                 }
                 $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}"); //活动信息
-
+                var_dump($share_array);
                 if (!$share_array) {  //用户未参加活动
-                    _curl($fromUsername, $aid); //发送活动其他信息
+                    var_dump(_curl($fromUsername, $aid)); //发送活动其他信息
                 }
                 self::support($id, $fromUsername);
             }
