@@ -21,7 +21,7 @@ class IndexController extends Controller {
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
             // $postObj = json_decode($json);
-            //  open(json_encode($postObj));
+              open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
@@ -91,7 +91,6 @@ class IndexController extends Controller {
                 $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}"); //活动信息
 
                 if (!$share_array) {  //用户未参加活动
-
                     _curl($fromUsername, $aid); //发送活动其他信息
                 }
                 self::support($id, $fromUsername);
