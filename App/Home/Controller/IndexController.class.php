@@ -70,6 +70,12 @@ class IndexController extends Controller {
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
+            }else{
+                if($contentStr){
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                    echo $resultStr;//die;
+                }
+
             }
             echo "success";
             ob_flush();
