@@ -36,7 +36,7 @@ class IndexController extends Controller {
                     $res = $model->getFind($where);
 
                     if($res){
-                        $contentStr ="{$res['title']}".$keyword;
+                        $contentStr ="{$res['title']}";
                     }else{
                         $contentStr ="没有活动！！！".$keyword;
                         die('success');
@@ -51,7 +51,7 @@ class IndexController extends Controller {
             }elseif ($msgType == 'event'){
                 switch ($postObj->Event){
                     case 'subscribe':   //用户没有关注
-                           $contentStr = $postObj->EventKey .'扫描';
+                          // $contentStr = $postObj->EventKey .'扫描';
                            $arr =  explode('qrscene_',$postObj->EventKey);
                            $id = $arr[1];
 
@@ -76,13 +76,23 @@ class IndexController extends Controller {
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }else{
-                if($postObj->Event == 'subscribe' || $postObj->Event == 'SCAN'){
-                    _curl($fromUsername,$id);
-                }else{
-                    if($contentStr){
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                        echo $resultStr;//die;
+
+                if($contentStr){
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                    echo $resultStr;//die;
+                }else{ //扫码用户
+                    if($id > 0 ){
+                        $where = "id = {$id} and start_time < {$time} and end_time > {$time}";
+                        $res = $model->getFind($where);
+                        if($res){
+                            $contentStr = $res['title'];
+                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                            echo $resultStr;
+                        }
                     }
+                }
+                if($postObj->Event == 'subscribe' || $postObj->Event == 'SCAN' && $id >0 ){
+                    _curl($fromUsername,$id); //扫码用户参加活动
                 }
             }
             echo "success";
