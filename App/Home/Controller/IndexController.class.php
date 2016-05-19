@@ -14,25 +14,94 @@ class IndexController extends Controller {
 
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-         //   open(json_encode($postObj));
+
             $fromUsername = $postObj->FromUserName;
-
             $toUsername = $postObj->ToUserName;
-
             $keyword = trim($postObj->Content);
             $msgType = $postObj->MsgType;
             $time = time();
             $id = 0;
             $textTpl = msgText();
+
             $model = D('activity');
+
+            switch ($msgType){
+                case 'test':  //发送了文字内容
+                    if($keyword == 'Hello2BizUser'){
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "感谢关注留学独立说");
+                        echo $resultStr;
+                    }else{
+                        $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
+                        $res = $model->getFind($where);
+                        if($res){
+                            if($res['is_start'] != 1){
+                                //
+                                $contentStr ="{$res['title']}";
+                                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "这个活动已经结束报名啦，下次早点来哦！"); //推送活动信息
+                                echo $resultStr;die;
+                            }
+                            $contentStr ="{$res['title']}";
+                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
+                            echo $resultStr;
+
+                            _curl($fromUsername,$res['id']); //发送活动其他信息
+                            die;
+                        }else{
+//
+                            die('success');
+                        }
+                    }
+                    break;
+                case 'event':  //有事件
+                    switch ($postObj->Event){
+                        case 'subscribe':  //未关注用户扫码时间
+                            $arr =  explode('qrscene_',$postObj->EventKey);
+                            $id = $arr[1];
+                            break;
+                        case 'SCAN': //已关注用户扫码事件
+                            $id = $postObj->EventKey;
+                            break;
+                    }
+                    break;
+                default:
+                    die('success');
+                    break;
+            }
+            if($id > 0){  //扫码用户
+                $shar = D('share');
+                $supp =  $shar->getInfo('id='.$id); //活动支持信息
+                if(!$supp){
+                    die('success');
+                }
+                $aid = $supp['a_id'];
+                $user_id = $supp['user_id'];
+                //获取扫码用户的信息
+                $info = D('member')->getInfo("openid='{$fromUsername}'");
+                $a_user_id = isset($info['id']) ? $info['id'] : 0;
+
+                $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}");
+
+                if(!$share_array){  //用户未参加活动
+                    _curl($fromUsername,$aid); //发送活动其他信息
+                }
+                self::support($id,$fromUsername);
+            }
+die;
+
+
+
+
+
+
             if($msgType == 'text'){
 
                 if($keyword == 'Hello2BizUser'){
 
                     $contentStr = '感谢关注留学独立说';
+
                 }else{
 
-                    $time = time();
+
                     $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
                     $res = $model->getFind($where);
 
@@ -59,7 +128,6 @@ class IndexController extends Controller {
                         break;
                     case 'SCAN':   //用户已关注 扫描事件
                      //   $contentStr = $postObj->EventKey .'扫描';
-
                         $id = $postObj->EventKey;
 
                         break;
