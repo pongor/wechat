@@ -82,27 +82,57 @@ class IndexController extends Controller {
                     echo $resultStr;//die;
                 }else{ //扫码用户
                     if($id > 0 ){
+                        $shar = D('share');
+                        $supp =  $shar->getInfo('id='.$id);
+                        if($supp){
+                            $aid = $supp['a_id']; //活动id
+                            $user_id = $supp['user_id']; //参加活动的用户
+                            //获取扫码用户的信息
+                            $info = D('member')->getInfo("openid='{$fromUsername}'");
+                            if($info){
+                                $a_user_id = $info['id'];
+                                //判断用户是否参加了当前的活动
+                                $result = $shar->getInfo("user_id={$a_user_id} and aid = {$aid}");
+                                if(!$result){ //用户没有参加活动
+                                    //获取活动信息
+                                    $scan =$model->getFind("id = {$aid}");
+
+                                    $contentStr = $scan['title'];
+                                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                                    echo $resultStr;
+                                    _curl($fromUsername,$aid); //扫码用户参加活动
+                                }
+                            }
+
+                        }else{
+                            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
+                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                            echo $resultStr;die;
+                        }
+                        /*
                         $where = "id = {$id} and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
+
                         if($res){
                             $contentStr = $res['title'];
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                             echo $resultStr;
                         }
-                    }
-                }
-                if($postObj->Event == 'subscribe' || $postObj->Event == 'SCAN' && $id >0 ){
-                    $shar = D('share');
-                   $supp =  $shar->getInfo('id='.$id);
-                    if($supp && isset($supp['user_id']) && $supp['a_id']){  //用户互相支持的信息
-                        $a_id = $supp['a_id'];
-                        $user_id = $supp['user_id']; //被支持的用户
-                        $info = D('member')->getInfo("openid='{$fromUsername}'"); //扫码用户
-                        if($user_id != $info['id'] || !isset($info['id'])){
-                            _curl($fromUsername,$a_id); //扫码用户参加活动
+                        $shar = D('share');
+                        $supp =  $shar->getInfo('id='.$id);
+                        if($supp && isset($supp['user_id']) && $supp['a_id']){  //用户互相支持的信息
+                            $a_id = $supp['a_id'];
+                            $user_id = $supp['user_id']; //被支持的用户
+                            $info = D('member')->getInfo("openid='{$fromUsername}'"); //扫码用户
+                            if($user_id != $info['id'] || !isset($info['id'])){
+                                _curl($fromUsername,$a_id); //扫码用户参加活动
+                            }
                         }
+*/
+
                     }
                 }
+
             }
             echo "success";
             ob_flush();
