@@ -114,7 +114,7 @@ class IndexController extends Controller {
         $id = intval(I('get.id')) ? intval(I('get.id')) :1;
         $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
-        open(json_encode($user));
+
         $model = D('member');
         $result = $model->getUser(array('openid'=>$openid));
         $data = [
@@ -129,7 +129,6 @@ class IndexController extends Controller {
             'privilege'     =>  $user['privilege'],
             'remark'        =>   $user['remark'],
         ];
-
         if($result){ //如果用户存在
             $model->getUpdate('id='.$result['id'],$data);
             $user_id = $result['id'];
@@ -139,7 +138,7 @@ class IndexController extends Controller {
             $user_id = $model->insert($data);  //是新用户.
         }
         $share = D('share');
-        $share_info = $share->getInfo('user_id='.$result['id'].' and a_id='.$id);
+        $share_info = $share->getInfo('user_id='.$user_id.' and a_id='.$id);
 
         $activity = D('activity');
         $a_info = $activity->getFind('id='.$id); //活动信息
