@@ -85,14 +85,24 @@ class IndexController extends Controller {
                         $where = "id = {$id} and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
                         if($res){
-                            $contentStr = $res['title'];
+                            $contentStr = $res['title'].'aaaa';
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                             echo $resultStr;
                         }
                     }
                 }
                 if($postObj->Event == 'subscribe' || $postObj->Event == 'SCAN' && $id >0 ){
-                    _curl($fromUsername,$id); //扫码用户参加活动
+                    $shar = D('share');
+                   $supp =  $shar->getInfo('id='.$id);
+                    if($supp && isset($supp['user_id']) && $supp['a_id']){  //用户互相支持的信息
+                        $a_id = $supp['a_id'];
+                        $user_id = $supp['user_id']; //被支持的用户
+                        $info = D('member')->getInfo("openid='{$fromUsername}'"); //扫码用户
+                        if($user_id != $info['id'] || !isset($info['id'])){
+                            _curl($fromUsername,$a_id); //扫码用户参加活动
+                        }
+                    }
+
                 }
             }
             echo "success";
