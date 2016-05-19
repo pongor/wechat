@@ -33,7 +33,7 @@ class IndexController extends Controller {
             $model = D('activity');
             var_dump($msgType);
             switch ($msgType){
-                case 'test':  //发送了文字内容
+                case 'text':  //发送了文字内容
                     if($keyword == 'Hello2BizUser'){
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "感谢关注留学独立说");
                         echo $resultStr;
