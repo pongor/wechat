@@ -11,10 +11,9 @@ class IndexController extends Controller {
 
         if(checkSignature()){
             echo $_GET['echostr'];
-
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-
+            open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
@@ -35,15 +34,13 @@ class IndexController extends Controller {
                         $res = $model->getFind($where);
                         if($res){
                             if($res['is_start'] != 1){
-                                //
-                                $contentStr ="{$res['title']}";
+
                                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "这个活动已经结束报名啦，下次早点来哦！"); //推送活动信息
                                 echo $resultStr;die;
                             }
                             $contentStr ="{$res['title']}";
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
                             echo $resultStr;
-
                             _curl($fromUsername,$res['id']); //发送活动其他信息
                             die;
                         }else{
