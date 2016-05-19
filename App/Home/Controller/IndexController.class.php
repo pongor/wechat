@@ -65,7 +65,7 @@ class IndexController extends Controller {
                         break;
                     default:
                         $contentStr = '';
-                        echo '';die;
+                        echo 'success';die;
                         break;
                 }
 
@@ -100,15 +100,31 @@ class IndexController extends Controller {
                                 $result = $shar->getInfo("user_id={$a_user_id} and a_id = {$aid}");
                                 if(!$result){ //用户没有参加活动
                                     //获取活动信息
-                                    $scan =$model->getFind("id = {$aid}");
-
-                                    $contentStr = $scan['title'];
-                                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                                    echo $resultStr;
-                                    _curl($fromUsername,$aid); //扫码用户参加活动
+                                    $scan =$model->getFind("id = {$aid} and start_time < {$time} and end_time > {$time} and is_start=1");
+                                    if($scan){
+                                        $contentStr = $scan['title'];
+                                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                                        echo $resultStr;
+                                        _curl($fromUsername,$aid); //扫码用户参加活动
+                                    }else{
+                                        $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
+                                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                                        echo $resultStr;die;
+                                    }
                                 }
                             }else{
+                                $scan =$model->getFind("id = {$aid} and start_time < {$time} and end_time > {$time} and is_start=1");
+                            if($scan){
+                                $contentStr = $scan['title'];
+                                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                                echo $resultStr;
                                 _curl($fromUsername,$aid); //扫码用户参加活动
+                            }else{
+                                $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
+                                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                                echo $resultStr;die;
+                            }
+
                             }
 
                         }else{
