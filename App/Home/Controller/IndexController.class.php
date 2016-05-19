@@ -38,8 +38,10 @@ class IndexController extends Controller {
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "感谢关注留学独立说");
                         echo $resultStr;
                     }else{
-                        $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
+                        $where = "instr(back_keyword,'{$keyword}') > 0 and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
+                        echo $model->_sql();
+                        var_dump($res);
                         if($res){
                             if($res['is_start'] != 1){
 
