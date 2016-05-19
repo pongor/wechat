@@ -23,13 +23,14 @@ class IndexController extends Controller {
             $time = time();
             $id = 0;
             $textTpl = msgText();
+            $model = D('activity');
             if($msgType == 'text'){
 
                 if($keyword == 'Hello2BizUser'){
 
                     $contentStr = '感谢关注留学独立说';
                 }else{
-                    $model = D('activity');
+
                     $time = time();
                     $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
                     $res = $model->getFind($where);
@@ -53,10 +54,13 @@ class IndexController extends Controller {
                            $contentStr = $postObj->EventKey .'扫描';
                            $arr =  explode('qrscene_',$postObj->EventKey);
                            $id = $arr[1];
+
                         break;
                     case 'SCAN':   //用户已关注 扫描事件
-                        $contentStr = $postObj->EventKey .'扫描';
+                     //   $contentStr = $postObj->EventKey .'扫描';
+
                         $id = $postObj->EventKey;
+
                         break;
                     default:
                         $contentStr = '';
@@ -66,16 +70,20 @@ class IndexController extends Controller {
 
             }
 
+
             if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                 echo $resultStr;die;
             }else{
-                if($contentStr){
-                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                    echo $resultStr;//die;
+                if($postObj->Event == 'subscribe' || $postObj->Event == 'SCAN'){
+                    _curl($fromUsername,$id);
+                }else{
+                    if($contentStr){
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
+                        echo $resultStr;//die;
+                    }
                 }
-
             }
             echo "success";
             ob_flush();
