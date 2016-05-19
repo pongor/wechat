@@ -8,28 +8,28 @@ class IndexController extends Controller {
     public function index(){
         //OPENTM207685059
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
-        $json = '{
-    "ToUserName":"gh_cbfe978fe9e3",
-    "FromUserName":"o0W5ms1hZCcATLP8hv5lV3QHogO0",
-    "CreateTime":"1463645435",
-    "MsgType":"text",
-    "Content":"哈哈",
-    "MsgId":"6286309276681876036"
-}';
-        $json = '{
-    "ToUserName":"gh_cbfe978fe9e3",
-    "FromUserName":"o0W5ms_CO3BqzzXbN0NuvMR41Wx8",
-    "CreateTime":"1463646741",
-    "MsgType":"event",
-    "Event":"SCAN",
-    "EventKey":"11",
-    "Ticket":"gQFN8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdFaWxiMXZseWVHd0dXNGk0R1lWAAIEuLk6VwMEgPQDAA=="
-}'; //扫码
-        if(!checkSignature()) {
+//        $json = '{
+//    "ToUserName":"gh_cbfe978fe9e3",
+//    "FromUserName":"o0W5ms1hZCcATLP8hv5lV3QHogO0",
+//    "CreateTime":"1463645435",
+//    "MsgType":"text",
+//    "Content":"哈哈",
+//    "MsgId":"6286309276681876036"
+//}';
+//        $json = '{
+//    "ToUserName":"gh_cbfe978fe9e3",
+//    "FromUserName":"o0W5ms_CO3BqzzXbN0NuvMR41Wx8",
+//    "CreateTime":"1463646741",
+//    "MsgType":"event",
+//    "Event":"SCAN",
+//    "EventKey":"11",
+//    "Ticket":"gQFN8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdFaWxiMXZseWVHd0dXNGk0R1lWAAIEuLk6VwMEgPQDAA=="
+//}'; //扫码
+        if(checkSignature()) {
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-             $postObj = json_decode($json);
+             //$postObj = json_decode($json);
             //  open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
@@ -98,9 +98,9 @@ class IndexController extends Controller {
                     die('success');
                 }
                 $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}"); //活动信息
-                var_dump($share_array);
+               // var_dump($share_array);
                 if (!$share_array) {  //用户未参加活动
-                    var_dump(_curl($fromUsername, $aid)); //发送活动其他信息
+                    _curl($fromUsername, $aid); //发送活动其他信息
                 }
                 self::support($id, $fromUsername);
             }
@@ -143,7 +143,7 @@ class IndexController extends Controller {
         $activity = D('activity');
         $a_info = $activity->getFind('id='.$id); //活动信息
 
-        //拿到分享图片 
+        //拿到分享图片
         if($share_info && ($share_info['up_time'] + 3*24*60*60) > time() && $share_info['share']){  //素材未过期
             $media_id = $share_info['media_id'];
         }else if(($share_info['up_time'] + 3*24*60*60) <= time() && $share_info['share']){  //素材过期  重新上传

@@ -113,7 +113,7 @@ function add_material($file_info){
 //异步通知
 function _curl($openid,$id) {
     $url = 'http://wechat.dulishuo.com';
-   echo $url .=  U('Index/sendMessage',array('openid'=>$openid,'id'=>$id));
+    $url .=  U('Index/sendMessage',array('openid'=>$openid,'id'=>$id));
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL,$url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
