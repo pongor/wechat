@@ -8,12 +8,20 @@ class IndexController extends Controller {
     public function index(){
         //OPENTM207685059
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
-
+        $json = '{
+    "ToUserName":"gh_cbfe978fe9e3",
+    "FromUserName":"o0W5ms1hZCcATLP8hv5lV3QHogO0",
+    "CreateTime":"1463645435",
+    "MsgType":"text",
+    "Content":"哈哈",
+    "MsgId":"6286309276681876036"
+}';
         if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-            open(json_encode($postObj));
+         //   $postObj = json_decode($json);
+          //  open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
