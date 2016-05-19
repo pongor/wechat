@@ -24,7 +24,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo4.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo5.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/ttf/msyh.ttf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
     </list>
     <ignored path="wechat.iws" />
@@ -50,8 +49,8 @@
       <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            <state relative-caret-position="608">
+              <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -442,12 +441,12 @@
       <workItem from="1463367071063" duration="17516000" />
       <workItem from="1463449690222" duration="17795000" />
       <workItem from="1463537194165" duration="11687000" />
-      <workItem from="1463623978182" duration="17270000" />
+      <workItem from="1463623978182" duration="17357000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198293000" />
+    <option name="totallyTimeSpent" value="198380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -853,8 +852,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        <state relative-caret-position="608">
+          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
           <folding />
         </state>
       </provider>

@@ -31,7 +31,7 @@ class IndexController extends Controller {
             $textTpl = msgText();
             var_dump($postObj);
             $model = D('activity');
-
+            var_dump($msgType);
             switch ($msgType){
                 case 'test':  //发送了文字内容
                     if($keyword == 'Hello2BizUser'){
