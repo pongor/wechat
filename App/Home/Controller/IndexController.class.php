@@ -29,7 +29,7 @@ class IndexController extends Controller {
             $time = time();
             $id = 0;
             $textTpl = msgText();
-
+            var_dump($postObj);
             $model = D('activity');
 
             switch ($msgType){
