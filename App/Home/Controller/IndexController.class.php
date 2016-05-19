@@ -85,7 +85,7 @@ class IndexController extends Controller {
                         $where = "id = {$id} and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
                         if($res){
-                            $contentStr = $res['title'].'aaaa';
+                            $contentStr = $res['title'];
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                             echo $resultStr;
                         }
@@ -102,7 +102,6 @@ class IndexController extends Controller {
                             _curl($fromUsername,$a_id); //扫码用户参加活动
                         }
                     }
-
                 }
             }
             echo "success";
