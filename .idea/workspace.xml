@@ -24,7 +24,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo4.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/bd_logo5.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/img/ttf/msyh.ttf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/Common/function.php" afterPath="$PROJECT_DIR$/App/Common/Common/function.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="513">
-              <caret line="102" column="56" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
+              <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -106,15 +106,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="function.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+            <state relative-caret-position="638">
+              <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
               <folding>
-                <marker date="1463480077258" expanded="true" signature="1206:1495" placeholder="..." />
-                <marker date="1463480077258" expanded="true" signature="1545:1781" placeholder="..." />
-                <marker date="1463480077258" expanded="true" signature="1719:1770" placeholder="..." />
+                <marker date="1463646888976" expanded="true" signature="1206:1495" placeholder="..." />
+                <marker date="1463646888976" expanded="true" signature="1545:1781" placeholder="..." />
+                <marker date="1463646888976" expanded="true" signature="1719:1770" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -144,13 +144,13 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/db.php" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/config.php" />
         <option value="$PROJECT_DIR$/App/Home/Conf/config.php" />
         <option value="$PROJECT_DIR$/App/Backend/Controller/RbacController.class.php" />
         <option value="$PROJECT_DIR$/App/Backend/Controller/ActivityController.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Model/ShareModel.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
       </list>
     </option>
   </component>
@@ -441,12 +441,12 @@
       <workItem from="1463367071063" duration="17516000" />
       <workItem from="1463449690222" duration="17795000" />
       <workItem from="1463537194165" duration="11687000" />
-      <workItem from="1463623978182" duration="18359000" />
+      <workItem from="1463623978182" duration="18411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199382000" />
+    <option name="totallyTimeSpent" value="199434000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -516,9 +516,9 @@
         <state relative-caret-position="513">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <marker date="1463480077258" expanded="true" signature="1206:1495" placeholder="..." />
-            <marker date="1463480077258" expanded="true" signature="1545:1781" placeholder="..." />
-            <marker date="1463480077258" expanded="true" signature="1719:1770" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1206:1495" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1545:1781" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1719:1770" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -550,9 +550,9 @@
         <state relative-caret-position="285">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="23" />
           <folding>
-            <marker date="1463480077258" expanded="true" signature="1206:1495" placeholder="..." />
-            <marker date="1463480077258" expanded="true" signature="1545:1781" placeholder="..." />
-            <marker date="1463480077258" expanded="true" signature="1719:1770" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1206:1495" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1545:1781" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1719:1770" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -838,23 +838,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
-          <folding>
-            <marker date="1463480077258" expanded="true" signature="1206:1495" placeholder="..." />
-            <marker date="1463480077258" expanded="true" signature="1545:1781" placeholder="..." />
-            <marker date="1463480077258" expanded="true" signature="1719:1770" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
-          <caret line="102" column="56" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
+          <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
+          <folding>
+            <marker date="1463646888976" expanded="true" signature="1206:1495" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1545:1781" placeholder="..." />
+            <marker date="1463646888976" expanded="true" signature="1719:1770" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
