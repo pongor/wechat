@@ -14,6 +14,7 @@ class IndexController extends Controller {
 
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+            open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
 
             $toUsername = $postObj->ToUserName;
