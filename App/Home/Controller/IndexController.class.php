@@ -143,7 +143,7 @@ class IndexController extends Controller {
         $activity = D('activity');
         $a_info = $activity->getFind('id='.$id); //活动信息
 
-        //拿到分享图片
+        //拿到分享图片 
         if($share_info && ($share_info['up_time'] + 3*24*60*60) > time() && $share_info['share']){  //素材未过期
             $media_id = $share_info['media_id'];
         }else if(($share_info['up_time'] + 3*24*60*60) <= time() && $share_info['share']){  //素材过期  重新上传
