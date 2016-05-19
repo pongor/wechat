@@ -119,6 +119,7 @@ class IndexController extends Controller {
                                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
                                 echo $resultStr;
                                 _curl($fromUsername,$aid); //扫码用户参加活动
+                               open(json_encode($info));
                             }else{
                                 $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
                                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
