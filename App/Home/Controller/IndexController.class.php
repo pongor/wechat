@@ -16,11 +16,11 @@ class IndexController extends Controller {
     "Content":"哈哈",
     "MsgId":"6286309276681876036"
 }';
-        if(!checkSignature()){
+        if(checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $postObj = json_decode($json);
+           // $postObj = json_decode($json);
           //  open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
@@ -29,9 +29,9 @@ class IndexController extends Controller {
             $time = time();
             $id = 0;
             $textTpl = msgText();
-            var_dump($postObj);
+
             $model = D('activity');
-            var_dump($msgType);
+
             switch ($msgType){
                 case 'text':  //发送了文字内容
                     if($keyword == 'Hello2BizUser'){
@@ -40,8 +40,7 @@ class IndexController extends Controller {
                     }else{
                         $where = "instr(back_keyword,'{$keyword}') > 0 and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
-                        echo $model->_sql();
-                        var_dump($res);
+
                         if($res){
                             if($res['is_start'] != 1){
 
