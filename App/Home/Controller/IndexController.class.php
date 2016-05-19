@@ -16,11 +16,11 @@ class IndexController extends Controller {
     "Content":"哈哈",
     "MsgId":"6286309276681876036"
 }';
-        if(checkSignature()){
+        if(!checkSignature()){
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-         //   $postObj = json_decode($json);
+            $postObj = json_decode($json);
           //  open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
