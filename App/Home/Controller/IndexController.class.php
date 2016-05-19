@@ -93,7 +93,7 @@ class IndexController extends Controller {
                             if($info){
                                 $a_user_id = $info['id'];
                                 //判断用户是否参加了当前的活动
-                                $result = $shar->getInfo("user_id={$a_user_id} and aid = {$aid}");
+                                $result = $shar->getInfo("user_id={$a_user_id} and a_id = {$aid}");
                                 if(!$result){ //用户没有参加活动
                                     //获取活动信息
                                     $scan =$model->getFind("id = {$aid}");
