@@ -16,12 +16,12 @@ class IndexController extends Controller {
     "Content":"哈哈",
     "MsgId":"6286309276681876036"
 }';
-        if(checkSignature()){
+        if(checkSignature()) {
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-           // $postObj = json_decode($json);
-          //  open(json_encode($postObj));
+            // $postObj = json_decode($json);
+            //  open(json_encode($postObj));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
@@ -32,36 +32,37 @@ class IndexController extends Controller {
 
             $model = D('activity');
 
-            switch ($msgType){
+            switch ($msgType) {
                 case 'text':  //发送了文字内容
-                    if($keyword == 'Hello2BizUser'){
+                    if ($keyword == 'Hello2BizUser') {
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "感谢关注留学独立说");
                         echo $resultStr;
-                    }else{
+                    } else {
                         $where = "instr(back_keyword,'{$keyword}') > 0 and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
 
-                        if($res){
-                            if($res['is_start'] != 1){
+                        if ($res) {
+                            if ($res['is_start'] != 1) {
 
                                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "这个活动已经结束报名啦，下次早点来哦！"); //推送活动信息
-                                echo $resultStr;die;
+                                echo $resultStr;
+                                die;
                             }
-                            $contentStr ="{$res['title']}";
+                            $contentStr = "{$res['title']}";
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
                             echo $resultStr;
-                            _curl($fromUsername,$res['id']); //发送活动其他信息
+                            _curl($fromUsername, $res['id']); //发送活动其他信息
                             die;
-                        }else{
+                        } else {
 //
                             die('success');
                         }
                     }
                     break;
                 case 'event':  //有事件
-                    switch ($postObj->Event){
+                    switch ($postObj->Event) {
                         case 'subscribe':  //未关注用户扫码时间
-                            $arr =  explode('qrscene_',$postObj->EventKey);
+                            $arr = explode('qrscene_', $postObj->EventKey);
                             $id = $arr[1];
                             break;
                         case 'SCAN': //已关注用户扫码事件
@@ -73,10 +74,10 @@ class IndexController extends Controller {
                     die('success');
                     break;
             }
-            if($id > 0){  //扫码用户
+            if ($id > 0) {  //扫码用户
                 $shar = D('share');
-                $supp =  $shar->getInfo('id='.$id); //活动支持信息
-                if(!$supp){
+                $supp = $shar->getInfo('id=' . $id); //活动支持信息
+                if (!$supp) {
                     die('success');
                 }
                 $aid = $supp['a_id'];
@@ -84,146 +85,17 @@ class IndexController extends Controller {
                 //获取扫码用户的信息
                 $info = D('member')->getInfo("openid='{$fromUsername}'");
                 $a_user_id = isset($info['id']) ? $info['id'] : 0;
-
-                $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}");
-
-                if(!$share_array){  //用户未参加活动
-                    _curl($fromUsername,$aid); //发送活动其他信息
+                if ($user_id == $a_user_id) {
+                    die('success');
                 }
-                self::support($id,$fromUsername);
-            }
-die;
+                $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}"); //活动信息
 
+                if (!$share_array) {  //用户未参加活动
 
-
-
-
-
-            if($msgType == 'text'){
-
-                if($keyword == 'Hello2BizUser'){
-
-                    $contentStr = '感谢关注留学独立说';
-
-                }else{
-
-
-                    $where = "instr(back_keyword,'{$keyword}')>0 and start_time < {$time} and end_time > {$time}";
-                    $res = $model->getFind($where);
-
-                    if($res){
-                        $contentStr ="{$res['title']}";
-                    }else{
-                        $contentStr ="没有活动！！！".$keyword;
-                        die('success');
-                    }
+                    _curl($fromUsername, $aid); //发送活动其他信息
                 }
-            }elseif ($msgType == 'image'){
-                $picUrl = $postObj->PicUrl;
-                $MediaId = $postObj->MediaId;
-                $contentStr = '图片';
-                die('success');
-
-            }elseif ($msgType == 'event'){
-                switch ($postObj->Event){
-                    case 'subscribe':   //用户没有关注
-                          // $contentStr = $postObj->EventKey .'扫描';
-                           $arr =  explode('qrscene_',$postObj->EventKey);
-                           $id = $arr[1];
-
-                        break;
-                    case 'SCAN':   //用户已关注 扫描事件
-                     //   $contentStr = $postObj->EventKey .'扫描';
-                        $id = $postObj->EventKey;
-
-                        break;
-                    default:
-                        $contentStr = '';
-                        echo 'success';die;
-                        break;
-                }
-
+                self::support($id, $fromUsername);
             }
-
-
-            if( isset($res['is_start']) &&  $res['is_start'] != 1  ){
-                $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                echo $resultStr;die;
-            }else{
-
-                if($contentStr){
-                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                    echo $resultStr;//die;
-                }else{ //扫码用户
-                    if($id > 0 ){
-                        $shar = D('share');
-                        $supp =  $shar->getInfo('id='.$id);
-                        if($supp){
-                            $aid = $supp['a_id']; //活动id
-                            $user_id = $supp['user_id']; //参加活动的用户
-
-                            //获取扫码用户的信息
-                            $info = D('member')->getInfo("openid='{$fromUsername}'");
-                            if($info){
-                                $a_user_id = $info['id'];
-                                if($a_user_id == $user_id){
-                                    die('success');
-                                }
-                                //判断用户是否参加了当前的活动
-                                $result = $shar->getInfo("user_id={$a_user_id} and a_id = {$aid}");
-                                if(!$result){ //用户没有参加活动
-                                    //获取活动信息
-                                    $scan =$model->getFind("id = {$aid} and start_time < {$time} and end_time > {$time} and is_start=1");
-                                    if($scan){
-                                        $contentStr = $scan['title'];
-                                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                                        echo $resultStr;
-                                        _curl($fromUsername,$aid); //扫码用户参加活动
-                                    }else{
-                                        $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
-                                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                                        echo $resultStr;die;
-                                    }
-                                }
-                            }else{
-                                $scan =$model->getFind("id = {$aid} and start_time < {$time} and end_time > {$time} and is_start=1");
-                            if($scan){
-                                $contentStr = $scan['title'];
-                                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                                echo $resultStr;
-                                _curl($fromUsername,$aid); //扫码用户参加活动
-                               open(json_encode($info));
-                            }else{
-                                $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
-                                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                                echo $resultStr;die;
-                            }
-
-                            }
-
-                        }else{
-                            $contentStr = '这个活动已经结束报名啦，下次早点来哦！'.$res['is_start'].$res['id'];
-                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
-                            echo $resultStr;die;
-                        }
-                    }
-                }
-
-            }
-            echo "success";
-            ob_flush();
-            flush();
-            if($id >0 ){ //扫码事件
-
-                self::support($id,$fromUsername);
-
-            }else{ //活动事件
-                _curl($fromUsername,$res['id']);
-            }
-            die(' ');
-        }else{
-            exit( '');
         }
    }
     /*
@@ -234,6 +106,7 @@ die;
         $id = intval(I('get.id')) ? intval(I('get.id')) :1;
         $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
         $user = getUser($openid); // 获取用户信息
+        open(json_encode($user));
         $model = D('member');
         $result = $model->getUser(array('openid'=>$openid));
         $data = [
