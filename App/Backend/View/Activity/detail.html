@@ -30,7 +30,7 @@
 						<h3>基本内容</h3>
 					</div>
 					<div class="cell_blockContent">
-						<div class="cell_partBar-1 attr_marTop15p">
+						<div class="cell_partBar-1 attr_marTop15p" style="height:130px;">
 							<!--组件：输入组件-->
 							<div class="cell_partBox-2 attr_width46 attr_marRig8">
 								<!--组件：小标题盒子-->
@@ -42,7 +42,7 @@
 								<!--组件：input输入框-->
 								<div class="cell_partContent">
 									<!--如果只读请给input添加：readonly="readonly"-->
-									<input type="text" placeholder="请输入标题" name="title" value="{$result['title']}" />
+									<textarea placeholder="请输入标题" name="title">{$result['title']}</textarea>
 								</div>
 							</div>
 							<!--组件：输入组件-->
@@ -532,11 +532,12 @@
     }
 
     function sendAll(){
+    	var activity_id = {$result['id']};
     	var text = $('textarea[name=activity_rank_notice]').val();
     	$.ajax({
     		url:'{:U("Activity/sendAll")}',
     		type:'post',
-    		data:{'text':text},
+    		data:{'text':text,'id':activity_id},
     		success: function (data, status)  //服务器成功响应处理函数
             {
                 var obj = $.parseJSON(data);

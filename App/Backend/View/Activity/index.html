@@ -29,7 +29,7 @@
 				</div>
 				<!--组件：操作按钮-->
 				<div class="cell_operate_activity attr_left attr_marLef26p ">
-					<a href="{:U('Member/index')}" onclick="return isDisabled(this);" style="cursor:pointer"><p>用户积分</p></a>
+					<a href="javascript:showMemberNum()" onclick="return isDisabled(this);" style="cursor:pointer"><p>用户积分</p></a>
 				</div>
 				
 				<!--元件：退出-->
@@ -170,9 +170,16 @@
 			//查询
 			function search(){
 				var val = $('#searchName').val();
-				var url = '/wechat/Backend/Activity/index/title/'+val;
+				var url = '__APP__/Backend/Activity/index/title/'+val;
 				window.location.href = url;
 				
+			}
+
+			//显示用户积分
+			function showMemberNum(){
+				var id = $('.cell_radio:checked').val();
+				var url = '__APP__/Backend/Member/index/activity_id/'+id;
+				window.location.href = url;
 			}
 			
 		</script>

@@ -130,26 +130,60 @@ class ActivityController extends RbacController{
     //微信群发
     public function sendAll(){
     	$text = $_POST['text'];
-    	$access_token = access_token();
-		$url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=".$access_token;
-    	$string = '{
-		   "filter":{
-		      "is_to_all":false,
-		      "tag_id":2
-		   },
-		   "text":{
-		      "content":"'.$text.'"
-		   },
-		    "msgtype":"text"
-		}';
-    	$result = httpPost($url,$string);
-    	echo $result;die;
+    	$activity_id = intval($_POST['id']);
+    	$result = D('Activity')->getField(array('id'=>$activity_id));
+    	$condition = intval($result['success_condition']);
+    	if($condition == 1){
+    		//邀请人数
+    		$invite_num = $result['invite_num'];
+    		$list = D('Activity')->sendByInviteNum($activity_id,$invite_num);
+
+    	}else{
+    		//排行榜
+    		$rank_num = $result['rank_list'];
+    		$list = D('Activity')->sendByRankList($activity_id,$rank_num);//取到了list openId
+    		
+    	}
+    	$openIdString = "";
+    	$count = 0;//计数器，微信群发一次最多为10000个
+    	foreach ($list as $key => $value) {
+    		if($count < 1){
+				$openIdString .= '"'.$value['openid'].'",';
+				$count ++;
+    		}else{
+    			$openIdString = substr($openIdString,0,strlen($openIdString)-1);
+    			$this->sendMessage($openIdString,$text);
+    			$openIdString = '"'.$value['openid'].'",';
+    			$count = 0;
+    		}
+    	}
+    	$openIdString = substr($openIdString,0,strlen($openIdString)-1);
+    	$this->sendMessage($openIdString,$text);
+    	echo json_encode(array('errcode'=>0));die;
     	
     }
 	public function test(){
 		$url = 'https://api.weixin.qq.com/cgi-bin/message/mass/get?access_token='.access_token();
 		var_dump(httpPost($url,'{"msg_id":"416998735"}'));
 	}
+
+	public function sendMessage($openIdString,$text){
+		var_dump(1);
+		$access_token = access_token();
+		$url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=".$access_token;
+    	$string = '{
+		   	"touser":['.$openIdString.'],
+		    "msgtype": "text",
+		    "text": { "content": "'.$text.'"}
+		}';
+		$result = httpPost($url,$string);
+		$resultJson = json_decode($result);
+		if($resultJson->errcode!=0){
+			echo $result;die;
+		}
+		
+	}
+
     private static function mkDirs($dir){
         if(!is_dir($dir)){
             if(!self::mkDirs(dirname($dir))){
