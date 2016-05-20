@@ -147,7 +147,7 @@ class ActivityController extends RbacController{
     	$openIdString = "";
     	$count = 0;//计数器，微信群发一次最多为10000个
     	foreach ($list as $key => $value) {
-    		if($count < 1){
+    		if($count < 10000){
 				$openIdString .= '"'.$value['openid'].'",';
 				$count ++;
     		}else{
