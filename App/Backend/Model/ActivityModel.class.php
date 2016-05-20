@@ -113,7 +113,7 @@ class ActivityModel extends Model {
 
     //根据邀请人数发送信息
     public function sendByInviteNum($activity_id,$num){
-        $sql = 'select openId from member where id in (SELECT user_id FROM (select user_id from `member_activity` where a_id = '.$activity_id.' and number > '.$num.') as tp)';
+        $sql = 'select openId from member where id in (SELECT user_id FROM (select user_id from `member_activity` where a_id = '.$activity_id.' and number >= '.$num.') as tp)';
         return $this->query($sql);
     }
 
