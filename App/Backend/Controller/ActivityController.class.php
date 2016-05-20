@@ -170,7 +170,7 @@ class ActivityController extends RbacController{
 	public function sendMessage($openIdString,$text){
 		var_dump(1);
 		$access_token = access_token();
-		$url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=".$access_token;
+		$url = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=".$access_token;
     	$string = '{
 		   	"touser":['.$openIdString.'],
 		    "msgtype": "text",
