@@ -18,7 +18,6 @@ function checkSignature()
     $signature = I("get.signature");
     $timestamp = I("get.timestamp");
     $nonce = I("get.nonce");
-
     $token = C('TOKEN');
     $tmpArr = array($token, $timestamp, $nonce);
     sort($tmpArr, SORT_STRING);
