@@ -120,7 +120,7 @@ class IndexController extends Controller {
 
         $model = D('member');
         $result = $model->getUser(array('openid'=>$openid));
-        open(json_encode($user));
+//        open(json_encode($user));
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
