@@ -375,8 +375,10 @@ function tempMessage($openid,$url,$message,$nickname){
                    }
            }
        }';
+    open($msgArray);
     $template_url = C('template').'?access_token='.access_token();
-    httpPost($template_url,urlencode($msgArray));
+    $res = httpPost($template_url,urlencode($msgArray));
+    open($res);
 }
 /*
  * 递归创建目录
