@@ -342,6 +342,42 @@ function serviceMsg($openid,$msg,$type='text'){
     return sendMessage($msgArray);
 
 }
+//发送模板消息
+function tempMessage($openid,$url,$message,$nickname){
+    $message_array = explode('\r\n',$message);
+    if(isset($message[0]) && isset($message[1])){
+        $first = $message_array[0];
+        $remark = $message_array[1];
+    }else{
+        $first = $message_array[0];
+        $remark = '--';
+    }
+    $msgArray = ' {
+           "touser":"'.$openid.'",
+           "template_id":"lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q",
+           "url":"'.$url.'",            
+           "data":{
+                   "first": {
+                       "value":"'.$first.'",
+                       "color":"#173177"
+                   },
+                   "keyword1":{
+                       "value":"'.$nickname.'",
+                       "color":"#173177"
+                   },
+                   "keyword2": {
+                       "value":"'.date("Y-m-d H:i:s").'",
+                       "color":"#173177"
+                   },
+                   "remark":{
+                       "value":"'.$remark.'",
+                       "color":"#173177"
+                   }
+           }
+       }';
+    $template_url = C('template').'?access_token='.access_token();
+    httpPost($template_url,urlencode($msgArray));
+}
 /*
  * 递归创建目录
  * dir 目录

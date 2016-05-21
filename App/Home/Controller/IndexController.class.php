@@ -300,11 +300,11 @@ class IndexController extends Controller {
                          "content":"'.$a_info['re_invite_content'].'"
                     }
                 }';
-
-            $res = sendMessage($msgArray);
+            tempMessage($openid,$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname']);
+        //   sendMessage($msgArray);
           //  return ;
         }else{  //用户为支持过
-            if($a_user_id == $user_id){
+            if($a_user_id == $user_id){ //自己支持自己
 //                $msgArray = '{
 //                    "touser":"'.$openid.'",
 //                    "msgtype":"text",
@@ -325,6 +325,7 @@ class IndexController extends Controller {
             $support->Insert($s_data); //保存支持信息
             $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
            $number = $share_info['number']+1;  //人数
+
             if($a_info['success_condition'] == 1){ //代表a条件
                 if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
                     //continue_content
@@ -371,7 +372,6 @@ class IndexController extends Controller {
                     }
                 }';
                     sendMessage($msgArray); //完成彩蛋通知内容
-
                 }
 
 
@@ -403,31 +403,6 @@ class IndexController extends Controller {
                 }
 
             }
-            $msgArray = ' {
-           "touser":"'.$a_user_info['openid'].'",
-           "template_id":"lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q",
-           "url":"'.$a_info['invite_url'].'",            
-           "data":{
-                   "first": {
-                       "value":"恭喜你购买成功！",
-                       "color":"#173177"
-                   },
-                   "keynote1":{
-                       "value":"巧克力",
-                       "color":"#173177"
-                   },
-                   "keynote2": {
-                       "value":"39.8元",
-                       "color":"#173177"
-                   },
-                   "remark":{
-                       "value":"欢迎再次购买！",
-                       "color":"#173177"
-                   }
-           }
-       }';
-            $template_url = C('template').'?access_token='.access_token();
-            httpPost($template_url,urlencode($msgArray));
         }
 
     }
