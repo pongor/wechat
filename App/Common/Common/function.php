@@ -205,6 +205,7 @@ function sendMessage($array){
     curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $result = curl_exec($ch);
+    open($result);
     curl_close($ch);
     return json_encode($result);
 }
