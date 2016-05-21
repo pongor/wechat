@@ -47,7 +47,7 @@ class IndexController extends Controller {
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', "感谢关注留学独立说");
                         echo $resultStr;
                     } else {
-                        $where = "instr(back_keyword,'{$keyword}') > 0 and start_time < {$time} and end_time > {$time}";
+                        $where = "back_keyword = '{$keyword}' and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
 
                         if ($res) {
