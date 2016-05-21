@@ -300,7 +300,7 @@ class IndexController extends Controller {
                          "content":"'.$a_info['re_invite_content'].'"
                     }
                 }';
-            tempMessage($openid,$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname']);
+            tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname']);
         //   sendMessage($msgArray);
           //  return ;
         }else{  //用户为支持过
