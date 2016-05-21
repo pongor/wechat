@@ -377,7 +377,7 @@ function tempMessage($openid,$url,$message,$nickname){
        }';
     open($msgArray);
     $template_url = C('template').'?access_token='.access_token();
-    $res = httpPost($template_url,urlencode($msgArray));
+    $res = httpPost($template_url,$msgArray);
     open($res);
 }
 /*
