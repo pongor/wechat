@@ -25,5 +25,6 @@ return array(
     'IMG_LEFT'          =>  142, //二维码图片距离左边
     'IMG_NEXT'          =>  421, //二维码图片距离下边的距离
     'IMG_CODE'          =>  187, //二维码图片大小
+    'template_send_id' => 'lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q', //发送消息模板id
 
 );

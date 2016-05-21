@@ -301,7 +301,7 @@ class IndexController extends Controller {
                     }
                 }';
             tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname']);
-        //   sendMessage($msgArray);
+           sendMessage($msgArray);
           //  return ;
         }else{  //用户为支持过
             if($a_user_id == $user_id){ //自己支持自己
@@ -325,7 +325,9 @@ class IndexController extends Controller {
             $support->Insert($s_data); //保存支持信息
             $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
            $number = $share_info['number']+1;  //人数
-
+            //成功邀请成员加入 推送模板消息
+            tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname']);
+            
             if($a_info['success_condition'] == 1){ //代表a条件
                 if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
                     //continue_content

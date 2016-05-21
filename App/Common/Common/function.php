@@ -354,7 +354,7 @@ function tempMessage($openid,$url,$message,$nickname){
     }
     $msgArray = ' {
            "touser":"'.$openid.'",
-           "template_id":"lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q",
+           "template_id":"'.C('template_send_id').'",
            "url":"'.$url.'",            
            "data":{
                    "first": {
@@ -375,10 +375,8 @@ function tempMessage($openid,$url,$message,$nickname){
                    }
            }
        }';
-    open($msgArray);
     $template_url = C('template').'?access_token='.access_token();
-    $res = httpPost($template_url,$msgArray);
-    open($res);
+    return httpPost($template_url,$msgArray);
 }
 /*
  * 递归创建目录
