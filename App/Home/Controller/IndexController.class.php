@@ -112,7 +112,7 @@ class IndexController extends Controller {
      D:/web/wechat/img/2531170_213554844000_2.jpgarray(3) { ["type"]=> string(5) "image" ["media_id"]=> string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4" ["created_at"]=> int(1462937403) } string(64) "ZXXVLzkpUxp5hPpcMHYchh_qw83F60oTtJAWPo2b1B2TNpXV9e2BuNUum0rbi2f4"
      */
     public function sendMessage(){
-        open(json_encode($_REQUEST));
+
         $openid = I('get.openid');
         $id = intval(I('get.id')) ? intval(I('get.id')) :1;
         $openid = $openid ? $openid : 'o0W5ms1hZCcATLP8hv5lV3QHogO0';
@@ -120,6 +120,7 @@ class IndexController extends Controller {
 
         $model = D('member');
         $result = $model->getUser(array('openid'=>$openid));
+        open(json_encode($user));
         $data = [
             'nickname'      =>  $user['nickname'],
             'headimgurl'    =>  $user['headimgurl'],
