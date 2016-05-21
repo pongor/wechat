@@ -325,7 +325,7 @@ class IndexController extends Controller {
             $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
            $number = $share_info['number']+1;  //人数
             //成功邀请成员加入 推送模板消息
-            tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname']);
+            tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname'],$number);
 
             if($a_info['success_condition'] == 1){ //代表a条件
                 if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
@@ -380,7 +380,7 @@ class IndexController extends Controller {
             }else{ //B条件
                 $rank = D('share')->where(array('a_id'=>$aid,'number'=>array('GT'=>$number)))->count();
                 $rank++; //用户排名
-
+                tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname'],'当前排名'.$rank);
                 if($rank <= $a_info['rank_list']){
                     $msgArray = '{
                     "touser":"'.$a_user_info['openid'].'",

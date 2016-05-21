@@ -343,7 +343,7 @@ function serviceMsg($openid,$msg,$type='text'){
 
 }
 //发送模板消息
-function tempMessage($openid,$url,$message,$nickname){
+function tempMessage($openid,$url,$message,$nickname,$number=''){
     $message_array = explode('\r\n',$message);
     if(isset($message[0]) && isset($message[1])){
         $first = $message_array[0];
@@ -352,6 +352,7 @@ function tempMessage($openid,$url,$message,$nickname){
         $first = $message_array[0];
         $remark = '--';
     }
+    $first .= $number;
     $msgArray = ' {
            "touser":"'.$openid.'",
            "template_id":"'.C('template_send_id').'",
