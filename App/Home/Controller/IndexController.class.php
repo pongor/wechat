@@ -294,7 +294,8 @@ class IndexController extends Controller {
             return false;
         }
         $support = D('support');  //支持model
-        $res = $support->getInfo(array('user_id'=>$a_user_id,'a_id'=>$aid,'s_user_id'=>$user_id));
+      //  $res = $support->getInfo(array('user_id'=>$a_user_id,'a_id'=>$aid,'s_user_id'=>$user_id));
+        $res = $support->getInfo(array('a_id'=>$aid,'s_user_id'=>$user_id));
         if($res){ //用户已经支持过了  回复用户错误信息
             $msgArray = '{
                     "touser":"'.$openid.'",
@@ -329,7 +330,7 @@ class IndexController extends Controller {
             $share->where(array('user_id'=>$a_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
            $number = $share_info['number']+1;  //人数
             //成功邀请成员加入 推送模板消息
-            tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname'],$number);
+            tempMessage($a_user_info['openid'],$a_info['invite_url'],$a_info['invite_content'],$user_info['nickname'],'总人气值'.$number.'!');
 
             if($a_info['success_condition'] == 1){ //代表a条件
                 if($number == $a_info['continue_num']){ //达到继续邀请人数的条件
@@ -343,7 +344,7 @@ class IndexController extends Controller {
                     }
                 }';
                     sendMessage($msgArray); //达到条件
-                }else  if($number >= $a_info['invite_num']){ //达到A条件
+                }else  if($number == $a_info['invite_num']){ //达到A条件
 
                     //succ_content  达到条件成功通知的内容
                     $msgArray = '{
@@ -355,15 +356,15 @@ class IndexController extends Controller {
                     }
                 }';
                     sendMessage($msgArray); //达到条件
-                    $msgArray = '{
-                    "touser":"'.$a_user_info['openid'].'",
-                    "msgtype":"text",
-                    "text":
-                    {
-                         "content":"'.$a_info['egg_content'].'"
-                    }
-                }';
-                    sendMessage($msgArray); //出发彩蛋消息
+//                    $msgArray = '{
+//                    "touser":"'.$a_user_info['openid'].'",
+//                    "msgtype":"text",
+//                    "text":
+//                    {
+//                         "content":"'.$a_info['egg_content'].'"
+//                    }
+//                }';
+//                    sendMessage($msgArray); //出发彩蛋消息
 
                 }
 
