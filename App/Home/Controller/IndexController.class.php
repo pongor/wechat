@@ -102,6 +102,11 @@ class IndexController extends Controller {
                 $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}"); //活动信息
                // var_dump($share_array);
                 if (!$share_array) {  //用户未参加活动
+                    $resu = D('activity')->getFind('id = '.$aid);
+                    if(isset($resu['title'])){
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $resu['title']); //推送活动信息
+                        echo $resultStr;
+                    }
                     _curl($fromUsername, $aid); //发送活动其他信息
                 }
                 self::support($id, $fromUsername);
