@@ -126,7 +126,6 @@ function getUser($openid){
     //?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
     $url = C('USER_INFO');
     $url .= '?access_token='.access_token().'&openid='.$openid .'&lang=zh_CN';
-    open($url);
     $result = file_get_contents($url);
     $array = json_decode($result,true);
     if(!isset($array['errcode'])){
@@ -171,7 +170,6 @@ function imgTo($tplImg,$headImg,$codeImg,$str='pongor'){
     $file .= time().'-'.rand(0,10000).'.png';
     $image->save($file);
    return $file;
-
 }
 //将用户头像生成圆角图片
 function get_lt_rounder_corner($file_path,$openid) {

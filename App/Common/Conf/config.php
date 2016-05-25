@@ -9,8 +9,8 @@ return array(
   //  'MULTI_MODULE'      =>  true,
     'MODULE_ALLOW_LIST' => array('Home','Backend'),
      /*****************************公共配置***************************************/
-    'APPID'     => 'wx62f712f042e87831', //
-    'APPSECRET' => '6169e3da0e21fecce48a833ebac8af76',
+    'APPID'     => 'wxcb2fc2626c66a114',// 'wx62f712f042e87831', //
+    'APPSECRET' => '514dd06182829b67ff0d84841b0dffab',// '6169e3da0e21fecce48a833ebac8af76',
     'TOKEN'     => 'qwea',  //消息token
     'TOKEN_URL' => 'https://api.weixin.qq.com/cgi-bin/token', //获取用户登录授权的token 地址
     'USER_INFO'     => 'https://api.weixin.qq.com/cgi-bin/user/info',//获取用户基本信息
@@ -26,5 +26,4 @@ return array(
     'IMG_NEXT'          =>  421, //二维码图片距离下边的距离
     'IMG_CODE'          =>  187, //二维码图片大小
     'template_send_id' => '5gVSzuTCcJ2wLF1zDOWW99CcT0kpWrOpxfSjbqPzZew',// 'lJ2BGsJQ5v1A4fXEmoOwFg2aO4pwxZjDkn6sdadYC8Q', //发送消息模板id
-
 );
