@@ -103,7 +103,7 @@ function add_material($file_info,$url='',$echo=0){
     $result = curl_exec ( $ch1 );
     curl_close ( $ch1 );
     if($echo){
-        var_dump($result);
+       // var_dump($result);
     }
     if(curl_errno()==0){
         $result=json_decode($result,true);
@@ -484,9 +484,11 @@ ps：不要把链接重复发在一个群里，那会引起大家的反感。请
 3、要发给小助手个人，不是发到公众号哦 ￼'
         ],
     );
+    $message = '';
     for($i=0;$i<count($array);$i++){
         if($array[$i]['text'] == $keword){
-            return $array[$i]['message'];
+            $message =  $array[$i]['message'];
         }
     }
+    return $message;
 }

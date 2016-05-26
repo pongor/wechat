@@ -63,10 +63,31 @@ class IndexController extends Controller {
                             _curl($fromUsername, $res['id']); //发送活动其他信息
                             die;
                         } else {    //其他文字自动回复
+
                            $contentStr =  autoMessage($keyword);
+                            if($contentStr == '') {
+                                die('success');
+                            }
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
                             echo $resultStr;
+                            //推送给用户的信息.
+                            if($keyword == 9){
+                                $media_id = 'aP7svrLdd53I6tixB0BOYKbEpa76kEk26asXz0gmmL8';
+                            }else{
+                                $media_id = 'aP7svrLdd53I6tixB0BOYJIqS_Oa3TXAHk-XFCoxJ7U';
+                            }
+
+                            $array = '{
+                                "touser":"'.$fromUsername.'",
+                                "msgtype":"image",
+                                "image":
+                                {
+                                     "media_id":"'.$media_id.'"
+                                }
+                            }';
+                            sendMessage($array);
                             die('success');
+
                         }
                     }
                     break;
