@@ -13,7 +13,7 @@ class IndexController extends Controller {
     "FromUserName":"o5Dq_vnlLTWQuqQ4taaVVjYqir0A",
     "CreateTime":"1463645435",
     "MsgType":"text",
-    "Content":"ceo",
+    "Content":"9",
     "MsgId":"6286309276681876036"
 }';
 //        $json = '{
@@ -50,7 +50,7 @@ class IndexController extends Controller {
                     } else {
                         $where = "back_keyword = '{$keyword}' and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
-                       
+                        var_dump($res);
                         if ($res) {
                             if ($res['is_start'] != 1) {
 
