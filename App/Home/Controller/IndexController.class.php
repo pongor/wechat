@@ -8,14 +8,14 @@ class IndexController extends Controller {
     public function index(){
         //OPENTM207685059
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
-        $json = '{
-    "ToUserName":"gh_cbfe978fe9e3",
-    "FromUserName":"o0W5ms1hZCcATLP8hv5lV3QHogO0",
-    "CreateTime":"1463645435",
-    "MsgType":"text",
-    "Content":"活动",
-    "MsgId":"6286309276681876036"
-}';
+//        $json = '{
+//    "ToUserName":"gh_cbfe978fe9e3",
+//    "FromUserName":"o0W5ms1hZCcATLP8hv5lV3QHogO0",
+//    "CreateTime":"1463645435",
+//    "MsgType":"text",
+//    "Content":"哈哈",
+//    "MsgId":"6286309276681876036"
+//}';
 //        $json = '{
 //    "ToUserName":"gh_cbfe978fe9e3",
 //    "FromUserName":"o0W5ms_CO3BqzzXbN0NuvMR41Wx8",
@@ -26,10 +26,10 @@ class IndexController extends Controller {
 //    "Ticket":"gQFN8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdFaWxiMXZseWVHd0dXNGk0R1lWAAIEuLk6VwMEgPQDAA=="
 //}'; //扫码
 
-        if(!checkSignature()) {
+        if(checkSignature()) {
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-            $postObj = simplexml_load_string($json, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
              //$postObj = json_decode($json);
            //   open(json_encode($xml));
             $fromUsername = $postObj->FromUserName;
@@ -50,7 +50,6 @@ class IndexController extends Controller {
                     } else {
                         $where = "back_keyword = '{$keyword}' and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
-                        dump($res);
 //                        open(json_encode($res));
 //                        open($where);
                         if ($res) {
