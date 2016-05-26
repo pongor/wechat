@@ -85,9 +85,9 @@ function msgImg(){
     'filelength'=>'11011'         //图文大小
 );
  */
-function add_material($file_info,$url='',$echo=0){
+function add_material($file_info){
     $access_token=access_token();
-    $url= $url ? $url.$access_token : "https://api.weixin.qq.com/cgi-bin/media/upload?access_token={$access_token}&type=image";
+    $url="https://api.weixin.qq.com/cgi-bin/media/upload?access_token={$access_token}&type=image";
     $ch1 = curl_init ();
     curl_setopt ( $ch1, CURLOPT_SAFE_UPLOAD, false); //关键
     $timeout = 5;
@@ -102,9 +102,6 @@ function add_material($file_info,$url='',$echo=0){
     curl_setopt ( $ch1, CURLOPT_POSTFIELDS, $data );
     $result = curl_exec ( $ch1 );
     curl_close ( $ch1 );
-    if($echo){
-       // var_dump($result);
-    }
     if(curl_errno()==0){
         $result=json_decode($result,true);
         return $result['media_id'];
@@ -207,6 +204,7 @@ function sendMessage($array){
     curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $result = curl_exec($ch);
+    open($result);
     curl_close($ch);
     return json_encode($result);
 }
