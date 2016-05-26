@@ -50,6 +50,7 @@ class IndexController extends Controller {
                     } else {
                         $where = "back_keyword = '{$keyword}' and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
+                        var_dump($res);die;
                         if ($res) {
                             if ($res['is_start'] != 1) {
 
