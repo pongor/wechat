@@ -211,6 +211,7 @@ class IndexController extends Controller {
             );
             $share->getUpdate(array('id'=>$share_id),$share_save);
         }
+        sleep(1);
         if($a_info['text_content']){
             $array = explode('||',$a_info['text_content']);
             //发送用户参加活动的信息
