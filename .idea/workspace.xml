@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1819c1a8-c02d-4558-86d8-caa51b7e85f2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
     </list>
     <ignored path="wechat.iws" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
+            <state relative-caret-position="418">
+              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -87,8 +88,8 @@
       <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="344" column="20" selection-start-line="344" selection-start-column="9" selection-end-line="344" selection-end-column="20" />
+            <state relative-caret-position="6536">
+              <caret line="344" column="31" selection-start-line="344" selection-start-column="31" selection-end-line="344" selection-end-column="31" />
               <folding>
                 <marker date="1464083488630" expanded="true" signature="1205:1494" placeholder="..." />
                 <marker date="1464083488630" expanded="true" signature="1544:1780" placeholder="..." />
@@ -174,6 +175,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,7 +294,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,15 +366,16 @@
       <workItem from="1464142533177" duration="3866000" />
       <workItem from="1464161536050" duration="665000" />
       <workItem from="1464164133146" duration="1843000" />
-      <workItem from="1464170817398" duration="1219000" />
+      <workItem from="1464170817398" duration="1932000" />
+      <workItem from="1464228788517" duration="2923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227635000" />
+    <option name="totallyTimeSpent" value="231271000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -729,18 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="344" column="20" selection-start-line="344" selection-start-column="9" selection-end-line="344" selection-end-column="20" />
-          <folding>
-            <marker date="1464083488630" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464083488630" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464083488630" expanded="true" signature="1718:1769" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Model/ShareModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -753,7 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,10 +754,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6536">
+          <caret line="344" column="31" selection-start-line="344" selection-start-column="31" selection-end-line="344" selection-end-column="31" />
+          <folding>
+            <marker date="1464083488630" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464083488630" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464083488630" expanded="true" signature="1718:1769" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
+        <state relative-caret-position="418">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding />
         </state>
       </provider>
