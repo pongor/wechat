@@ -87,7 +87,8 @@ function msgImg(){
  */
 function add_material($file_info){
     $access_token=access_token();
-    $url="https://api.weixin.qq.com/cgi-bin/media/upload?access_token={$access_token}&type=image";
+   // $url="https://api.weixin.qq.com/cgi-bin/media/upload?access_token={$access_token}&type=image";
+    $url = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token={$access_token}";
     $ch1 = curl_init ();
     curl_setopt ( $ch1, CURLOPT_SAFE_UPLOAD, false); //关键
     $timeout = 5;
@@ -102,6 +103,7 @@ function add_material($file_info){
     curl_setopt ( $ch1, CURLOPT_POSTFIELDS, $data );
     $result = curl_exec ( $ch1 );
     curl_close ( $ch1 );
+    var_dump($result);
     if(curl_errno()==0){
         $result=json_decode($result,true);
         return $result['media_id'];
@@ -204,7 +206,6 @@ function sendMessage($array){
     curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $result = curl_exec($ch);
-    open($result);
     curl_close($ch);
     return json_encode($result);
 }
@@ -392,4 +393,99 @@ function mkDirs($dir){
         }
     }
     return true;
+}
+/*
+ * 自动回复
+ */
+function autoMessage($keword){
+    if(!$keword) return;
+    $array = array(
+        [
+            'text'=>'软件',
+            'message'   => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=503501220&idx=1&sn=ce694b2bdad473aeb2fe80b5f46bcc58#rd">【你们要的图书馆】史上最受欢迎图书集合，这才是五一的主线任务</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！',
+        ],
+        [
+            'text'      => '雅思',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=401172225&idx=1&sn=4344b98446bcb9c975a78834b10c804a#rd">【你们要的雅思】500条雅思必备资料，用它拿下7.5</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '外语',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=401171949&idx=1&sn=b86939bb0fdf194da673c673d2995d7e#rd">【你们要的小语种】学完这些语言，你就可以去火星救援</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '文书',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=401067182&idx=1&sn=cc169b646b18f16b567a9ccca224b66e#rd">【你们要的文书】史上最强の文书礼包，再写不好就狗带</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '网站',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=400686925&idx=1&sn=0028109165e58fd8a4cf0614ef125e1b#rd">【你们要的神器】有了这八大网站，人生瞬间进入Easy模式！</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => 'gmat',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=400478683&idx=1&sn=d624900ad476a5d894b3ab5aee6a583e#rd">【你们要的GMAT】500条GMAT必备资料，用它拿下700+</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '托福',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=400141498&idx=1&sn=a7141a5b09eebd123891d8288cf0b60f#rd"> 【你们要的托福】700条托福必备资料，用它拿下110</ a> 至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '简历',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=401394249&idx=1&sn=23d85904cf69ddffd7093f39d6ad22b0#rd">【你们要的简历】你离世界五百强，只差这份简历</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => 'GRE',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=208845117&idx=1&sn=4efef7ea2451bbd49ff903bb2dd5532c#rd">客官你们点的干货上菜了！GRE大礼包趁热吃！</ a> 至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '技能',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=402326289&idx=1&sn=e90ac25e63049dc8f2e2ae6026fb9275#rd">【你们要的新年礼物】帮你实习加薪拿奖学金的五大技能</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '读书',
+            'message'  => '请分享图文<a href="http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=503501220&idx=1&sn=ce694b2bdad473aeb2fe80b5f46bcc58#rd">【你们要的图书馆】史上最受欢迎图书集合，这才是五一的主线任务</ a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！'
+        ],
+        [
+            'text'      => '四六级',
+            'message'  => '请分享图文<a href="http://dwz.cn/3hNpGs">【懒人计划第一季】最牛备考资料，2小时搞定你的四六级！</ a>
+至朋友圈或50人以上大学生微信群并截图（不要发在独立说的群里哦）
+然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~ 
+ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多分享给不知道这个福利的同学哈！
+要发给小助手哦，发给后台没有用的'
+        ],
+        [
+            'text'      => '漫威电影',
+            'message'  => '获得漫威电影大礼包的步骤：
+
+1、请转发文章 http://dwz.cn/3olyFH 到朋友圈或100人以上微信群。
+
+2、把转发截图发给下方任意一个小助手，不要发到独立说微信群里哦。
+
+3、要发给小助手个人，不是发到公众号哦 ，网盘资源链接就会发给你啦
+
+对啦，如果有时间的话。帮小搜君做个调查问卷哈：http://form.mikecrm.com/Zsi9rb#rd'
+        ],
+        [
+            'text'      => '9',
+            'message'  => '1、请转发文章http://dwz.cn/3rY5hk到朋友圈或100人以上微信群，附带一句你的进群理由，比如“这个活动不错￼”
+
+2、把转发截图发给下方任意一个小助手，不要把链接重复发在一个群里哦，那会引起大家的反感￼。
+（也不要发到独立说微信群里哦）
+
+3、要发给小助手个人，不是发到公众号哦 ￼'
+        ],
+    );
+    for($i=0;$i<count($array);$i++){
+        if($array[$i]['text'] == $keword){
+            return $array[$i]['message'];
+        }
+    }
 }

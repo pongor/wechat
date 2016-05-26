@@ -16,6 +16,16 @@ class MenuController extends Controller
     public $array = array();
     //创建菜单
     public function create(){
+      //  dump(autoMessage(9));
+        //ScBINfXZiha6z2o4pk58hTPsbXs_WpCfmEAor4joHNY
+        
+        $file_data = array(
+            'filename'=>__APP__.'/img/9.jpg',  //国片相对于网站根目录的路径
+            'content-type'=>'image/png',  //文件类型
+            'filelength'=>'11011'         //图文大小
+        );
+        add_material($file_data);
+        die;
         $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".access_token();
         httpPost($url);
         echo urldecode(json_encode(($this->menu())));

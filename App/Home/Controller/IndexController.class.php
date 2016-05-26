@@ -50,8 +50,6 @@ class IndexController extends Controller {
                     } else {
                         $where = "back_keyword = '{$keyword}' and start_time < {$time} and end_time > {$time}";
                         $res = $model->getFind($where);
-//                        open(json_encode($res));
-//                        open($where);
                         if ($res) {
                             if ($res['is_start'] != 1) {
 
@@ -64,8 +62,10 @@ class IndexController extends Controller {
                             echo $resultStr;
                             _curl($fromUsername, $res['id']); //发送活动其他信息
                             die;
-                        } else {
-//
+                        } else {    //其他文字自动回复
+                           $contentStr =  autoMessage($keyword);
+                            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
+                            echo $resultStr;
                             die('success');
                         }
                     }
