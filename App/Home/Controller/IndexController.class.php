@@ -10,7 +10,7 @@ class IndexController extends Controller {
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
         $json = '{
     "ToUserName":"gh_cbfe978fe9e3",
-    "FromUserName":"o0W5ms1hZCcATLP8hv5lV3QHogO0",
+    "FromUserName":"o5Dq_vnlLTWQuqQ4taaVVjYqir0A",
     "CreateTime":"1463645435",
     "MsgType":"text",
     "Content":"ceo",
@@ -29,8 +29,8 @@ class IndexController extends Controller {
         if(!checkSignature()) {
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-            $postObj = simplexml_load_string($json, 'SimpleXMLElement', LIBXML_NOCDATA);
-             //$postObj = json_decode($json);
+            $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+             $postObj = json_decode($json);
            //   open(json_encode($xml));
             $fromUsername = $postObj->FromUserName;
             $toUsername = $postObj->ToUserName;
@@ -41,7 +41,7 @@ class IndexController extends Controller {
             $textTpl = msgText();
 
             $model = D('activity');
-            var_dump($msgType);die;
+            var_dump($msgType);
             switch ($msgType) {
                 case 'text':  //发送了文字内容
                     if ($keyword == 'Hello2BizUser') {
