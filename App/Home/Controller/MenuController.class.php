@@ -18,7 +18,11 @@ class MenuController extends Controller
     public function create(){
       //  dump(autoMessage(9));
         //ScBINfXZiha6z2o4pk58hTPsbXs_WpCfmEAor4joHNY
-
+        $a = I('get.token');
+        if($a == 1){
+            S('access_token',null);
+        }
+        die;
 //        $file_data = array(
 //            'filename'=>__APP__.'/img/all.jpg',  //国片相对于网站根目录的路径
 //            'content-type'=>'image/jpg',  //文件类型
