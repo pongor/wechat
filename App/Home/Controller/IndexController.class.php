@@ -65,6 +65,7 @@ class IndexController extends Controller {
                         } else {    //其他文字自动回复
 
                            $contentStr =  autoMessage($keyword);
+                            open($keyword.'----'.$contentStr);
                             if($contentStr == '') {
                                 die('success');
                             }
