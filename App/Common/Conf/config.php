@@ -18,7 +18,7 @@ return array(
     'CODE_IMG'      =>  'https://mp.weixin.qq.com/cgi-bin/showqrcode', //获取二维码图片
     'template'      =>  'https://api.weixin.qq.com/cgi-bin/message/template/send', //发送模板消息
     'template_id'   =>  'https://api.weixin.qq.com/cgi-bin/template/api_add_template', //获取模板id
-    'IMG_TEXT_COLOR' => '#000000', //文字颜色
+    'IMG_TEXT_COLOR' => '#ffffff', //文字颜色
     'IMG_HEADER_SIZE'   =>  198, //头像大小
     'IMG_height'    =>  180, //头像距离图片正上方的距离
     'IMG_NAME_HEIGHT'=> 5, //用户名称与头像的距离
