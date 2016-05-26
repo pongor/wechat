@@ -20,7 +20,7 @@ class MenuController extends Controller
         //ScBINfXZiha6z2o4pk58hTPsbXs_WpCfmEAor4joHNY
 
         $file_data = array(
-            'filename'=>__APP__.'/img/9.jpg',  //国片相对于网站根目录的路径
+            'filename'=>__APP__.'/img/all.jpg',  //国片相对于网站根目录的路径
             'content-type'=>'image/jpg',  //文件类型
             'filelength'=>'11011'         //图文大小
         );
