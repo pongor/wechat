@@ -25,7 +25,7 @@ class IndexController extends Controller {
 //    "EventKey":"11",
 //    "Ticket":"gQFN8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdFaWxiMXZseWVHd0dXNGk0R1lWAAIEuLk6VwMEgPQDAA=="
 //}'; //扫码
-
+        open(json_encode(simplexml_load_string($GLOBALS["HTTP_RAW_POST_DATA"], 'SimpleXMLElement', LIBXML_NOCDATA)));
         if(checkSignature()) {
             echo $_GET['echostr'];
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
