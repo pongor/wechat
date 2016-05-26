@@ -21,11 +21,10 @@ class MenuController extends Controller
 
         $file_data = array(
             'filename'=>__APP__.'/img/9.jpg',  //国片相对于网站根目录的路径
-            'content-type'=>'image/png',  //文件类型
+            'content-type'=>'image/jpg',  //文件类型
             'filelength'=>'11011'         //图文大小
         );
-        dump($file_data);
-        die;
+       
         $url = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=";
         add_material($file_data,$url,1);
         die;
