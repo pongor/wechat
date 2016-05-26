@@ -24,8 +24,12 @@ class MenuController extends Controller
             'content-type'=>'image/jpg',  //文件类型
             'filelength'=>'11011'         //图文大小
         );
-       
+       $a = I('get.token');
+        if($a == 1){
+            S('access_token',null);
+        }
         $url = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=";
+
         add_material($file_data,$url,1);
         die;
         $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".access_token();
