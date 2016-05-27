@@ -33,19 +33,20 @@ function checkSignature()
  * 获取微信 access_TOKEN
  */
 function access_token(){
-    $data = S('access_token');
-
-    if($data){
-        return $data['access_token'];
-    }
-   $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
+//    $data = S('access_token');
+//
+//    if($data){
+//        return $data['access_token'];
+//    }
+    $url = "http://pm.dulishuo.com/Wechat/access_token?sign=xksdsidiosdoisdasd";
+  // $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
     $res = file_get_contents($url);
     $data = json_decode($res,true);
     if(isset($data['access_token'])){
-        S('access_token',$data,7150);
+      //  S('access_token',$data,7150);
         return $data['access_token'];
     }
-    S('access_token',null);
+  //  S('access_token',null);
     return $data;
 
 }
