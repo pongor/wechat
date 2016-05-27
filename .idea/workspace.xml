@@ -78,11 +78,11 @@
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="353">
-              <caret line="403" column="151" selection-start-line="403" selection-start-column="151" selection-end-line="403" selection-end-column="151" />
+              <caret line="403" column="185" selection-start-line="403" selection-start-column="185" selection-end-line="403" selection-end-column="185" />
               <folding>
-                <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
-                <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
-                <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
+                <marker date="1464316234914" expanded="true" signature="1205:1494" placeholder="..." />
+                <marker date="1464316234914" expanded="true" signature="1544:1780" placeholder="..." />
+                <marker date="1464316234914" expanded="true" signature="1718:1769" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -397,12 +397,12 @@
       <workItem from="1464164133146" duration="1843000" />
       <workItem from="1464170817398" duration="1932000" />
       <workItem from="1464228788517" duration="11258000" />
-      <workItem from="1464314216845" duration="1198000" />
+      <workItem from="1464314216845" duration="1265000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240804000" />
+    <option name="totallyTimeSpent" value="240871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -450,9 +450,9 @@
         <state relative-caret-position="513">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1718:1769" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -484,9 +484,9 @@
         <state relative-caret-position="285">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="23" />
           <folding>
-            <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1718:1769" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -801,11 +801,11 @@
     <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
-          <caret line="403" column="151" selection-start-line="403" selection-start-column="151" selection-end-line="403" selection-end-column="151" />
+          <caret line="403" column="185" selection-start-line="403" selection-start-column="185" selection-end-line="403" selection-end-column="185" />
           <folding>
-            <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464316234914" expanded="true" signature="1718:1769" placeholder="..." />
           </folding>
         </state>
       </provider>
