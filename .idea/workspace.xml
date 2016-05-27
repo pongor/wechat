@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1819c1a8-c02d-4558-86d8-caa51b7e85f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/Common/function.php" afterPath="$PROJECT_DIR$/App/Common/Common/function.php" />
     </list>
     <ignored path="wechat.iws" />
@@ -78,12 +77,12 @@
       <file leaf-file-name="function.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="417" column="179" selection-start-line="417" selection-start-column="175" selection-end-line="417" selection-end-column="179" />
+            <state relative-caret-position="353">
+              <caret line="403" column="151" selection-start-line="403" selection-start-column="151" selection-end-line="403" selection-end-column="151" />
               <folding>
-                <marker date="1464316049318" expanded="true" signature="1205:1494" placeholder="..." />
-                <marker date="1464316049318" expanded="true" signature="1544:1780" placeholder="..." />
-                <marker date="1464316049318" expanded="true" signature="1718:1769" placeholder="..." />
+                <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
+                <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
+                <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -398,15 +397,15 @@
       <workItem from="1464164133146" duration="1843000" />
       <workItem from="1464170817398" duration="1932000" />
       <workItem from="1464228788517" duration="11258000" />
-      <workItem from="1464314216845" duration="1066000" />
+      <workItem from="1464314216845" duration="1198000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240672000" />
+    <option name="totallyTimeSpent" value="240804000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -451,9 +450,9 @@
         <state relative-caret-position="513">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <marker date="1464316049318" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464316049318" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464316049318" expanded="true" signature="1718:1769" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -485,9 +484,9 @@
         <state relative-caret-position="285">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="23" />
           <folding>
-            <marker date="1464316049318" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464316049318" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464316049318" expanded="true" signature="1718:1769" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -801,12 +800,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="417" column="179" selection-start-line="417" selection-start-column="175" selection-end-line="417" selection-end-column="179" />
+        <state relative-caret-position="353">
+          <caret line="403" column="151" selection-start-line="403" selection-start-column="151" selection-end-line="403" selection-end-column="151" />
           <folding>
-            <marker date="1464316049318" expanded="true" signature="1205:1494" placeholder="..." />
-            <marker date="1464316049318" expanded="true" signature="1544:1780" placeholder="..." />
-            <marker date="1464316049318" expanded="true" signature="1718:1769" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1205:1494" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1544:1780" placeholder="..." />
+            <marker date="1464316183871" expanded="true" signature="1718:1769" placeholder="..." />
           </folding>
         </state>
       </provider>
