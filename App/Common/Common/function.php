@@ -401,7 +401,7 @@ function autoMessage($keword){
     $array = array(
         [
             'text'=>'软件',
-            'message'   => "软件 - 请分享图文<a href='http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=503501220&idx=1&sn=ce694b2bdad473aeb2fe80b5f46bcc58#rd'>【你们要的图书馆】史上最受欢迎图书集合，这才是五一的主线任务</a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
+            'message'   => "请分享图文<a href='http://mp.weixin.qq.com/s?__biz=MzIwMDIwMzQ5Mg==&mid=503501220&idx=1&sn=ce694b2bdad473aeb2fe80b5f46bcc58#rd'>【你们要的图书馆】史上最受欢迎图书集合，这才是五一的主线任务</a>至50人以上大学生微信群并截图（不要发在独立说的群里哦），然后把截图发给小助手，我们会在1天之内回复你哒，不要着急哦~
 ps：不要把链接重复发在一个群里，那会引起大家的反感。请更多的分享给不知道这个福利的同学哈！",
         ],
         [
