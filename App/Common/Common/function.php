@@ -61,7 +61,7 @@ function access_token(){
   
             <MsgType><![CDATA[%s]]></MsgType>  
   
-            <Content><![CDATA[%s]]></Content>  
+            <Content><![CDATA[%s]></Content>  
   
             </xml>";
 }
