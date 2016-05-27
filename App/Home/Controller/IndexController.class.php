@@ -72,8 +72,7 @@ class IndexController extends Controller {
                             }
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
                             echo $resultStr;
-                            open(($resultStr));
-                            open($contentStr);
+                      
                             //推送给用户的信息.
                             if($keyword == 9){
                                 $media_id = 'aP7svrLdd53I6tixB0BOYKbEpa76kEk26asXz0gmmL8';
