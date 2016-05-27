@@ -72,7 +72,7 @@ class IndexController extends Controller {
                             }
                             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr); //推送活动信息
                             echo $resultStr;
-                            open(json_encode($resultStr));
+                            open(($resultStr));
                             open($contentStr);
                             //推送给用户的信息.
                             if($keyword == 9){
