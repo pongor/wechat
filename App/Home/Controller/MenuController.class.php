@@ -18,7 +18,7 @@ class MenuController extends Controller
     public function create(){
       //  dump(autoMessage(9));
         //ScBINfXZiha6z2o4pk58hTPsbXs_WpCfmEAor4joHNY
-       // var_dump(access_token());die;
+        var_dump(access_token());die;
         $a = I('get.token');
         if($a == 1){
             S('access_token',null);
