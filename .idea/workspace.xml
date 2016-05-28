@@ -48,11 +48,11 @@
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="475">
-              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding>
-                <marker date="1464417311540" expanded="true" signature="1323:1612" placeholder="..." />
-                <marker date="1464417311540" expanded="true" signature="1662:1898" placeholder="..." />
-                <marker date="1464417311540" expanded="true" signature="1836:1887" placeholder="..." />
+                <marker date="1464417460320" expanded="true" signature="1328:1617" placeholder="..." />
+                <marker date="1464417460320" expanded="true" signature="1667:1903" placeholder="..." />
+                <marker date="1464417460320" expanded="true" signature="1841:1892" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -474,12 +474,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="3226000" />
+      <workItem from="1464403328759" duration="3375000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257997000" />
+    <option name="totallyTimeSpent" value="258146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -870,11 +870,11 @@
     <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
           <folding>
-            <marker date="1464417311540" expanded="true" signature="1323:1612" placeholder="..." />
-            <marker date="1464417311540" expanded="true" signature="1662:1898" placeholder="..." />
-            <marker date="1464417311540" expanded="true" signature="1836:1887" placeholder="..." />
+            <marker date="1464417460320" expanded="true" signature="1328:1617" placeholder="..." />
+            <marker date="1464417460320" expanded="true" signature="1667:1903" placeholder="..." />
+            <marker date="1464417460320" expanded="true" signature="1841:1892" placeholder="..." />
           </folding>
         </state>
       </provider>

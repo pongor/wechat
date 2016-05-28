@@ -23,7 +23,7 @@ function checkSignature()
     sort($tmpArr, SORT_STRING);
     $tmpStr = implode($tmpArr);
     $tmpStr = sha1($tmpStr);
-    open($tmpStr.'---'.$signature);
+    open(var_dump($tmpStr==$signature));
     if( $tmpStr == $signature ){
         return true;
     }else{
