@@ -28,6 +28,7 @@ class WechatController extends Controller
 // </xml>";
         echo $_GET['echostr'];
         $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
+        open($xml);
         $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         self::factory($postObj);
     }

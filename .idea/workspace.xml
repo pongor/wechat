@@ -61,10 +61,10 @@
       <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="2" selection-end-line="27" selection-end-column="11" />
+            <state relative-caret-position="358">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
               <folding>
-                <marker date="1464418900795" expanded="true" signature="315:607" placeholder="..." />
+                <marker date="1464418971294" expanded="true" signature="315:607" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -477,12 +477,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="4809000" />
+      <workItem from="1464403328759" duration="4874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259580000" />
+    <option name="totallyTimeSpent" value="259645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -877,10 +877,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="2" selection-end-line="27" selection-end-column="11" />
+        <state relative-caret-position="358">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
           <folding>
-            <marker date="1464418900795" expanded="true" signature="315:607" placeholder="..." />
+            <marker date="1464418971294" expanded="true" signature="315:607" placeholder="..." />
           </folding>
         </state>
       </provider>
