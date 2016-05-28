@@ -23,7 +23,7 @@ class WechatController extends Controller
  <FromUserName><![CDATA[o0W5ms1hZCcATLP8hv5lV3QHogO0]]></FromUserName> 
  <CreateTime>{time()}</CreateTime>
  <MsgType><![CDATA[text]]></MsgType>
- <Content><![CDATA[this is a test]]></Content>
+ <Content><![CDATA[alksjlk]]></Content>
  <MsgId>1234567890123456</MsgId>
  </xml>";
         echo $_GET['echostr'];

@@ -41,6 +41,7 @@ class TextController //extends Controller
     //信息处理方法
     public function handle(){
         $class = A('Service'); //调用客服消息类
+
         $this->activity = $this->search();
         if($this->activity){
             if($this->activity['is_start'] != 1){
@@ -63,8 +64,8 @@ class TextController //extends Controller
         }else{
             $media_id = 'aP7svrLdd53I6tixB0BOYJIqS_Oa3TXAHk-XFCoxJ7U';
         }
-        dump($class);die;
-        $class->sendMessage($media_id,$this->fromUsername);
+        $res = $class->sendMessage($media_id,$this->fromUsername);
+        open(json_encode($res));
         return;
     }
     //活动信息的其他规则
