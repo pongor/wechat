@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1819c1a8-c02d-4558-86d8-caa51b7e85f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/ServiceController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/ServiceController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,13 +58,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="168">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="2" selection-end-line="27" selection-end-column="11" />
               <folding>
-                <marker date="1464418218450" expanded="true" signature="313:592" placeholder="..." />
+                <marker date="1464418900795" expanded="true" signature="315:607" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -90,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServiceController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServiceController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/ServiceController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
@@ -155,10 +155,10 @@
         <option value="$PROJECT_DIR$/App/Common/Conf/db.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/config.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
-        <option value="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/TextController.class.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/ServiceController.class.php" />
+        <option value="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
       </list>
     </option>
   </component>
@@ -477,12 +477,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="4733000" />
+      <workItem from="1464403328759" duration="4809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259504000" />
+    <option name="totallyTimeSpent" value="259580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -847,16 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <marker date="1464418218450" expanded="true" signature="313:592" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/TextController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
@@ -882,6 +872,16 @@
         <state relative-caret-position="418">
           <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="2" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <marker date="1464418900795" expanded="true" signature="315:607" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
