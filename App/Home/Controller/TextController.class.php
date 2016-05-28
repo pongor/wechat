@@ -40,7 +40,7 @@ class TextController //extends Controller
     }
     //信息处理方法
     public function handle(){
-        $class = A('service'); //调用客服消息类
+        $class = A('Service'); //调用客服消息类
         $this->activity = $this->search();
         if($this->activity){
             if($this->activity['is_start'] != 1){
