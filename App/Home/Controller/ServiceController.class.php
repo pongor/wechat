@@ -25,7 +25,7 @@ class ServiceController extends Controller
      */
     public function sendMessage($content,$openid,$type='text'){
         if(!$type) return false;
-        $msg = $this->text($content,$openid);
+        $msg = $type($content,$openid);
         $result = sendMessage($msg);
         return isset($result['errcode']) && $result['errcode'] == 0;
     }

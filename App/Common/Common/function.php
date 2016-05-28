@@ -203,7 +203,7 @@ function sendMessage($array){
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $result = curl_exec($ch);
     curl_close($ch);
-    return json_decode($result);
+    return json_decode($result,true);
 }
 //将用户头像保存到本地
 
