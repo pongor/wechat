@@ -62,9 +62,9 @@
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="358">
-              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
               <folding>
-                <marker date="1464418971294" expanded="true" signature="315:607" placeholder="..." />
+                <marker date="1464419057056" expanded="true" signature="321:592" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -477,12 +477,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="4874000" />
+      <workItem from="1464403328759" duration="4957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259645000" />
+    <option name="totallyTimeSpent" value="259728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -878,9 +878,9 @@
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding>
-            <marker date="1464418971294" expanded="true" signature="315:607" placeholder="..." />
+            <marker date="1464419057056" expanded="true" signature="321:592" placeholder="..." />
           </folding>
         </state>
       </provider>
