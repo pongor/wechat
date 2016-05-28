@@ -18,7 +18,7 @@ class WechatController extends Controller
         if(checkSignature()){
             die();
         }
-        echo $_GET['echostr'];
+        echo $_GET['echostr'];die;
         $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
         $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         self::factory($postObj);
