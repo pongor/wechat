@@ -72,7 +72,7 @@ class TextController //extends Controller
     public function activityInfo($obj){
         $user = getUser($this->fromUsername); // 获取用户信息
         $model = D('member');
-        $result = $model->getUser(array('openid'=>$this->fromUsername));
+        $result = $model->getUser("openid  = '{$this->fromUsername}'");
 
         $data = [
             'nickname'      =>  $user['nickname'],

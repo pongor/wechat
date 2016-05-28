@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1819c1a8-c02d-4558-86d8-caa51b7e85f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/TextController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/TextController.class.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="358">
@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TextController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TextController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/TextController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            <state relative-caret-position="206">
+              <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -155,10 +155,10 @@
         <option value="$PROJECT_DIR$/App/Common/Conf/db.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/config.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
-        <option value="$PROJECT_DIR$/App/Home/Controller/TextController.class.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/ServiceController.class.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
+        <option value="$PROJECT_DIR$/App/Home/Controller/TextController.class.php" />
       </list>
     </option>
   </component>
@@ -477,12 +477,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="4957000" />
+      <workItem from="1464403328759" duration="5066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259728000" />
+    <option name="totallyTimeSpent" value="259837000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -847,14 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Home/Controller/TextController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
@@ -882,6 +874,14 @@
           <folding>
             <marker date="1464419057056" expanded="true" signature="321:592" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Home/Controller/TextController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
