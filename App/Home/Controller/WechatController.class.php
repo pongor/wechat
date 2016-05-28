@@ -16,10 +16,18 @@ class WechatController extends Controller
 
     public function index(){
         if(!checkSignature()){
-            die();
+        //    die();
         }
+      $xml = " <xml>
+ <ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName>
+ <FromUserName><![CDATA[o0W5ms1hZCcATLP8hv5lV3QHogO0]]></FromUserName> 
+ <CreateTime>{time()}</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[this is a test]]></Content>
+ <MsgId>1234567890123456</MsgId>
+ </xml>";
         echo $_GET['echostr'];
-        $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
+     //   $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
         $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         self::factory($postObj);
     }
