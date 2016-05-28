@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1819c1a8-c02d-4558-86d8-caa51b7e85f2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/Common/function.php" afterPath="$PROJECT_DIR$/App/Common/Common/function.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" afterPath="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,25 +46,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="function.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <state relative-caret-position="684">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
-                <marker date="1464417460320" expanded="true" signature="1328:1617" placeholder="..." />
-                <marker date="1464417460320" expanded="true" signature="1667:1903" placeholder="..." />
-                <marker date="1464417460320" expanded="true" signature="1841:1892" placeholder="..." />
+                <marker date="1464417536551" expanded="true" signature="1229:1518" placeholder="..." />
+                <marker date="1464417536551" expanded="true" signature="1568:1804" placeholder="..." />
+                <marker date="1464417536551" expanded="true" signature="1742:1793" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WechatController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
-              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -154,8 +156,8 @@
         <option value="$PROJECT_DIR$/App/Common/Conf/db.php" />
         <option value="$PROJECT_DIR$/App/Home/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/App/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/function.php" />
+        <option value="$PROJECT_DIR$/App/Home/Controller/WechatController.class.php" />
       </list>
     </option>
   </component>
@@ -474,12 +476,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="3375000" />
+      <workItem from="1464403328759" duration="3475000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258146000" />
+    <option name="totallyTimeSpent" value="258246000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -859,23 +861,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="684">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <marker date="1464417536551" expanded="true" signature="1229:1518" placeholder="..." />
+            <marker date="1464417536551" expanded="true" signature="1568:1804" placeholder="..." />
+            <marker date="1464417536551" expanded="true" signature="1742:1793" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/function.php">
+    <entry file="file://$PROJECT_DIR$/App/Home/Controller/WechatController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding>
-            <marker date="1464417460320" expanded="true" signature="1328:1617" placeholder="..." />
-            <marker date="1464417460320" expanded="true" signature="1667:1903" placeholder="..." />
-            <marker date="1464417460320" expanded="true" signature="1841:1892" placeholder="..." />
-          </folding>
+        <state relative-caret-position="206">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

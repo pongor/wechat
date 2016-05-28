@@ -15,10 +15,10 @@ class WechatController extends Controller
 {
 
     public function index(){
-        if(checkSignature()){
+        if(!checkSignature()){
             die();
         }
-        echo $_GET['echostr'];die;
+        echo $_GET['echostr'];
         $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
         $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         self::factory($postObj);
