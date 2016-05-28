@@ -33,18 +33,18 @@ function checkSignature()
  * 获取微信 access_TOKEN
  */
 function access_token(){
-//    $data = S('access_token');
-//
-//    if($data){
-//        return $data['access_token'];
-//    }
-    $url = "http://pm.dulishuo.com/Wechat/access_token?sign=xksdsidiosdoisdasd";
-  // $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
+    $data = S('access_token');
+
+    if($data){
+        return $data['access_token'];
+    }
+    //$url = "http://pm.dulishuo.com/Wechat/access_token?sign=xksdsidiosdoisdasd";
+   $url = C('TOKEN_URL').'?grant_type=client_credential&appid='.C('APPID').'&secret='.C('APPSECRET');
     $res = file_get_contents($url);
     $data = json_decode($res,true);
-    open($res);
+
     if(isset($data['access_token'])){
-      //  S('access_token',$data,7150);
+        S('access_token',$data,7150);
         return $data['access_token'];
     }
   //  S('access_token',null);
@@ -133,8 +133,7 @@ function getUser($openid){
     if(!isset($array['errcode'])){
         return $array;
     }else{
-        S('access_token',null);
-        return false;
+        return $array;
     }
 }
 //生成图片   用户头像地址，活动id
@@ -206,9 +205,8 @@ function sendMessage($array){
     curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,false);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $result = curl_exec($ch);
-    open($result);
     curl_close($ch);
-    return json_encode($result);
+    return json_decode($result);
 }
 //将用户头像保存到本地
 

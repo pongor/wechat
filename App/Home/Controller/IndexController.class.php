@@ -8,14 +8,7 @@ class IndexController extends Controller {
     public function index(){
         //OPENTM207685059
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
-//        $json = '{
-//    "ToUserName":"gh_cbfe978fe9e3",
-//    "FromUserName":"o5Dq_vnlLTWQuqQ4taaVVjYqir0A",
-//    "CreateTime":"1463645435",
-//    "MsgType":"text",
-//    "Content":"9",
-//    "MsgId":"6286309276681876036"
-//}';
+
 //        $json = '{
 //    "ToUserName":"gh_cbfe978fe9e3",
 //    "FromUserName":"o0W5ms_CO3BqzzXbN0NuvMR41Wx8",
