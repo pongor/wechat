@@ -74,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/App/Home/Controller/TextController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="434">
-              <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -476,12 +476,12 @@
       <workItem from="1464321399502" duration="324000" />
       <workItem from="1464322204981" duration="2690000" />
       <workItem from="1464335972619" duration="8505000" />
-      <workItem from="1464403328759" duration="3953000" />
+      <workItem from="1464403328759" duration="4002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258724000" />
+    <option name="totallyTimeSpent" value="258773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -818,6 +818,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10125">
           <caret line="693" column="9" selection-start-line="693" selection-start-column="9" selection-end-line="693" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -878,7 +879,7 @@
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/TextController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
-          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
           <folding />
         </state>
       </provider>

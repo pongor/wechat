@@ -63,7 +63,7 @@ class TextController //extends Controller
         }else{
             $media_id = 'aP7svrLdd53I6tixB0BOYJIqS_Oa3TXAHk-XFCoxJ7U';
         }
-        var_dump($class);
+        dump($class);die;
         $class->sendMessage($media_id,$this->fromUsername);
         return;
     }
