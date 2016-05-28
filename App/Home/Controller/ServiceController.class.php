@@ -25,12 +25,12 @@ class ServiceController extends Controller
      */
     public function sendMessage($content,$openid,$type='text'){
         if(!$type) return false;
-        $msg = self::$type($content,$openid);
+        $msg = $this->text($content,$openid);
         $result = sendMessage($msg);
         return isset($result['errcode']) && $result['errcode'] == 0;
     }
     //文本消息数据包
-    public static function text($content,$openid){
+    public function text($content,$openid){
         $msgArray = '{
                     "touser":"'.$openid.'",
                     "msgtype":"text",
