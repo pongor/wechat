@@ -15,7 +15,7 @@ class WechatController extends Controller
 {
 
     public function index(){
-        if(!checkSignature()){
+        if(checkSignature()){
             die();
         }
         echo $_GET['echostr'];
