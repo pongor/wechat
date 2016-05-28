@@ -166,7 +166,7 @@ class TextController //extends Controller
                 }
             }
         }
-        $obj->sendMessage($media_id,$this->fromUsername);
+        $obj->sendMessage($media_id,$this->fromUsername,'image');
     }
     //关键字自动回复
     public function keywords(){
