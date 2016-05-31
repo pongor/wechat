@@ -22,25 +22,24 @@ class WechatController extends Controller
         <xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName>
 <FromUserName><![CDATA[o0W5ms1hZCcATLP8hv5lV3QHogO0]]></FromUserName>
 <CreateTime>1464419014</CreateTime>
-<MsgType><![CDATA[text]]></MsgType>
-<Content><![CDATA[ceo]]></Content>
-<MsgId>6289631773187998165</MsgId>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[click]]></Event>
+<EventKey>6289631773187998165</EventKey>
 </xml>";
         echo $_GET['echostr'];
-       // $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
-       // open($xml);
+      //  $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
         $postObj = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
         self::factory($postObj);
     }
     public static function factory($obj){
         if(!is_object($obj)){
-            return 'success';
+            return false;
         }
         $class = A(ucfirst($obj->MsgType));
-        $class->fromUsername = $obj->FromUserName;
-        $class->toUsername = $obj->ToUserName;
-        $class->str = trim($obj->Content);
-        $class->handle();
+        if(false == $class) die('success');
+        $class->init($obj);
+         $class->handle();
+        var_dump($class);
     }
     public function test(){
         $json = '{

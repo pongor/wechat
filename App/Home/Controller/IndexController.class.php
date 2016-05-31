@@ -9,15 +9,14 @@ class IndexController extends Controller {
         //OPENTM207685059
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
 
-//        $json = '{
-//    "ToUserName":"gh_cbfe978fe9e3",
-//    "FromUserName":"o0W5ms_CO3BqzzXbN0NuvMR41Wx8",
-//    "CreateTime":"1463646741",
-//    "MsgType":"event",
-//    "Event":"SCAN",
-//    "EventKey":"11",
-//    "Ticket":"gQFN8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzdFaWxiMXZseWVHd0dXNGk0R1lWAAIEuLk6VwMEgPQDAA=="
-//}'; //扫码
+        $json = '<xml>
+ <ToUserName><![CDATA[toUser]]></ToUserName>
+ <FromUserName><![CDATA[o0W5ms1hZCcATLP8hv5lV3QHogO0]]></FromUserName>
+ <CreateTime>1348831860</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[ceo]]></Content>
+ <MsgId>1234567890123456</MsgId>
+ </xml>'; //扫码
       //  open(json_encode($_REQUEST));
        // open(json_encode(simplexml_load_string($GLOBALS["HTTP_RAW_POST_DATA"], 'SimpleXMLElement', LIBXML_NOCDATA)));
         if(checkSignature()) {
@@ -97,12 +96,24 @@ class IndexController extends Controller {
                         case 'SCAN': //已关注用户扫码事件
                             $id = $postObj->EventKey;
                             break;
+                        case 'CLICK':  //点击菜单拉取图片信息
+                            $msgArray = '{
+                            "touser":"'.$fromUsername.'",
+                            "msgtype":"image",
+                            "image":
+                            {
+                                 "media_id":"aP7svrLdd53I6tixB0BOYNMQNPeGrpf2ojKyu8oAU7c"
+                            }
+                         }';
+                            sendMessage($msgArray);
+                            break;
                     }
                     break;
                 default:
                     die('success');
                     break;
             }
+
             if ($id > 0) {  //扫码用户
                 $shar = D('share');
                 $supp = $shar->getInfo('id=' . $id); //活动支持信息

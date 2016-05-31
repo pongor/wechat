@@ -18,55 +18,69 @@ class MenuController extends Controller
     public function create(){
       //  dump(autoMessage(9));
         //ScBINfXZiha6z2o4pk58hTPsbXs_WpCfmEAor4joHNY
-        var_dump(access_token());die;
-        $a = I('get.token');
-        if($a == 1){
-            S('access_token',null);
-        }
-        die;
-//        $file_data = array(
-//            'filename'=>__APP__.'/img/all.jpg',  //国片相对于网站根目录的路径
-//            'content-type'=>'image/jpg',  //文件类型
-//            'filelength'=>'11011'         //图文大小
-//        );
-//       $a = I('get.token');
-//        if($a == 1){
-//            S('access_token',null);
-//        }
-//        $url = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=";
-//
-//        add_material($file_data,$url,1);
-//        die;
+
         $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".access_token();
-        httpPost($url);
-        echo urldecode(json_encode(($this->menu())));
+        //$url = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=".access_token(); //s删除
+        //var_dump(file_get_contents($url));die;
+        $post =  urldecode(json_encode(($this->menu())));
+        var_dump(httpPost($url,$post));
     }
     public function menu(){
        $this->array =  array(
             "button" => [
                 [
 
+                    'name' => urlencode('文商科'),
+                    'sub_button'  =>  [
+                        [
+                            'name'  =>  urlencode('金融1'),
+                            'type' => "view",
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/235.html'),
+                        ],
+                        [
+                            'name'  =>  urlencode('金融2'),
+                            'type' => "view",
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/250.html'),
+                        ],
+                        [
+                            'name'  =>  urlencode('人力资源'),
+                            'type' => "view",
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/179.html'),
+                        ],
+                        [
+                            'name'  =>  urlencode('传媒／新闻'),
+                            'type' => "view",
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/237.html'),
+                        ],
+                        [
+                            'name'  =>  urlencode('其他'),
+                            'type' => "view",
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/index/cat_id/4.html'),
+                        ],
+                    ],
+                ],
+                [
                     'name' => urlencode('理工科'),
                     'sub_button'  =>  [
                         [
-                            'name'  =>  urlencode('统计学'),
-                            'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/227.html'),
-                        ],
-                        [
                             'name'  =>  urlencode('计算机科学'),
                             'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/161.html'),
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/165.html'),
                         ],
                         [
-                            'name'  =>  urlencode('电子/电机工程'),
+                            'name'  =>  urlencode('统计学／数学'),
                             'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/164.html'),
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/153.html'),
                         ],
                         [
-                            'name'  =>  urlencode('材料工程'),
+                            'name'  => urlencode('通信工程'),
                             'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/226.html'),
+                            'url'   => urlencode('http://pm.dulishuo.com/Product/details/id/244.html'),
+                        ],
+                        [
+                            'name'  =>  urlencode('高中生'),
+                            'type' => "view",
+                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/241.html'),
                         ],
                         [
                             'name'  =>  urlencode('其他'),
@@ -76,34 +90,9 @@ class MenuController extends Controller
                     ],
                 ],
                 [
-                    'name' => urlencode('文商科'),
-                    'sub_button'  =>  [
-                        [
-                            'name'  =>  urlencode('统计学'),
-                            'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/227.html'),
-                        ],
-                        [
-                            'name'  =>  urlencode('计算机科学'),
-                            'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/161.html'),
-                        ],
-                        [
-                            'name'  => urlencode('电子/电机工程'),
-                            'type' => "view",
-                            'url'   => urlencode('http://pm.dulishuo.com/Product/details/id/164.html'),
-                        ],
-                        [
-                            'name'  =>  urlencode('材料工程'),
-                            'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/details/id/226.html'),
-                        ],
-                        [
-                            'name'  =>  urlencode('其他'),
-                            'type' => "view",
-                            'url'   =>  urlencode('http://pm.dulishuo.com/Product/index/cat_id/3.html'),
-                        ],
-                    ],
+                    "type"=>"click",
+                    'name'=> urlencode('来学英语'),
+                    'key' => 'weilaiyingyu'
                 ],
             ],
         );

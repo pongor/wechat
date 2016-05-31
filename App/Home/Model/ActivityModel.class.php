@@ -17,4 +17,5 @@ class ActivityModel extends Model
     public function getInfo($where){
         return $this->where($where)->find();
     }
+
 }
