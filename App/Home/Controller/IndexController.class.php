@@ -9,14 +9,14 @@ class IndexController extends Controller {
         //OPENTM207685059
       // $a ='<xml><ToUserName><![CDATA[gh_cbfe978fe9e3]]></ToUserName> <FromUserName><![CDATA[o0W5ms_CO3BqzzXbN0NuvMR41Wx8]]></FromUserName> <CreateTime>1463395333</CreateTime> <MsgType><![CDATA[event]]></MsgType> <Event><![CDATA[SCAN]]></Event> <EventKey><![CDATA[6]]></EventKey> <Ticket><![CDATA[gQFI8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL25VaVdUYVBsOXVHUHNoOE0wMllWAAIE_Jw5VwMEgPQDAA==]]></Ticket> </xml>';
 
-        $json = '<xml>
- <ToUserName><![CDATA[toUser]]></ToUserName>
- <FromUserName><![CDATA[o0W5ms1hZCcATLP8hv5lV3QHogO0]]></FromUserName>
- <CreateTime>1348831860</CreateTime>
- <MsgType><![CDATA[text]]></MsgType>
- <Content><![CDATA[ceo]]></Content>
- <MsgId>1234567890123456</MsgId>
- </xml>'; //扫码
+//        $json = '<xml>
+// <ToUserName><![CDATA[toUser]]></ToUserName>
+// <FromUserName><![CDATA[o0W5ms1hZCcATLP8hv5lV3QHogO0]]></FromUserName>
+// <CreateTime>1348831860</CreateTime>
+// <MsgType><![CDATA[text]]></MsgType>
+// <Content><![CDATA[ceo]]></Content>
+// <MsgId>1234567890123456</MsgId>
+// </xml>'; //扫码
       //  open(json_encode($_REQUEST));
        // open(json_encode(simplexml_load_string($GLOBALS["HTTP_RAW_POST_DATA"], 'SimpleXMLElement', LIBXML_NOCDATA)));
         if(checkSignature()) {
@@ -97,6 +97,7 @@ class IndexController extends Controller {
                             $id = $postObj->EventKey;
                             break;
                         case 'CLICK':  //点击菜单拉取图片信息
+                             if($postObj->EventKey == 'weilaiyingyu'){
                             $msgArray = '{
                             "touser":"'.$fromUsername.'",
                             "msgtype":"image",
@@ -105,7 +106,8 @@ class IndexController extends Controller {
                                  "media_id":"aP7svrLdd53I6tixB0BOYNMQNPeGrpf2ojKyu8oAU7c"
                             }
                          }';
-                            sendMessage($msgArray);
+                                sendMessage($msgArray);
+                             }
                             break;
                     }
                     break;
