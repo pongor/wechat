@@ -20,14 +20,19 @@ class MenuController extends Controller
         //ScBINfXZiha6z2o4pk58hTPsbXs_WpCfmEAor4joHNY
 
         $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".access_token();
-        //$url = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=".access_token(); //s删除
-        //var_dump(file_get_contents($url));die;
+//        $url = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=".access_token(); //s删除
+//        var_dump(file_get_contents($url));die;
         $post =  urldecode(json_encode(($this->menu())));
         var_dump(httpPost($url,$post));
     }
     public function menu(){
        $this->array =  array(
             "button" => [
+                [
+                    "type"=>"click",
+                    'name'=> urlencode('来学英语'),
+                    'key' => 'weilaiyingyu'
+                ],
                 [
 
                     'name' => urlencode('文商科'),
@@ -88,11 +93,6 @@ class MenuController extends Controller
                             'url'   =>  urlencode('http://pm.dulishuo.com/Product/index/cat_id/3.html'),
                         ],
                     ],
-                ],
-                [
-                    "type"=>"click",
-                    'name'=> urlencode('来学英语'),
-                    'key' => 'weilaiyingyu'
                 ],
             ],
         );

@@ -11,6 +11,28 @@ use Think\Model;
 class MemberModel extends Model
 {
 
+    public function add_User($user){ //添加或更新用户信息
+        $data = [
+            'nickname'      =>  $user['nickname'],
+            'headimgurl'    =>  $user['headimgurl'],
+            'openid'        =>  $user['openid'],
+            'sex'           =>  $user['sex'],
+            'province'      =>  $user['province'],
+            'city'          =>   $user['city'],
+            'country'       =>  $user['country'],
+            'subscribe_time' => $user['subscribe_time'],
+            'privilege'     =>  $user['privilege'],
+            'remark'        =>   $user['remark'],
+        ];
+        if(isset($user['id'])){
+           $this->where("id={$user['id']}")->save($data);
+            return $user['id'];
+        }else{
+            $data['at_time'] = time();
+            return $this->add($data);
+        }
+    }
+
     public function insert($data){
         return $this->add($data);
     }

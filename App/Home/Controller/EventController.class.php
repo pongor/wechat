@@ -46,27 +46,46 @@ class EventController extends Controller
     public function subscribe(){
         $this->arr = explode('qrscene_',$this->EventKey);
         $this->EventKey = $this->arr[1];
+        if($this->EventKey <= 0) die('success');
         $shar = D('share');
         $supp = $shar->getInfo('id=' . $this->EventKey); //活动支持信息
         if (!$supp) {
             die('success');
         }
         $aid = $supp['a_id'];
-        $user_id = $supp['user_id'];
+        $user_id = $supp['user_id']; //被支持者
+        $userModel = D('member');
         //获取扫码用户的信息
-        $info = D('member')->getInfo("openid='{$this->fromUsername}'");
-        $a_user_id = isset($info['id']) ? $info['id'] : 0;
-        if ($user_id == $a_user_id) {
+        $user = getUser($this->fromUsername);
+        $s_user_id = $userModel->addUser($user);  //支持者用户id
+        $s_user_info = $userModel->getInfo('id = '.$s_user_id);
+        if($user_id == $s_user_id){
             die('success');
         }
-        $share_array = $shar->getInfo("user_id = {$a_user_id} and a_id = {$aid}"); //活动信息
-        if(!$share_array){
-            $resu = D('activity')->getFind('id = '.$aid);
-            if(isset($resu['title'])){
-                $resultStr = sprintf($this->textTpl, $this->fromUsername, $this->toUsername, $this->time, 'text', $resu['title']); //推送活动信息
-                echo $resultStr;
-            }
+
+        //判断用户是否支持过别人
+        $result = $shar->getInfo("a_id = {$aid} and s_user_id = {$s_user_id}");
+        $model = D('Activity');
+        $activity = $model->getInfo("id={$aid}");
+        if(!$activity) die('success');
+        if($result){  //针对此次活动用户支持过别的用户，不能重复支持
+            $resultStr = sprintf($this->textTpl, $this->fromUsername, $this->toUsername, $this->time, 'text', $activity['re_invite_content']); //推送活动信息
+            echo $resultStr;
+            return ;
+        }else{ //用户未支持过
+            $s_data = array(
+                'user_id' => $user_id,
+                'a_id'      =>  $aid,
+                's_user_id' => $s_user_id,
+                'at_time'   =>  time()
+            );
+            D('support')->Insert($s_data); //保存支持信息
+            $shar->where(array('user_id'=>$s_user_id,'a_id'=>$aid))->setInc('number'); //活动信息支持人数加1
+            $number = $activity['number']+1;  //人数
+            //成功邀请成员加入 推送模板消息
+            tempMessage($s_user_info['openid'],$activity['invite_url'],$activity['invite_content'],$s_user_info['nickname'],'总人气值'.$number.'！');
         }
+
     }
     //用户取消关注事件
     public function unsubscribe(){
@@ -85,6 +104,9 @@ class EventController extends Controller
     //上报地理位置事件
     public function locaiion(){
         return 'success';
+    }
+    public function addActivity($array){
+
     }
 
 

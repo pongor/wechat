@@ -7,6 +7,7 @@ return array(
     //'BIND_MODULE'       => 'Home',
     'URL_MODEL'         => 2,
   //  'MULTI_MODULE'      =>  true,
+    'is_debug'          =>  false, // 调试模式
     'MODULE_ALLOW_LIST' => array('Home','Backend'),
      /*****************************公共配置***************************************/
     'APPID'     =>  'wxcb2fc2626c66a114',// */'wx62f712f042e87831', //

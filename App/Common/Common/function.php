@@ -130,7 +130,11 @@ function getUser($openid){
     if(!isset($array['errcode'])){
         return $array;
     }else{
-        return $array;
+      //  return $array;
+        if(C('is_debug')){
+            @open(json_encode($array));
+        }
+        return false;
     }
 }
 //生成图片   用户头像地址，活动id
